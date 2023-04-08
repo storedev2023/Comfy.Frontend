@@ -1,0 +1,49 @@
+body{
+    font-family: 'Inter', sans-serif;
+    padding: 0px;
+    margin: 0px;
+    background:#EFF7FB;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+.unselectable {
+    -webkit-touch-callout: none; 
+    -webkit-user-select: none; 
+    -moz-user-select: none; 
+    -ms-user-select: none; 
+    user-select: none; 
+}
+
+.overlay-ignore{
+    z-index: 200;
+}
+
+.search-overlay{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    background: rgba($color: #000000, $alpha: 0.5);
+    z-index: 140;
+}
+
+.catalog-overlay{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    background: rgba($color: #000000, $alpha: 0.25);
+    z-index: 120;
+}
+
+
+
