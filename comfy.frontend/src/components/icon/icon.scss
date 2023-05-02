@@ -67,7 +67,7 @@
     }
 }
 
-.city-arrow-icon{
+.top-header-arrow-icon{
     width: 0.5rem;
     height: 0.5rem;
     margin-left: 0.3rem;
@@ -96,5 +96,15 @@
     margin-left: 0.5rem;
     path{
         fill:#383A3B;
+    }
+}
+
+.header-arrow{
+    width: 0.6rem;
+    height: 0.55rem;
+    margin-top: 0.2rem;
+    margin-left: 0.2rem;
+    path{
+        fill:#F84147;
     }
 }

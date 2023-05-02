@@ -6,177 +6,80 @@ $second-color:#3CC27D;
 main{
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-
-
-
-.info-top{
-    display: flex;
-    width: 100%;
-    padding-top: 0.5rem;
-
-    
-    .info-top-first-elem{
-        margin-left: 0px;
-    }
-
-    a{
-        display: flex;
-        flex-wrap: nowrap;
-        align-items: center;
-        flex-direction: row;
-        width: 32.5%;
-        margin-left: 8px;
-        border-radius: 16px;
-        background: #FFFFFF;
-        padding: 8px;
-        display: inline-block;
-
-        img{
-            float: left;
-            width: 48px;
-            height: 48px;
-        }
-
-        p{
-            float: left;
-            margin-left: 16px;
-            font-size: 14px;
-        }
-
-    }
-
 }
 
 .body-top{
-    position: relative;
     align-self: center;
-    margin: 0 2rem;
-    width: 107.8rem;
-    min-width: none;
-    max-width: calc(100% - 4rem);
-    margin-bottom: 2.4rem;
-}
-
-.body-info{
-    display: flex;
-    flex-wrap: nowrap;
-    flex-direction: column;
-    margin: 0 20px ;
-    margin-left: 22rem;
-    min-height: 602px;
-}
-
-
-.info-main-banners{
-    
     position: relative;
-    overflow: hidden;
-    margin: 0;
-    padding: 0;
-    transform: translateZ(0);
 
-    .banner-prev{
-        position: absolute;
-        z-index: 1;
-        top: 50%;
-        transform: translateY(-50%);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 3rem;
-        height: 6.4rem;
-        background: hsla(0,0%,100%,0.5);
-        border: 0.1rem solid var(--color-white);
-        border-radius: 0.8rem;
-        cursor: pointer;
-    }
+    width: 110rem;
+    max-width: calc(100% - 4rem);
+}
 
-    .story-banner{
-        display: flex;
-        border-radius: 0.8rem;
-        overflow: hidden;
-        float: left;
-        height: 28rem;
-        margin: 10px 0;
 
-        .story-banner-body{
-            padding: 0 5px;
-            margin: 0 5px;
-            width: 260px;
-            
-           
-            background: white;
-        }
 
-        a{
+.body-top-info{
+    
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding-top: 0.5rem;
+    min-height: 38.2rem;
+    //max-height: 38.2rem;
+    transition: all 600ms ease-out;
+    margin-left: calc(19rem + 0.5rem);
+}
 
+.body-top-info-banners{
+    position: relative;
+    .carousel{
+        .carousel-item{
             img{
-                
-                display: block;
-                height: 100%;
+                width: 100%;
+                height: 34.2rem;
             }
         }
+
+        .carousel-control-prev-icon{
+            width: 5rem;
+        }
+        
+        .carousel-control-next-icon{
+            width: 5rem;
+        }
     }
-
-    .banner-next{
-        position: absolute;
-        z-index: 1;
-        top: 50%;
-        right: 1.4rem;
-        transform: translateY(-50%);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 3rem;
-        height: 6.4rem;
-        background: hsla(0,0%,100%,0.5);
-        border: 0.1rem solid var(--color-white);
-        border-radius: 0.8rem;
-        cursor: pointer;
-    }
-
-
-
 }
 
-.logo-brands{
+.body-top-info-links{
+    position: relative;
     display: flex;
     justify-content: space-around;
- 
-    background: white;
-
-    a{
-        margin: 14px 0;
-        padding: 0;
-        align-items: center;
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        height: 45px;
-        border-right: 1px solid #ccc;
-    
-    }
-
-    .all-brands{
-        border-right:none
+    align-items: center;
+    font-size: 14px;
+    .info-link{
+        padding: 1rem 10%;
+        border-top: 1px solid #B1B7BA;
+        border-bottom: 1px solid #B1B7BA;
     }
 }
+
+
+.body-top-info-brands{
+    width: 100%;
+    background: white;
+}
+
 // body-content
 
-.body-content{
-    margin: 0 2rem;
-    max-width: 128.6rem;
-}
+
 
 .home-section{
+    padding: 0 1.4rem 1.4rem;
     position: relative;
     margin-left: auto;
     margin-right: auto;
-    max-width: 141.4rem;
+    max-width: 110rem;
     width: 100%;
 }
 
@@ -195,6 +98,8 @@ main{
     }
 
     .home-section-more-link{
+        text-decoration: none;
+        color:#1F1E24;
         display: flex;
         align-items: center;
         font-size: 14px;
@@ -203,11 +108,16 @@ main{
 
 }
 
+.home-section-body{
+    width: 100%;
+    margin: 0 auto;
 
-.home-section-body-list{
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    margin: 0 4rem;
+    .home-section-body-list{
+        display: grid;
+        grid-template-columns: repeat(5,minmax(0,1fr));
+        grid-gap: 1rem;
+    }
+    
 }
+
 

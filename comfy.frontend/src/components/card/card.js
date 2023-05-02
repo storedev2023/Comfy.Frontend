@@ -1,18 +1,35 @@
-import React from "react";
-
+import React from "react"
+//components
+import Icon     from "../icon/icon";
+import Carousel from 'react-bootstrap/Carousel';
+import CarouselItem from "react-bootstrap/esm/CarouselItem";
+//style
 import './card.scss'
-import Img1 from '../../assets/images/TestProduct/w_600.jpg'
-import Icon from "../icon/icon";
+//images
+import I1 from '../../assets/images/TestProduct/w_600.jpg'
+import I2 from '../../assets/images/TestProduct/w_601.jpg'
+import I3 from '../../assets/images/TestProduct/w_602.jpg'
 
 
 
 
-function Card() {
+
+const Card = (props) => {
+
+    const prevImgs = [I1,I2,I3];
+
+    let prevImgsList = [];
+
+    prevImgs.forEach((prev, index) => {
+        prevImgsList.push(<CarouselItem key={index}><img src={prev}/></CarouselItem>);
+    });
+
+
   return (
     <div className="list-item">
         <div className="list-item-header">
             <div className="list-item-promo-label">
-                Hit
+                Хiт продаж
             </div>
             <div className="list-item-list-control">
                 <div className="control-compare control-item">
@@ -24,14 +41,13 @@ function Card() {
             </div>
         </div>
         <div className="list-item-img">
-            <a href="#">
-                <div>
-                    <img src={Img1}>
-                    </img>
+            <a  className="img-link">
+                <div className="img-carousel">
+                    <Carousel interval={null} variant="dark">
+                        {prevImgsList}
+                    </Carousel>
                 </div>
             </a>
-            <div>   
-            </div>
         </div>
         <div className="list-item-info">
             <a href="#" >Ноутбук ігровий Lenovo IdeaPad Gaming 3 15ACH6 (82K201B9RA) Shadow Black</a>
@@ -72,11 +88,11 @@ function Card() {
                         </div>
                     </div>
                     <div className="content-price-actions-annotations">
-                    <div class="bonus">
-                        <div class="bonus-label">
-                            <i class="icon-comfy bonus-label__icon icon-comfy__bonus"></i>
-                            <span class="bonus-label-value">+300 ₴</span>
-                            <span class="bonus-label-text">на бонусний рахунок</span>
+                    <div className="bonus">
+                        <div className="bonus-label">
+                            <i className="icon-comfy bonus-label__icon icon-comfy__bonus"></i>
+                            <span className="bonus-label-value">+300 ₴</span>
+                            <span className="bonus-label-text">на бонусний рахунок</span>
                         </div>
                     </div>
                 </div>
