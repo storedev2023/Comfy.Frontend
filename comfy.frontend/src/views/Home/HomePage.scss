@@ -104,6 +104,10 @@ main{
         align-items: center;
         font-size: 14px;
         padding: 0 20px;
+        cursor: pointer;
+        span:hover{
+            text-decoration: underline;
+        }
     }
 
 }

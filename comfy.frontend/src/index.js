@@ -1,14 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App';
+import Router from './components/Router'
+import  Header from "./components/layout/Header/header";
+import  Footer from "./components/layout/Footer/footer";
+
+import './index.scss'
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-
-    <App />
-
+    <Header/>
+    <Router/>
+    <Footer/>
   </React.StrictMode>
 );
 

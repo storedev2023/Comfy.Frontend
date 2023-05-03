@@ -1,14 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import './header.scss'
 import Logo from './../../../assets/Logo.png'
 import Icon from "../../icon/icon";
 import {CSSTransition} from 'react-transition-group'
 import { useInView } from 'react-intersection-observer'
+
 function HeaderTOP(){
 
     //Header cities
-     const [ showCities, setShowCities] = useState(false)
+    const [ showCities, setShowCities] = useState(false)
 
     //Header more stocks
     const [ headerStocksLinks, setStocksLinks] = useState(false)
@@ -100,7 +101,7 @@ function HeaderTOP(){
 }
 
 
-var c_b = document.getElementById("categories-menu-block")
+
 
 function HeaderBOTTOM(){
     // Header icon hover
@@ -111,18 +112,40 @@ function HeaderBOTTOM(){
     // Header overlay
     const [ showOverlayProfile, setShowOverlayProfile] = useState(false)
     const [ showOverlaySearch, setShowOverlaySearch] = useState(false)
-    const [ showOverlayCatalog, setShowOverlayCatalog] = useState(false)
+    const [ showOverlayCatalog, setShowOverlayCatalog] = useState(false)  
 
-   
+    useEffect(()=>{
+        var header_bottom = document.getElementById("header-bottom")
+        var categories_menu = document.getElementById("categories-menu-block")
+        
+        //if not home page
+        if(!document.getElementById("home-page")){
+            if(!document.getElementById("product-page")){
+                header_bottom.classList.add('sticky');
+            }
+            
+            if(showOverlayCatalog){
+                categories_menu.classList.remove('display-none');
+            }
+            else{
+                categories_menu.classList.add('display-none');
+            }
+        }
 
-    const [ref, inView] = useInView({threshold: 0});
-    const [ showOpenCatalog, setShowOpenCatalog] = useState(true)
+        //if sticky
+        if(header_bottom.classList.contains("sticky")){
+            if(showOverlayCatalog){
+                categories_menu.classList.remove('display-none');
+            }
+            else{
+                categories_menu.classList.add('display-none');
+            }     
+        }
+        
+    })
 
-    console.log(inView)
-    
     //Header categories
     const [ showSubCatalog, setShowSubCatalog] = useState(false)
-    
 
 
   return (
@@ -135,7 +158,7 @@ function HeaderBOTTOM(){
                             <span className="categories-label">Каталог товарів</span>
                             <Icon id="header-arrow" className="categories-arrow-icon"/>
                         </div>
-                        <div className="header-bottom-categories-menu-block" id="categories-menu-block" ref={ref}>
+                        <div className="header-bottom-categories-menu-block" id="categories-menu-block" >
                             <div className="header-bottom-categories-menu-items">
                                 <div className="categories-menu-items menu-items" onMouseEnter={()=>setShowSubCatalog(true)} onMouseLeave={()=> setShowSubCatalog(false)}>
                                     <Icon id="categories-phone" className="categories-icon"/>
@@ -246,7 +269,7 @@ function HeaderBOTTOM(){
                 </div>
             </div>
         { showOverlayCatalog &&
-            <div className="catalog-overlay" onClick={()=> setShowOverlaySearch(false)}></div>
+            <div className="catalog-overlay"></div>
         }
             <CSSTransition in={showOverlayProfile} classNames="overlay" timeout={300} unmountOnExit>
             <div className="auth-modal">

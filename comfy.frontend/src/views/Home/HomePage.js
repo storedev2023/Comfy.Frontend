@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from "react";
 //Components
-import  Card   from "../../../components/card/card";
-import  Icon   from "../../../components/icon/icon";
+import  Card   from "../../components/card/card";
+import  Icon   from "../../components/icon/icon";
 import  Carousel from 'react-bootstrap/Carousel';
 import CarouselItem from "react-bootstrap/esm/CarouselItem";
 import { useInView } from 'react-intersection-observer'
 //styles
 import './HomePage.scss'
 //Images
-import s1 from "../../../assets/images/main_carousel/s1.jpg"
-import s2 from "../../../assets/images/main_carousel/s2.jpg"
-import s3 from "../../../assets/images/main_carousel/s3.jpg"
-import s4 from "../../../assets/images/main_carousel/s4.jpg"
-import s5 from "../../../assets/images/main_carousel/s5.jpg"
+import s1 from "../../assets/images/main_carousel/s1.jpg"
+import s2 from "../../assets/images/main_carousel/s2.jpg"
+import s3 from "../../assets/images/main_carousel/s3.jpg"
+import s4 from "../../assets/images/main_carousel/s4.jpg"
+import s5 from "../../assets/images/main_carousel/s5.jpg"
 
 
 
@@ -25,7 +25,6 @@ function HomePage() {
     useEffect(()=>{
         var header_bottom = document.getElementById("header-bottom")
         var categories_menu = document.getElementById("categories-menu-block")
-        console.log(inView)
         if(inView)
         {
             header_bottom.classList.remove('sticky');
@@ -52,7 +51,7 @@ function HomePage() {
     });
 
   return (
-        <main>
+        <main id="home-page">
             <div className="body-top" id="body-top" ref={ref}>
                 <div className="body-top-info">
                     <div className="body-top-info-banners">
@@ -80,7 +79,7 @@ function HomePage() {
                 <div className="home-section-header">
                     <h3 className="home-section-title">Кращий вибiр</h3>
                     <a className="home-section-more-link">
-                        <span>Дивитися усі</span>
+                        <span>Дивитися всі</span>
                         <Icon id="body-arrow" className="body-arrow"/>
                     </a>
                 </div>
@@ -98,7 +97,7 @@ function HomePage() {
                 <div className="home-section-header">
                     <h3 className="home-section-title">Смартфони</h3>
                     <a className="home-section-more-link">
-                        <span>Дивитися усі</span>
+                        <span>Дивитися всі</span>
                         <Icon id="body-arrow" className="body-arrow"/>
                     </a>
                 </div>
@@ -116,7 +115,7 @@ function HomePage() {
                 <div className="home-section-header">
                     <h3 className="home-section-title">Смартфони</h3>
                     <a className="home-section-more-link">
-                        <span>Дивитися усі</span>
+                        <span>Дивитися всі</span>
                         <Icon id="body-arrow" className="body-arrow"/>
                     </a>
                 </div>
@@ -134,7 +133,7 @@ function HomePage() {
                 <div className="home-section-header">
                     <h3 className="home-section-title">Ноутбуки</h3>
                     <a className="home-section-more-link">
-                        <span>Дивитися усі</span>
+                        <span>Дивитися всі</span>
                         <Icon id="body-arrow" className="body-arrow"/>
                     </a>
                 </div>
@@ -152,7 +151,7 @@ function HomePage() {
                 <div className="home-section-header">
                     <h3 className="home-section-title">Пральні машини</h3>
                     <a className="home-section-more-link">
-                        <span>Дивитися усі</span>
+                        <span>Дивитися всі</span>
                         <Icon id="body-arrow" className="body-arrow"/>
                     </a>
                 </div>
@@ -170,7 +169,7 @@ function HomePage() {
                 <div className="home-section-header">
                     <h3 className="home-section-title">Телевізори</h3>
                     <a className="home-section-more-link">
-                        <span>Дивитися усі</span>
+                        <span>Дивитися всі</span>
                         <Icon id="body-arrow" className="body-arrow"/>
                     </a>
                 </div>
@@ -188,7 +187,7 @@ function HomePage() {
                 <div className="home-section-header">
                     <h3 className="home-section-title">Пилососи</h3>
                     <a className="home-section-more-link">
-                        <span>Дивитися усі</span>
+                        <span>Дивитися всі</span>
                         <Icon id="body-arrow" className="body-arrow"/>
                     </a>
                 </div>
@@ -206,7 +205,7 @@ function HomePage() {
                 <div className="home-section-header">
                     <h3 className="home-section-title">Переглянуті товари</h3>
                     <a className="home-section-more-link">
-                        <span>Дивитися усі</span>
+                        <span>Дивитися всі</span>
                         <Icon id="body-arrow" className="body-arrow"/>
                     </a>
                 </div>
