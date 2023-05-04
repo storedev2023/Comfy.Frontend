@@ -1,0 +1,28 @@
+
+
+.slick-next, .slick-prev{
+    width: 2%;
+    height: 90%;
+    background: white;
+    border: 1px solid #e5e5e5;
+    border-radius: 6px;
+    color: black;
+    
+}
+
+.slick-next::before,.slick-prev::before{
+    color: black;
+}
+
+.slick-next:hover,.slick-prev:hover{
+    background: white;
+}
+
+.slick-next:focus,.slick-prev:focus{
+    background: white;
+}
+
+
+.slick-next:active,.slick-prev:active{
+    background: white;
+}

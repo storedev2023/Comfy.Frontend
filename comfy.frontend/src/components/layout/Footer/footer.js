@@ -6,7 +6,7 @@ function Footer() {
   return (
     <div className="footer">
 
-       <div class="footer-info-block">
+       <div className="footer-info-block">
           <ul class="info-footer-ul">
             <li class="info-footer-li">
                 <div>
@@ -35,7 +35,7 @@ function Footer() {
           </ul>
        </div>
 
-        <div class="footer-subscribe-block">
+        <div className="footer-subscribe-block">
         <div class="footer-subscribe">
             <div class="subscribe-text-block">
                 <span class="subscribe-text">Підписуйтесь на знижки та рекомендації!</span> 
@@ -52,8 +52,8 @@ function Footer() {
             
         </div>
 
-       <div class="footer-links-block">
-       <div class="footer-nav-join">
+       <div className="footer-links-block">
+       <div className="footer-nav-join">
             <div class="footer-nav-social">
             <p class="">Приєднуйтесь</p>
             </div> 
@@ -86,47 +86,51 @@ function Footer() {
             </div>
         </div>
 
-        <div class="footer-nav-loffy">
+        <div className="footer-nav-loffy">
             <p> Loffy </p>
-            <ul class="">
-                <li class=""><a href="">Про компанію</a></li>
-                <li class=""><a href="">Магазини</a></li>
-                <li class=""><a href="">Контакти</a></li>
-                <li class=""><a href="">Прес-центр</a></li>
-                <li class=""><a href="">Робота в LOFFY</a></li>
-                <li class=""><a href="">Безпека та застереження</a> </li>
-                <li class=""><a href="">Тендер</a></li>
-                <li class=""><a href="">Партнерам</a></li>
-                <li class=""><a href="">Каталог товарів</a></li>
-                <li class=""><a href="">LOFFY допомагає</a></li>
+            <ul>
+                <li><a href="">Про компанію</a></li>
+                <li><a href="">Магазини</a></li>
+                <li><a href="">Контакти</a></li>
+                <li><a href="">Прес-центр</a></li>
+                <li><a href="">Робота в LOFFY</a></li>
+                <li><a href="">Безпека та застереження</a> </li>
+                <li><a href="">Тендер</a></li>
+                <li><a href="">Партнерам</a></li>
+                <li><a href="">Каталог товарів</a></li>
+                <li><a href="">LOFFY допомагає</a></li>
             </ul>
         </div>
-        <div class="footer-nav-services"> 
+        <div className="footer-nav-services"> 
             <p> Послуги і сервіси </p>
-            <ul class="">
-            <li class=""><a href="">Бонусна програма</a></li>
-            <li class=""><a href="">Подарункові картки</a></li>
-            <li class=""><a href="">LOFFY книги</a></li>
-            <li class=""><a href="">Кредит і оплата частинами</a> </li>
-            <li class=""><a href="">Сервісні договори</a> </li>
-            <li class=""><a href="">Безготівковий рахунок</a> </li>
-            <li class=""><a href="">Оплата</a></li>
+            <ul>
+            <li><a href="">Бонусна програма</a></li>
+            <li><a href="">Подарункові картки</a></li>
+            <li><a href="">LOFFY книги</a></li>
+            <li><a href="">Кредит і оплата частинами</a> </li>
+            <li><a href="">Сервісні договори</a> </li>
+            <li><a href="">Безготівковий рахунок</a> </li>
+            <li><a href="">Оплата</a></li>
             </ul>
         </div>
 
-        <div class="footer-nav-help">  
+        <div className="footer-nav-help">  
             <p> Допомога покупцеві</p>
             <ul>
-            <li class=""><a href="">Знайти замовлення</a></li>
-            <li class=""><a href="">Умови доставки</a> </li>
-            <li class=""><a href="">Обмін і повернення товару</a> </li>
-            <li class=""><a href="">Гарантія</a></li>
-            <li class=""><a href="">Статус товару в ремонті</a> </li>
-            <li class=""><a href="">Часто задавані питання</a> </li>
-            <li class=""><a href="">Правила користування сайтом</a> </li>
-            <li class=""><a href=""> Правила участі в акціях </a> </li>
+            <li><a href="">Знайти замовлення</a></li>
+            <li><a href="">Умови доставки</a> </li>
+            <li><a href="">Обмін і повернення товару</a> </li>
+            <li><a href="">Гарантія</a></li>
+            <li><a href="">Статус товару в ремонті</a> </li>
+            <li><a href="">Часто задавані питання</a> </li>
+            <li><a href="">Правила користування сайтом</a> </li>
+            <li><a href=""> Правила участі в акціях </a> </li>
             </ul>
         </div>
+
+        </div>
+
+        <div className >
 
         </div>
     </div>

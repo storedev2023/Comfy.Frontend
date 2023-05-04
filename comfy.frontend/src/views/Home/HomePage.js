@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 //Components
-import  Card   from "../../components/card/card";
-import  Icon   from "../../components/icon/icon";
-import  Carousel from 'react-bootstrap/Carousel';
-import CarouselItem from "react-bootstrap/esm/CarouselItem";
-import { useInView } from 'react-intersection-observer'
+import  Card                from "../../components/card/card";
+import  Icon                from "../../components/icon/icon";
+import  CarouselWithCards   from "../../components/carousels/carousel_w_cards";
+import  Carousel            from 'react-bootstrap/Carousel';
+import CarouselItem         from "react-bootstrap/esm/CarouselItem";
+import { useInView }        from 'react-intersection-observer'
 //styles
 import './HomePage.scss'
 //Images
@@ -204,10 +205,6 @@ function HomePage() {
             <section className="home-section">
                 <div className="home-section-header">
                     <h3 className="home-section-title">Переглянуті товари</h3>
-                    <a className="home-section-more-link">
-                        <span>Дивитися всі</span>
-                        <Icon id="body-arrow" className="body-arrow"/>
-                    </a>
                 </div>
                 <div className="home-section-body">
                     <div className="home-section-body-list">
@@ -217,6 +214,38 @@ function HomePage() {
                         <Card/>
                         <Card/>
                     </div>
+                </div>
+            </section>
+            <section className="home-section">
+                <div className="home-section-header">
+                    <h3 className="home-section-title">Хіти продажу</h3>
+                </div>
+                <div className="home-section-body-slider">
+                        <CarouselWithCards/>
+                </div>
+            </section>
+            <section className="home-section">
+                <div className="home-section-header">
+                    <h3 className="home-section-title">Спеціально для вас ми підібрали</h3>
+                </div>
+                <div className="home-section-body-slider">
+                        <CarouselWithCards/>
+                </div>
+            </section>
+            <section className="home-section">
+                <div className="home-section-header">
+                    <h3 className="home-section-title">Відеоогляди</h3>
+                </div>
+                <div className="home-section-body-slider">
+                        <CarouselWithCards/>
+                </div>
+            </section>
+            <section className="home-section">
+                <div className="home-section-header">
+                    <h3 className="home-section-title">Новини з блогу</h3>
+                </div>
+                <div className="home-section-body-slider">
+                        <CarouselWithCards/>
                 </div>
             </section>
             </div>

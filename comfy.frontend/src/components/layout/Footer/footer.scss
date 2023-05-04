@@ -1,42 +1,46 @@
 .footer{
+    margin-top: 4rem;
 	position: relative;
 	bottom: 0;
 	width: 100%;
-    background-color: white;;
     color: #1F1E24;
 }
-//footer-info-block
-.info-footer-ul
-{
-    max-width: 110rem;
-    margin: 0 auto;
-    padding: 0;
-    list-style: none;
+
+.footer-info-block{
+    background-color: white;
+
+    .info-footer-ul
+    {
+        max-width: 110rem;
+        margin: 0 auto;
+        padding: 0;
+        list-style: none;
+    }
+
+    .info-footer-li{
+        display: table-cell;
+        vertical-align: top;
+        width: 25%;
+        border-right: 0.1rem solid #ced6da;
+        padding: 1rem 1.5rem;
+        line-height: 1.5;
+        text-align: center;
+    }
+
+    .info-footer-li div{
+        width: auto;
+        text-align: left;
+    }
+
+    .info-footer-li  span{
+    font-weight: bold;
+    }
+
+    .info-footer-ul :last-child{
+        border-right: none;
+    }
 }
 
-.info-footer-li{
-    display: table-cell;
-    vertical-align: top;
-    width: 25%;
-    border-right: 0.1rem solid #ced6da;
-    padding: 1rem 1.5rem;
-    line-height: 1.5;
-    text-align: center;
-}
-
-.info-footer-li div{
-    width: auto;
-    text-align: left;
-}
-
-.info-footer-li  span{
-   font-weight: bold;
-}
-
-.info-footer-ul :last-child{
-    border-right: none;
-}
-// ^
 
 //footer-subscribe-block
 
@@ -95,46 +99,36 @@
 
 //footer-links-block
 .footer-links-block{
+
+    display: flex;
+    align-items: start;
     max-width: 110rem;
+    width: 100%;
     margin: 0 auto;
     padding: 0;
-    
+
+    p{
+        font-size: 22px;
+        font-weight: 500;
+        margin-bottom: 2rem;
+    }
+
+    a{
+        color:black;
+        text-decoration: none;
+    }
+
+    ul{
+        padding-left: 0;
+    }
+
+    li{
+        list-style: none;
+        margin-bottom: 0.6rem;
+    }
 }
 
-.footer-links-block a{
-    color:black;
-    text-decoration: none;
-}
-
-.footer-links-block ul{
-    padding-left: 0;
-}
-
-.footer-links-block li{
-    list-style: none;
-}
-
-.footer-nav-join{
+.footer-nav-join, .footer-nav-loffy, .footer-nav-services,.footer-nav-help{
     width: 25%;
-    padding: 1rem 1.5rem;
-    display: inline-block;
-}
-
-.footer-nav-loffy{
-    width: 25%;
-    margin: 0 0 -20px 0;
-    padding: 1rem 1.5rem;
-    display: inline-block;
-}
-
-.footer-nav-services{
-    width: 25%;
-    padding: 1rem 1.5rem;
-    display: inline-block;
-}
-
-.footer-nav-help{
-    width: 25%;
-    padding: 1rem 1.5rem;
-    display: inline-block;
+    padding: 2.5rem 1.5rem;
 }
