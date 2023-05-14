@@ -595,17 +595,143 @@ $bottom-header-font-color:#EFF7FB;
     pointer-events: none!important;
 
     .auth-block{
-        display: flex;
         justify-content: center;
-        align-items: center;
-        background: white;
-        width: 40rem;
+        background:  #EFEFEF;
+        width: 35rem;
         height: 45rem;
         pointer-events: all;
         border-radius: 30px;
     }
 }
 
+.auth-title-block{
+    width: 100%;
+    height: 15%;
 
+    .auth-title-text{
+        padding-top: 60px;
+        text-align: center;
+        font-family: 'Rubik';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 18px;
+        color: #4D5254;
+    }
 
+}
 
+.auth-inputs-block{
+    width: 100%;
+    height: 45%;
+}
+
+.auth-input-title-text{
+    margin: 15px 0 10px 0;
+    margin-left: 80px;
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 18px;
+    color: #4D5254;
+ 
+}
+   input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+.auth-input{
+    padding: 0 0 0 15px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    border-radius: 32px;
+    width: 400px;
+    height: 40px;
+    border-style: none;
+    background: #D9D9D9;
+}
+
+.auth-input-button{
+    color: #EFEFEF;
+    background: #9ACD6A;
+    border-radius: 32px;
+    border-style: none;
+    width: 155px;
+    height: 40px;
+    margin-top: 25px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.auth-text-block{
+    width: 100%;
+    height: 40%;
+
+    .auth-title-text{
+        text-align: center;
+        font-family: 'Rubik';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 18px;
+        color: #4D5254;
+    }
+}
+
+.auth-social-button-block{
+    text-align: center;
+}
+
+.auth-facebook-button{
+    border-style: none;
+    width: 150px;
+    height: 40px;
+    color:#D0BE70;
+    background: #6692CB;
+    border-radius: 32px;
+}
+.auth-google-button{
+    border-style: none;
+    width: 150px;
+    height: 40px;
+    color:#6692CB;
+    background: #D0BE70;
+    border-radius: 32px;
+    margin-left: 15px;
+}
+
+.forgor-password-text{
+    margin-top: 20px;
+    text-align: center;
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    color: #4D5254;
+    
+    a{
+        text-decoration: none;
+        color:#9ACD6A;
+    }
+}
+
+.registration-text{
+    margin-top: 20px;
+    text-align: center;
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    color: #4D5254;
+    
+    a{
+        text-decoration: none;
+        color:#9ACD6A;
+    }
+}

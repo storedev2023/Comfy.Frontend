@@ -281,7 +281,31 @@ function HeaderBOTTOM(){
             <div className="auth-modal">
                 <div className="auth-modal-dialog" >
                     <div className="auth-block" >
-                        <h1>Authorization</h1>
+                        <div class="auth-title-block">
+                            <p class="auth-title-text">Увійти</p>
+                        </div>
+                        <div class="auth-inputs-block">
+                        
+                                <p class="auth-input-title-text">Номер телефону</p>
+                                <input class="auth-input" type="number" placeholder="+380(099)999999"/>
+                         
+                                <p class="auth-input-title-text">Поштова адресса</p>
+                                <input  class="auth-input" type="email"/>
+
+                                <p class="auth-input-title-text">Пароль</p>
+                                <input  class="auth-input" type="password"/>
+
+                                <input  class="auth-input-button" type="button" value="Увійти"/>
+                        </div>
+                        <div class="auth-text-block">
+                            <p class="auth-title-text">Увійти через</p>
+                            <div class="auth-social-button-block">
+                                <input  class="auth-facebook-button" type="button" value="Facebook"/>
+                                <input  class="auth-google-button" type="button" value="Google"/>
+                            </div>
+                                <p class="forgor-password-text">Забули пароль? Натисніть <a href="">cюди</a></p>
+                                <p class="registration-text">Якщо у вас все ще нема профелю, будь-ласка <br/><a href="">Зареєструватися</a></p>
+                        </div>
                     </div>
                 </div>
             </div>
