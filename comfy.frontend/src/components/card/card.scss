@@ -2,37 +2,37 @@
     position: relative;
     display: flex;
     flex-direction: column;
-
-
     padding: 1.6rem 1.6rem 1.6rem 1.6rem;
     width: 100%;
     height: 100%;
-    background-color: white;
+    background-color: #EFEFEF;
     z-index: 6;
     transition: box-shadow 0.3s linear;
     border-radius: 6px;
     
 }
 
-.list-item-header{
+.list-item-header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     padding-bottom: 20px;
 
-    .list-item-promo-label{
+    .list-item-promo-label {
         color:#3CC27D;
         font-size: 20px;
     }
 
-    .list-item-list-control{
+    .list-item-list-control {
         display: flex;
         flex-direction: row;
         cursor: pointer;
-        .control-item{
+
+        .control-item {
             margin: 0 0.8rem;
         }
-        .control-wishlist{
+
+        .control-wishlist {
             margin-right: 0;
         }
     }
@@ -41,18 +41,21 @@
 
 .list-item-img{
     position: relative;
+
     .img-link{
         
-        .img-carousel{
+        .img-carousel {
+
             img{
                 margin-bottom: 1rem;
                 width: 100%;
-                height: 100%;
+                height: 16rem;
             }
 
-            .carousel-indicators{
+            .carousel-indicators {
                 margin-bottom: 0;
                 z-index: 1;
+
                 button{
                     z-index: 1;
                     margin: 0;
@@ -61,9 +64,10 @@
                 }
             }
 
-            .carousel-control-prev{
+            .carousel-control-prev {
                 justify-content: left;
                 align-items:end;
+
                 .carousel-control-prev-icon{
                     width: 1rem;
                     height: 1rem;
@@ -71,11 +75,10 @@
                 }
             }
 
-
-
-            .carousel-control-next{
+            .carousel-control-next {
                 justify-content: right;
                 align-items:end;
+
                 .carousel-control-next-icon{
                     width: 1rem;
                     height: 1rem;
@@ -87,39 +90,41 @@
     }
 }
 
-.list-item-content{
+.list-item-content {
     display: flex;
     flex-direction: column;
 }
 
-.list-item-info{
+.list-item-info {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
     justify-content: space-between;
-    a{
+
+    .item-info-name {
         margin: 1.2rem 0 1.2rem 0;
-        font-size: 14px;
+        font-size: 16px;
         line-height: 1.5rem;
         word-break: break-word;
         width: 100%;
         flex-grow: 4;
         text-decoration: none;  
-        color:black
+        color:black;
+        cursor: pointer;
     }
 }
 
-.list-item-info-content{
+.list-item-info-content {
     display: flex;
     flex-direction: column;
     justify-content: space-between;  
 
-    .content-feedback-labels{
+    .content-feedback-labels {
         display: flex;
         flex-direction: column;
         justify-content: space-between;  
 
-        .content-feedback{
+        .content-feedback {
             display: flex;
             flex-direction: row;
             justify-content: space-between; 
@@ -127,40 +132,46 @@
 
     }
     
-    .content-price-actions{
+    .content-price-actions {
         display: flex;
         flex-direction: column;
         justify-content: space-between;  
 
-        .content-price-actions-content{
+        .content-price-actions-content {
             display: flex;
             flex-direction: row;
             justify-content: space-between; 
 
-            .actions-content-price{
+            .actions-content-price {
                 display: flex;
                 flex-direction: column;
                 justify-content: space-between; 
 
-                .actions-content-price-old{
-                    
+                
+
+                .actions-content-price-old {
                     color:#CCCCCC;
 
-                    .actions-content-price-discount{
+                    span{
+                        text-decoration: line-through;
+                    }
+
+                    .actions-content-price-discount {
+                        text-decoration: none;
                         margin-left: 10px;
                         color:#3CC27D;
                         font-weight: 500;
                     }
                 }
 
-                .actions-content-price-current{
+                .actions-content-price-current {
                     font-size:28px;
                     font-weight: 500;
                 }
 
             }
 
-            .actions-content-btn{
+            .actions-content-btn {
 
                 .list-item-btn{
                     display: flex;
@@ -170,18 +181,15 @@
                     cursor: pointer;
                     padding: 10px;
                     gap: 10px;
-
                     width: 52px;
                     height: 52px;
-
-                    background: #1F1E24;
+                    background: #383A3B;
                     border: none;
                     border-radius: 25px 25px 0px 25px;
                     transition: all .15s linear;
                 }
 
                 .list-item-btn:hover{
-                    
                     background:#3CC27D;
                     border: none;
                     transition: all .15s linear;
@@ -190,16 +198,16 @@
             }
         }
 
-        .content-price-actions-annotations{
-            font-size: 12px;
+        .content-price-actions-annotations {
+            font-size: 14px;
             margin-top: 1rem;
 
-            .bonus-label-value{
-                color: #ecd400;
-                font-weight: 600;
+            .bonus-label-value {
+                color: #959595;
+                font-weight: 300;
             }
 
-            .bonus-label-text{
+            .bonus-label-text {
                 margin-left: 5px;
             }
 

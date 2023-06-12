@@ -7,11 +7,10 @@ import Slider from "react-slick";
 import Icon     from "../icon/icon";
 import CarouselCard from '../card/carousel_card'
 
-function CarouselWithCards() {
-
+const CarouselWithCards = (props) => {
     var settings = {
         infinite: false,
-        speed: 500,
+        speed: 350,
         slidesToShow: 4,
         slidesToScroll: 1,
         initialSlide: 0,

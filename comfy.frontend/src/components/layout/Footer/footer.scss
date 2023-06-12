@@ -7,7 +7,7 @@
 }
 
 .footer-info-block{
-    background-color: white;
+    background-color: #EFEFEF;
 
     .info-footer-ul
     {
@@ -21,7 +21,8 @@
         display: table-cell;
         vertical-align: top;
         width: 25%;
-        border-right: 0.1rem solid #ced6da;
+        
+        border-right: 0.1rem solid #d8d8d8;
         padding: 1rem 1.5rem;
         line-height: 1.5;
         text-align: center;
@@ -46,7 +47,7 @@
 
 .footer-subscribe-block{
     color: #EFF7FB;
-    background-color: #1F1E24;
+    background-color: #3F4E5D;
 }
 
 .footer-subscribe{
@@ -78,20 +79,35 @@
 }
 
 .subscribe-email-input{
+    font-size: 14;
+    background-color: #5C6875;
+    color:#EFEFEF;
     width: 70%;
-    height: 2rem;
-    color: #000;
-    border-radius: 0.4rem;
+    height: 40px;
+    padding: 3px 0px 3px 10px ;
+    border: 2px solid rgba(0, 0, 0, 0.5);
+    border-radius: 6px;
+    border-color: transparent;
+    border-right: none;
+    outline:none;
 }
 
-.subscribe-email-button{
+.subscribe-email-input::placeholder {
+    color:#EFF7FB;
+}
+    
+
+.subscribe-email-button {
+    font-size: 14;
     width: 100%;
-    height: 2rem;
-    color: #000;
-    border-radius: 0.4rem;
+    height: 40px;
+    color: white;
+    background: #3CC27D;
+    border-radius: 6px;
+    border: none;
 }
 
-.subscb-button{
+.subscb-button {
     width: 30%;
     display: inline-block;
     padding-left: 0.5rem;

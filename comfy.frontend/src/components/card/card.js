@@ -1,30 +1,39 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 //components
 import Icon     from "../icon/icon";
 import Carousel from 'react-bootstrap/Carousel';
 import CarouselItem from "react-bootstrap/esm/CarouselItem";
 //style
-import './card.scss'
+import './Card.scss'
+import { Link, useNavigate, redirect } from "react-router-dom";
+
 //images
-import I1 from '../../assets/images/TestProduct/w_600.jpg'
-import I2 from '../../assets/images/TestProduct/w_601.jpg'
-import I3 from '../../assets/images/TestProduct/w_602.jpg'
 
 
 
 
 
-const Card = (props) => {
+const Card = ({product}) => {
+    
 
-    const prevImgs = [I1,I2,I3];
+
+    const navigate = useNavigate();
+
+    const [productDiscount, setProductDiscount] = useState (product.discountAmount > 0)
+    const [productImages, setProductImages] = useState(product.images.length != 0)
 
     let prevImgsList = [];
 
-    prevImgs.forEach((prev, index) => {
-        prevImgsList.push(<CarouselItem key={index}><img src={prev}/></CarouselItem>);
+    product.images.forEach((prev, index) => {
+        console.log(prev)
+        prevImgsList.push(<CarouselItem key={index}><img src={prev.url}/></CarouselItem>);
     });
 
-
+    function redirectTo(){
+        return navigate(`/${product.url}`)
+        
+    }
+    
   return (
     <div className="list-item">
         <div className="list-item-header">
@@ -43,19 +52,22 @@ const Card = (props) => {
         <div className="list-item-img">
             <a  className="img-link">
                 <div className="img-carousel">
-                    <Carousel interval={null} variant="dark">
-                        {prevImgsList}
-                    </Carousel>
+                    {productImages                      
+                        ? <Carousel interval={null} variant="dark">
+                            {prevImgsList}
+                         </Carousel> 
+                        : <img url="https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"/>
+                    }
                 </div>
             </a>
         </div>
         <div className="list-item-info">
-            <a href="#" >Ноутбук ігровий Lenovo IdeaPad Gaming 3 15ACH6 (82K201B9RA) Shadow Black</a>
+            <a onClick={() => redirectTo()} className="item-info-name">{product.name}</a>
             <div className="list-item-info-content">
                 <div className="content-feedback-labels">
                     <div className="content-feedback">
                         <div className="content-rating">
-
+                        
                         </div>
                         <div className="content-comments">
 
@@ -68,14 +80,21 @@ const Card = (props) => {
                 <div className="content-price-actions">
                     <div className="content-price-actions-content"> 
                         <div className="actions-content-price">
-                            <div className="actions-content-price-old">
-                                35 999 ₴
-                                <span className="actions-content-price-discount">
-                                    -17%
-                                </span>
-                            </div>
+                            {productDiscount &&
+                                <div className="actions-content-price-old">
+                                    <span>
+                                        {product.price}
+                                    </span>
+                                    <span className="actions-content-price-discount">
+                                        -{product.discountAmount}%
+                                    </span>
+                                </div>
+                            }
                             <div className="actions-content-price-current">
-                                29 999 
+                                { productDiscount 
+                                    ? <>{Math.round(product.price - (product.price * (product.discountAmount / 100)))}</>
+                                    : <>{product.price}</>
+                                }
                                 <span className="actions-content-price-currency">
                                     ₴
                                 </span>

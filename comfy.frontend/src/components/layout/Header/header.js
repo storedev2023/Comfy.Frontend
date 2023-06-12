@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { Link} from "react-router-dom";
 
 import './header.scss'
-import Logo from './../../../assets/Logo.png'
 import Icon from "../../icon/icon";
 import {CSSTransition} from 'react-transition-group'
 import { useInView } from 'react-intersection-observer'
@@ -10,14 +10,8 @@ function HeaderTOP(){
 
     //Header cities
     const [ showCities, setShowCities] = useState(false)
-
-    //Header more stocks
     const [ headerStocksLinks, setStocksLinks] = useState(false)
-    
-    //Header more links
     const [ headerMoreLinks, setHeaderMoreLinks] = useState(false)
-    
-    //Header feedback links
     const [ headerFeedbackLinks, setHeaderFeedbackLinks] = useState(false)
 
     return(
@@ -25,21 +19,25 @@ function HeaderTOP(){
         {showCities &&         
             <div className="block-city-selector"> 
                 <div className="block-city-selector-top">
-                    <div className="selector-top-search">
-                        <input type="text" placeholder="Пошук міста" className="selector-search-input"/>
+                    <div className="section-selector-top">
+                        <div className="selector-top-search">
+                            <input type="text" placeholder="Пошук міста" className="selector-search-input"/>
                             <button className="selector-search-btn" >
-                                <Icon id="search"/>
+                                <Icon id="search" />
                             </button>
-                    </div>
-                    <div className="selector-top-close">
-                        <button onClick={()=> setShowCities(false)} >
-                           <span>x</span> 
-                        </button>
+                        </div>
+                        <div className="selector-top-close">
+                            <button onClick={()=> setShowCities(false)}>
+                                <Icon id="close"/>
+                            </button>
+                        </div>
                     </div>
                 </div>
                 <div className="block-city-selector-content">
-                    <div className="selector-items">
+                    <div className="section-selector-content">
+                        <div className="selector-items">
                         
+                        </div>
                     </div>
                 </div>
             </div>}
@@ -48,8 +46,9 @@ function HeaderTOP(){
                 <div className="header-top-content">
                     <div className="header-top-left">
                         <div className="header-top-logo">
-                            {/* <img src={Logo}/> */}
-                            <h1>LOFFY</h1>
+                            <Link to="/" className="header-link-logo">
+                                <Icon id="LOGO" className="header-logo"/>
+                            </Link>
                         </div>
                         <div className="header-top-city-selector" onClick={()=> setShowCities(!showCities)}>
                             <span>Одеса</span>
@@ -244,7 +243,7 @@ function HeaderBOTTOM(){
                         </button>
                     </form>
                     </div>
-                    <div className="header-bottom-controls ">
+                    <div className="header-bottom-controls">
                         <div className="header-bottom-profile controls-items" onClick={()=> setShowOverlayProfile(!showOverlayProfile)}>
                             <a className="header-bottom-profile-link">
                                 <span>Увійти</span>
@@ -281,30 +280,30 @@ function HeaderBOTTOM(){
             <div className="auth-modal">
                 <div className="auth-modal-dialog" >
                     <div className="auth-block" >
-                        <div class="auth-title-block">
-                            <p class="auth-title-text">Увійти</p>
+                        <div className="auth-title-block">
+                            <p className="auth-title-text">Увійти</p>
                         </div>
-                        <div class="auth-inputs-block">
+                        <div className="auth-inputs-block">
                         
-                                <p class="auth-input-title-text">Номер телефону</p>
-                                <input class="auth-input" type="number" placeholder="+380(099)999999"/>
+                                <p className="auth-input-title-text">Номер телефону</p>
+                                <input className="auth-input" type="number" placeholder="+380(099)999999"/>
                          
-                                <p class="auth-input-title-text">Поштова адресса</p>
-                                <input  class="auth-input" type="email"/>
+                                <p className="auth-input-title-text">Поштова адресса</p>
+                                <input  className="auth-input" type="email"/>
 
-                                <p class="auth-input-title-text">Пароль</p>
-                                <input  class="auth-input" type="password"/>
+                                <p className="auth-input-title-text">Пароль</p>
+                                <input  className="auth-input" type="password"/>
 
-                                <input  class="auth-input-button" type="button" value="Увійти"/>
+                                <input  className="auth-input-button" type="button" value="Увійти"/>
                         </div>
-                        <div class="auth-text-block">
-                            <p class="auth-title-text">Увійти через</p>
-                            <div class="auth-social-button-block">
-                                <input  class="auth-facebook-button" type="button" value="Facebook"/>
-                                <input  class="auth-google-button" type="button" value="Google"/>
+                        <div className="auth-text-block">
+                            <p className="auth-title-text">Увійти через</p>
+                            <div className="auth-social-button-block">
+                                <input  className="auth-facebook-button" type="button" value="Facebook"/>
+                                <input  className="auth-google-button" type="button" value="Google"/>
                             </div>
-                                <p class="forgor-password-text">Забули пароль? Натисніть <a href="">cюди</a></p>
-                                <p class="registration-text">Якщо у вас все ще нема профелю, будь-ласка <br/><a href="">Зареєструватися</a></p>
+                                <p className="forgot-password-text">Забули пароль? Натисніть <a href="">cюди</a></p>
+                                <p className="registration-text">Якщо у вас все ще нема профелю, будь-ласка <br/><a href="">Зареєструватися</a></p>
                         </div>
                     </div>
                 </div>

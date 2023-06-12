@@ -3,7 +3,6 @@ import React from "react"
 import Icon     from "../icon/icon";
 //style
 import './carousel_card.scss'
-import I1 from '../../assets/images/TestProduct/w_600.jpg'
 
 
 
@@ -15,7 +14,7 @@ const CarouselCard = (props) => {
         </div>
         <div className="carousel-simple-img">
             <a  className="img-link">
-                <img src={I1}/>
+                <img src=""/>
             </a>
         </div>
         <div className="carousel-simple-item-info">

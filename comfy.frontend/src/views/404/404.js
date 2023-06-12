@@ -1,11 +1,11 @@
 import React from "react";
-import './404.scss'
+import style from'./404.module.scss'
 
 function EmptyPage() {
   return (
     <>
-      <div class="body">
-        <div class = "error-404">
+      <div class={style.body}>
+        <div class = {style.error}>
             <p>
                 404
             </p>
