@@ -1,14 +1,28 @@
-import React, { useEffect, useState } from "react";
-import { Link, Outlet, useParams } from "react-router-dom";
+import React, { useEffect, useState} from "react";
+import { Link, Outlet, useParams, Navigate } from "react-router-dom";
 import './Product.scss'
 import { ProductService } from "../../service/ProductService";
-import { upPage } from "../../scripts/visual";
+import { updatePage } from "../../scripts/visual";
 
 const Product = () => { 
   
+  const {id} = useParams()
+  const [product, setProduct] = useState({})
 
-  upPage()
-  
+  useEffect(()=>{
+    const fetchData = async () => {    
+        const response = await ProductService.getProductByUrl(id)
+        setProduct(response)
+    }
+      
+    fetchData()
+  }, [])
+
+  if(product == "")
+  { 
+    return <Navigate to="/404" />; 
+  }
+
   return (
         <main className="product-page-tabs" id="product-page">
           <div className="product-page-breadcrumbs">

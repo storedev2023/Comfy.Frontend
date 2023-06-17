@@ -126,6 +126,13 @@ function Footer() {
                 </div>
 
         </div>
+
+        <div className="copywriter-block">
+            <div className="copywriter">
+             © Всі права захищені особисто Вадімом, 2022-2023
+            </div>
+        </div>
+
     </div>
   );
 }

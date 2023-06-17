@@ -5,6 +5,7 @@ import './header.scss'
 import Icon from "../../icon/icon";
 import {CSSTransition} from 'react-transition-group'
 import { useInView } from 'react-intersection-observer'
+import { CategoriesService } from "../../../service/CategoriesService";
 
 function HeaderTOP(){
 
@@ -46,7 +47,7 @@ function HeaderTOP(){
                 <div className="header-top-content">
                     <div className="header-top-left">
                         <div className="header-top-logo">
-                            <Link to="/" className="header-link-logo">
+                            <Link to="/" className="header-link-logo" reloadDocument={true}>
                                 <Icon id="LOGO" className="header-logo"/>
                             </Link>
                         </div>
@@ -100,13 +101,11 @@ function HeaderTOP(){
 }
 
 
-
-
 function HeaderBOTTOM(){
     // Header icon hover
-    const [ showWishlist, setShowWishlist] = useState(true)
-    const [ showCompare, setShowCompare] = useState(true)
-    const [ showCart, setShowCart] = useState(true)
+    const [ showWishlist, setShowWishlist] = useState(false)
+    const [ showCompare, setShowCompare] = useState(false)
+    const [ showCart, setShowCart] = useState(false)
 
     // Header overlay
     const [ showOverlayProfile, setShowOverlayProfile] = useState(false)
@@ -118,9 +117,12 @@ function HeaderBOTTOM(){
         var categories_menu = document.getElementById("categories-menu-block")
         
         //if not home page
-        if(!document.getElementById("home-page")){
-            if(!document.getElementById("product-page")){
-                header_bottom.classList.add('sticky');
+        if(document.getElementById("home-page")){
+            header_bottom.classList.add('sticky');
+        }
+        else{
+            if(document.getElementById("product-page")){
+                header_bottom.classList.remove('sticky');
             }
             
             if(showOverlayCatalog){
@@ -131,27 +133,64 @@ function HeaderBOTTOM(){
             }
         }
 
-        //if sticky
-        if(header_bottom.classList.contains("sticky")){
-            if(showOverlayCatalog){
-                categories_menu.classList.remove('display-none');
-            }
-            else{
-                categories_menu.classList.add('display-none');
-            }     
+        if(showOverlayCatalog){
+            categories_menu.classList.remove('display-none');
         }
+        else{
+            categories_menu.classList.add('display-none');
+        } 
+        
         
     })
 
+
+    
     //Header categories
-    const [ showSubCatalog, setShowSubCatalog] = useState(false)
+    const [ showSubCatalog, setShowSubCatalog ] = useState(false)
+    const [ categoriesMenu, setCategoriesMenu ] = useState([])
+
+    useEffect(()=>{
+
+        const fetchData = async () => {
+            const response = await CategoriesService.getCategoriesMenu() 
+
+            setCategoriesMenu(response)
+            console.log(response)
+        }
+
+        fetchData()
+    }, [])
+
+
+    function showSubCatalogs(event, action){    
+        setShowSubCatalog(action)
+        
+        let mainId = event.target.dataset.id != undefined ? event.target.dataset.id  : event.target.dataset.main_id
+        let mainCategory = document.querySelector('div[data-id="'+ mainId+'"]')
+        let subCategory = document.querySelector('div[data-main_id="'+ mainId+'"]')
+
+        try {
+            if(action){
+                subCategory.classList.remove('display-none')
+                mainCategory.classList.add('menu-items-active')
+            }
+            else{
+                subCategory.classList.add('display-none')
+                mainCategory.classList.remove('menu-items-active')
+            }
+         }
+         catch (ex) { 
+           // не стандартно
+         }
+
+    }
 
 
   return (
         <>
-            <div className="header-bottom" id="header-bottom">
+            <div className="header-bottom sticky" id="header-bottom">
                 <div className="header-bottom-content">
-                    <div className="header-bottom-categories"  onMouseEnter={()=>setShowOverlayCatalog(true)} onMouseLeave={()=> setShowOverlayCatalog(false)}>
+                    <div className="header-bottom-categories"  onMouseEnter={()=>setShowOverlayCatalog(true)} onMouseLeave={()=>setShowOverlayCatalog(false)}>
                         <div className="header-bottom-categories-menu">
                             <Icon id="categories" className="categories-main-icon"/>
                             <span className="categories-label">Каталог товарів</span>
@@ -159,80 +198,22 @@ function HeaderBOTTOM(){
                         </div>
                         <div className="header-bottom-categories-menu-block" id="categories-menu-block" >
                             <div className="header-bottom-categories-menu-items">
-                                <div className="categories-menu-items menu-items" onMouseEnter={()=>setShowSubCatalog(true)} onMouseLeave={()=> setShowSubCatalog(false)}>
-                                    <Icon id="categories-phone" className="categories-icon"/>
-                                    <a>Смартфони та телефони</a>
-                                </div>
-                                <div className="categories-menu-items menu-items" onMouseEnter={()=>setShowSubCatalog(true)} onMouseLeave={()=> setShowSubCatalog(false)}>
-                                    <Icon id="categories-laptop" className="categories-icon"/>
-                                    <a>Ноутбуки, планшети та комп'ютерна техніка</a>
-                                </div>
-                                <div className="categories-menu-items menu-items" onMouseEnter={()=>setShowSubCatalog(true)} onMouseLeave={()=> setShowSubCatalog(false)}>
-                                    <Icon id="categories-cooker" className="categories-icon"/>
-                                    <a>Техніка для кухні</a>
-                                </div>
-                                <div className="categories-menu-items menu-items" onMouseEnter={()=>setShowSubCatalog(true)} onMouseLeave={()=> setShowSubCatalog(false)}>
-                                    <Icon id="categories-laundry" className="categories-icon"/>
-                                    <a>Техніка для дому</a>
-                                </div>
-                                <div className="categories-menu-items menu-items" onMouseEnter={()=>setShowSubCatalog(true)} onMouseLeave={()=> setShowSubCatalog(false)}>
-                                    <Icon id="categories-desktop" className="categories-icon"/>
-                                    <a>Телевізори та мультимедіа</a>
-                                </div>
-                                <div className="categories-menu-items menu-items" onMouseEnter={()=>setShowSubCatalog(true)} onMouseLeave={()=> setShowSubCatalog(false)}>
-                                    <Icon id="categories-watch" className="categories-icon"/>
-                                    <a>Смарт-годинники та гаджети</a>
-                                </div>
-                                <div className="categories-menu-items menu-items" onMouseEnter={()=>setShowSubCatalog(true)} onMouseLeave={()=> setShowSubCatalog(false)}>
-                                    <Icon id="categories-headphones" className="categories-icon"/>
-                                    <a>Аудіо</a>
-                                </div>
-                                <div className="categories-menu-items menu-items" onMouseEnter={()=>setShowSubCatalog(true)} onMouseLeave={()=> setShowSubCatalog(false)}>
-                                    <Icon id="categories-controller" className="categories-icon"/>
-                                    <a>Ігрові консолі та геймінг</a>
-                                </div>
-                                <div className="categories-menu-items menu-items" onMouseEnter={()=>setShowSubCatalog(true)} onMouseLeave={()=> setShowSubCatalog(false)}>
-                                    <Icon id="categories-camera" className="categories-icon"/>
-                                    <a>Фото та відео</a>
-                                </div>
-                                <div className="categories-menu-items menu-items" onMouseEnter={()=>setShowSubCatalog(true)} onMouseLeave={()=> setShowSubCatalog(false)}>
-                                    <Icon id="categories-barcode" className="categories-icon"/>
-                                    <a>Краса і здоров'я</a>
-                                </div>
-                                <div className="categories-menu-items menu-items" onMouseEnter={()=>setShowSubCatalog(true)} onMouseLeave={()=> setShowSubCatalog(false)}>
-                                    <Icon id="categories-soup" className="categories-icon"/>
-                                    <a>Посуд</a>
-                                </div>
-                                <div className="categories-menu-items menu-items" onMouseEnter={()=>setShowSubCatalog(true)} onMouseLeave={()=> setShowSubCatalog(false)}>
-                                    <Icon id="categories-freshener" className="categories-icon"/>
-                                    <a>Побутова хімія</a>
-                                </div>
-                                <div className="categories-menu-items menu-items" onMouseEnter={()=>setShowSubCatalog(true)} onMouseLeave={()=> setShowSubCatalog(false)}>
-                                    <Icon id="categories-chair" className="categories-icon"/>
-                                    <a>Дім та відпочинок</a>
-                                </div>
-                                <div className="categories-menu-items menu-items" onMouseEnter={()=>setShowSubCatalog(true)} onMouseLeave={()=> setShowSubCatalog(false)}>
-                                    <Icon id="categories-child" className="categories-icon"/>
-                                    <a>Comfy KIDS</a>
-                                </div>
-                                <div className="categories-menu-items menu-items" onMouseEnter={()=>setShowSubCatalog(true)} onMouseLeave={()=> setShowSubCatalog(false)}>
-                                    <Icon id="categories-tools" className="categories-icon"/>
-                                    <a>Інструменти і автотовари</a>
-                                </div>
-                                <div className="categories-menu-items menu-items" onMouseEnter={()=>setShowSubCatalog(true)} onMouseLeave={()=> setShowSubCatalog(false)}>
-                                    <Icon id="categories-sell" className="categories-icon"/>
-                                    <a>Уцінені товари</a>
-                                </div>
-                                <div className="categories-menu-items menu-items"onMouseEnter={()=>setShowSubCatalog(true)} onMouseLeave={()=> setShowSubCatalog(false)}>
-                                    <Icon id="categories-confirmation" className="categories-icon"/>
-                                    <a>Сервіси, підписки та софт</a>
-                                </div>
+                                {categoriesMenu.map(category => (
+                                    <div key={category.id} className="categories-menu-items" onMouseEnter={(event) => showSubCatalogs(event, true)} onMouseLeave={(event) => showSubCatalogs(event, false)}>
+                                        <div className="menu-item" data-id={category.id} >
+                                            <Icon id={category.id} className="categories-icon"/>
+                                            <a>{category.name}</a>
+                                        </div>
+                                        <div className="sub-categories-block display-none" data-main_id={category.id} >
+                                            {category.categories.map(subCategory => (
+                                                <div key={subCategory.id} className="sub-categories">
+                                                    {subCategory.name}
+                                                </div>  
+                                            ))}
+                                        </ div>
+                                    </div>
+                                ))}
                             </div>
-                            {showSubCatalog &&
-                                <div className="sub-categories-block" onMouseEnter={()=>setShowSubCatalog(true)} onMouseLeave={()=> setShowSubCatalog(false)}>
-                                    
-                                </ div>
-                            }
                         </div>
                     </div>
                     <div className="header-bottom-search" id="header-bottom-search">
@@ -249,19 +230,31 @@ function HeaderBOTTOM(){
                                 <span>Увійти</span>
                             </a>
                         </div>
-                        <div className="header-bottom-wishlist controls-items" onMouseLeave={()=> setShowWishlist(true)} onMouseEnter={()=>setShowWishlist(false)}  >
-                            {showWishlist && <Icon id="wishlist" className="header-icon" />}
-                            {!showWishlist && <Icon id="wishlist-full" className="header-icon-full" />}
+                        <div className="header-bottom-wishlist controls-items" onMouseEnter={()=> setShowWishlist(true)} onMouseLeave={()=>setShowWishlist(false)}  >
+                            {!showWishlist && <Icon id="wishlist" className="header-icon" />}
+                            {showWishlist && <Icon id="wishlist-full" className="header-icon-full" />}
                         </div>
-                        <div className="header-bottom-compare controls-items" onMouseEnter={()=>setShowCompare(false)} onMouseLeave={()=> setShowCompare(true)}>
-                            {showCompare && <Icon id="compare" className="header-icon" />}
-                            {!showCompare && <Icon id="compare-full" className="header-icon-full" />}
+                        <div className="header-bottom-compare controls-items" onMouseEnter={()=>setShowCompare(true)} onMouseLeave={()=> setShowCompare(false)}>
+                            {!showCompare && <Icon id="compare" className="header-icon" />}
+                            {showCompare && <Icon id="compare-full" className="header-icon-full" />}
                         </div>
-                        <div className="header-bottom-cart controls-items" onMouseEnter={()=>setShowCart(false)} onMouseLeave={()=> setShowCart(true)}>
-                            {showCart && <Icon id="cart" className="header-icon" />}
-                            {!showCart && <Icon id="cart-full" className="header-icon-full" />}
+                        <div className="header-bottom-cart controls-items" onMouseEnter={()=>setShowCart(true)} onMouseLeave={()=> setShowCart(false)}>
+                            {!showCart && <Icon id="cart" className="header-icon" />}
+                            {showCart && <Icon id="cart-full" className="header-icon-full" />}
+                            {/* <div className="header-bottom-cart-block">
+                                <div className="cart-block-name">
+                                    Кошик
+                                </div>
+                                <div className="cart-block-items">
+
+                                </div>
+                                <div className="cart-block-btn">
+                                            
+                                </div>
+                            </div> */}
                         </div>
                     </div>
+
                     { showOverlaySearch &&
                         <div className="search-overlay" onClick={()=> setShowOverlaySearch(false)}></div>         
                     }
@@ -277,6 +270,7 @@ function HeaderBOTTOM(){
             </div>
             </CSSTransition>                    
             <CSSTransition in={showOverlayProfile} classNames="auth" timeout={300} unmountOnExit>
+
             <div className="auth-modal">
                 <div className="auth-modal-dialog" >
                     <div className="auth-block" >

@@ -24,19 +24,19 @@ function Home() {
 
     //Header sticky
     const [ref, inView] = useInView({threshold: 0});
-    useEffect(()=>{
-        var header_bottom = document.getElementById("header-bottom")
-        var categories_menu = document.getElementById("categories-menu-block")
-        if(inView)
-        {
-            header_bottom.classList.remove('sticky');
-            categories_menu.classList.remove('display-none');
-        }
-        else{
-            header_bottom.classList.add('sticky');
-            categories_menu.classList.add('display-none');
-        }
-    })
+    // useEffect(()=>{
+    //     var header_bottom = document.getElementById("header-bottom")
+    //     var categories_menu = document.getElementById("categories-menu-block")
+    //     if(inView)
+    //     {
+    //         header_bottom.classList.remove('sticky');
+    //         categories_menu.classList.remove('display-none');
+    //     }
+    //     else{
+    //         header_bottom.classList.add('sticky');
+    //         categories_menu.classList.add('display-none');
+    //     }
+    // })
 
     // main carousel
     const [index, setIndex] = useState(0);
@@ -58,7 +58,6 @@ function Home() {
             const response = await ProductService.getShowcase()
             
             setShowcases(response)
-            console.log(response)
         }
 
         fetchData()

@@ -22,18 +22,20 @@ const Router = () => {
 return <BrowserRouter>
     <Header/>
     <Routes>
-        <Route element={<Home/>} path='/'/>
-        <Route  exact element={<Product/>}  path='/:id'>
+        
+        <Route path="/" element={<Home/>} />
+        <Route path='/:id' element={<Product/>}  >
             <Route index element={<Info/>}/>
-            <Route element={<Characteristics/>} path="characteristics" />
-            <Route element={<Reviews/>} path="reviews"/>
-            <Route element={<Questions/>}path="questions"/>
-            <Route element={<Video/>}path="video"/>
-            <Route element={<Accessories/>}path="accessories"/>
-            <Route element={<Services/>}path="services"/>
-            <Route element={<Availability/>}path="availability"/>
+            <Route path="characteristics"  element={<Characteristics/>} />
+            <Route path="reviews" element={<Reviews/>} />
+            <Route path="questions" element={<Questions/>}/>
+            <Route path="video" element={<Video/>}/>
+            <Route path="accessories" element={<Accessories/>}/>
+            <Route path="services" element={<Services/>}/>
+            <Route path="availability" element={<Availability/>}/>
         </Route>
-        <Route path='*' element={<EmptyPage/>}/>
+        <Route path='/404' element={<EmptyPage/>}/>
+        <Route path='*' element={<EmptyPage/>}/>    
     </Routes>
     <Routes>
         

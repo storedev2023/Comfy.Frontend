@@ -8,19 +8,6 @@ import { upPage } from "../../../scripts/visual";
 
 function Info() {
 
-  const {id} = useParams()
-  useEffect(()=>{
-    if(!id) return
-    
-    const fetchData = async () => {
-      const response = await ProductService.getProductByUrl(id)
-      console.log(response)
-    }
-      
-    fetchData()
-  }, [id])
-
-
   return (
         <div className="product-page-content">
           <div className="product-page-top">
@@ -179,9 +166,9 @@ function Info() {
                   </div>
                 </div>
                 <div className="more-btn">
-                  <Link to={`/${id}/characteristics`}>
+                  {/* <Link to={`/${id}/characteristics`}>
                     Показати більше
-                  </Link>
+                  </Link> */}
                   <Icon id='more-plus'/>
                 </div>
               </div>
@@ -199,9 +186,9 @@ function Info() {
                     Відгуки
                   </div>
                   <div className="more-btn">
-                    <Link to={`/${id}/reviews`}>
+                    {/* <Link to={`/${id}/reviews`}>
                       Показати більше
-                    </Link>
+                    </Link> */}
                     <Icon id='more-plus'/>
                   </div>
               </div>

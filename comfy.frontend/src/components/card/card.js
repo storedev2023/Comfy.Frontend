@@ -5,7 +5,7 @@ import Carousel from 'react-bootstrap/Carousel';
 import CarouselItem from "react-bootstrap/esm/CarouselItem";
 //style
 import './Card.scss'
-import { Link, useNavigate, redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 //images
 
@@ -16,23 +16,16 @@ import { Link, useNavigate, redirect } from "react-router-dom";
 const Card = ({product}) => {
     
 
-
-    const navigate = useNavigate();
-
     const [productDiscount, setProductDiscount] = useState (product.discountAmount > 0)
     const [productImages, setProductImages] = useState(product.images.length != 0)
 
     let prevImgsList = [];
 
-    product.images.forEach((prev, index) => {
-        console.log(prev)
-        prevImgsList.push(<CarouselItem key={index}><img src={prev.url}/></CarouselItem>);
-    });
+    // product.images.forEach((prev, index) => {
+    //     console.log(prev)
+    //     prevImgsList.push(<CarouselItem key={index}><img src={prev.url}/></CarouselItem>);
+    // });
 
-    function redirectTo(){
-        return navigate(`/${product.url}`)
-        
-    }
     
   return (
     <div className="list-item">
@@ -62,7 +55,7 @@ const Card = ({product}) => {
             </a>
         </div>
         <div className="list-item-info">
-            <a onClick={() => redirectTo()} className="item-info-name">{product.name}</a>
+            <Link to={`/${product.url}`} className="item-info-name" reloadDocument={true}>{product.name}</Link>
             <div className="list-item-info-content">
                 <div className="content-feedback-labels">
                     <div className="content-feedback">
