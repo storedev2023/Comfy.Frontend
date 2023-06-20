@@ -26,15 +26,15 @@
 .product-page-top-gallery-section{
     grid-area: A;
     width: 100%;
-    background-color: #EFEFEF;
-    border-bottom: 0.4rem #E0E0E0 solid;
+    background-color: white;
+    border-bottom: 0.4rem #EFEFEF solid;
 }
 
 .product-page-top-info-section{
     grid-area: C;
     box-sizing: border-box;
-    background: #EFEFEF;
-    border-left: 4px solid #E0E0E0;
+    background: white;
+    border-left: 4px solid #EFEFEF;
 }
 
 .product-page-info-name{
@@ -43,8 +43,8 @@
     line-height: 4rem;
     width: 100%;
     box-sizing: border-box;
-    border-left: 4px solid #E0E0E0;
-    border-bottom: 0.4rem #E0E0E0 solid;
+    border-left: 4px solid #EFEFEF;
+    border-bottom: 0.4rem #EFEFEF solid;
     h3{
         font-size: 2rem;
         font-weight: 700;
@@ -58,8 +58,8 @@
     margin: 0;
     border-radius: 0;
     flex-direction: row;
-    border-left: 4px solid #E0E0E0;
-    border-bottom: 0.4rem #E0E0E0 solid;
+    border-left: 4px solid #EFEFEF;
+    border-bottom: 0.4rem #EFEFEF solid;
 
     display: flex;
     flex-wrap: wrap;
@@ -106,7 +106,7 @@
     align-items: center;
 
     .action-section-buy-btn{
-        color:#EFEFEF;
+        color:white;
         display: flex;
         flex-direction: row;
         justify-content: center;
@@ -175,8 +175,8 @@
     margin: 0;
     border-radius: 0;
     flex-direction: row;
-    border-left: 4px solid #E0E0E0;
-    border-bottom: 0.4rem #E0E0E0 solid;
+    border-left: 4px solid #EFEFEF;
+    border-bottom: 0.4rem #EFEFEF solid;
 
     display: flex;
     flex-wrap: wrap;
@@ -243,8 +243,8 @@
     margin: 0;
     border-radius: 0;
     flex-direction: row;
-    border-left: 4px solid #E0E0E0;
-    border-bottom: 0.4rem #E0E0E0 solid;
+    border-left: 4px solid #EFEFEF;
+    border-bottom: 0.4rem #EFEFEF solid;
 
     width: 100%;
     display: flex;
@@ -266,8 +266,8 @@
     margin: 0;
     border-radius: 0;
     flex-direction: row;
-    border-left: 4px solid #E0E0E0;
-    border-bottom: 0.4rem #E0E0E0 solid;
+    border-left: 4px solid #EFEFEF;
+    border-bottom: 0.4rem #EFEFEF solid;
 }
 
 .accessories_section {
@@ -277,8 +277,8 @@
     margin: 0;
     border-radius: 0;
     flex-direction: row;
-    border-left: 4px solid #E0E0E0;
-    border-bottom: 0.4rem #E0E0E0 solid;
+    border-left: 4px solid #EFEFEF;
+    border-bottom: 0.4rem #EFEFEF solid;
 }
 
 .main {
@@ -288,8 +288,8 @@
     margin: 0;
     border-radius: 0;
     flex-direction: row;
-    border-left: 4px solid #E0E0E0;
-    border-bottom: 0.4rem #E0E0E0 solid;
+    border-left: 4px solid #EFEFEF;
+    border-bottom: 0.4rem #EFEFEF solid;
 }
 
 .carousel_section {
@@ -297,7 +297,7 @@
 }
 
 .product-page-bottom {
-    background: #EFEFEF;
+    background: white;
     margin-left: auto;
     margin-right: auto;
     max-width: 140.6rem;
@@ -312,8 +312,8 @@
     margin: 0;
     border-radius: 0;
     flex-direction: row;
-    border-left: 4px solid #E0E0E0;
-    border-bottom: 0.4rem #E0E0E0 solid;
+    border-left: 4px solid #EFEFEF;
+    border-bottom: 0.4rem #EFEFEF solid;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -360,7 +360,7 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
-    background: #EFEFEF;
+    background: white;
     padding: 16px;
     width: 234px;
     height: 56px;

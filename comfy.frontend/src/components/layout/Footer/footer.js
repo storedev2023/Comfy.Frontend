@@ -124,12 +124,11 @@ function Footer() {
                     <li><a href=""> Правила участі в акціях </a> </li>
                     </ul>
                 </div>
-
         </div>
 
         <div className="copywriter-block">
             <div className="copywriter">
-             © Всі права захищені особисто Вадімом, 2022-2023
+                &copy; Всі права захищені, 2022-2023
             </div>
         </div>
 

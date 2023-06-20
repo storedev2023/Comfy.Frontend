@@ -1,5 +1,5 @@
 import React from "react";
-import { upPage } from "../../../scripts/visual";
+import { upPage } from "../../../scripts/index";
 
 
 

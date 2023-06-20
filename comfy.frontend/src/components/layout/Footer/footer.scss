@@ -4,10 +4,11 @@
 	bottom: 0;
 	width: 100%;
     color: #1F1E24;
+    background-color: white;
 }
 
 .footer-info-block{
-    background-color: #EFEFEF;
+    background-color: white;
 
     .info-footer-ul
     {
@@ -115,7 +116,6 @@
 
 //footer-links-block
 .footer-links-block{
-
     display: flex;
     align-items: start;
     max-width: 110rem;
@@ -154,7 +154,7 @@
     align-items: center;
     justify-content: center;
     padding: 0 1.4rem;
-    border-top: 1.33333px solid #5C6875;
+    border-top: 1.33333px solid #d8d8d8;
 }
 
 .copywriter{

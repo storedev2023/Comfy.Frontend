@@ -58,6 +58,7 @@ function Home() {
             const response = await ProductService.getShowcase()
             
             setShowcases(response)
+            console.log(response)
         }
 
         fetchData()
@@ -82,8 +83,6 @@ function Home() {
                         <div className="info-link">
                             <a>Кращий вибiр</a>
                         </div>
-                    </div>
-                    <div className="body-top-info-brands">
                     </div>
                 </div>
             </div>

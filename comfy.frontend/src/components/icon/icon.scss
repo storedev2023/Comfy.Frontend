@@ -2,19 +2,10 @@
 
 
 .header-icon{
-    width: 2rem;
-    height: 2rem;
+    width: 25.33px;
+    height: 22.67px;
     path{
         fill:white;
-        transition: all .15s linear;
-    }
-}
-
-.header-icon-full{
-    width: 2rem;
-    height: 2rem;
-    path{
-        fill:#3CC27D;
         transition: all .15s linear;
     }
 }
@@ -22,8 +13,8 @@
 
 
 .card-icon{
-    width: 2rem;
-    height: 2rem;
+    width: 30px;
+    height: 30px; 
     path{
         fill:#605D70;
         transition: all .15s linear;
@@ -32,14 +23,24 @@
 
 .card-icon:hover{
     path{
-        fill:#3CC27D;
+        fill:#9ACD6A;
         transition: all .15s linear;
     }
 }
 
 .card-btn-icon{
-    width: 1.7rem;
-    height: 1.7rem;
+    width: 30px;
+    height: 30px;    
+    path{
+        fill:white;
+        transition: all .15s linear;
+    }
+}
+
+.card-btn-icon-full{
+    width: 30px;
+    height: 30px;
+    
     path{
         fill:white;
         transition: all .15s linear;
@@ -107,4 +108,11 @@
     path{
         fill:#F84147;
     }
+}
+
+            
+.categories-arrow {
+    margin-top: 0.1rem;
+    width: 0.5rem;
+    height: 0.5rem;
 }
