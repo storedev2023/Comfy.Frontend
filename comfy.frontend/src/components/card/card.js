@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
 import { setItemInCart } from "../../redux/reducers/cart-reducer"
 import { useDispatch, useSelector } from "react-redux"
+import { Link } from "react-router-dom";
 
 //components
 import Icon from "../icon/icon";
@@ -8,12 +9,8 @@ import Carousel from 'react-bootstrap/Carousel';
 import CarouselItem from "react-bootstrap/esm/CarouselItem";
 //style
 import './Card.scss'
-import { Link } from "react-router-dom";
 import { calcDiscount, priceFormat } from "../../scripts";
-import { setProduct } from "../../redux/reducers/product-reducer";
-
-//images
-
+import StarRating from "../star-rating/StarRating";
 
 
 
@@ -23,11 +20,16 @@ const Card = ({ product }) => {
 
     const [productDiscount, setProductDiscount] = useState(product.discountAmount > 0)
     const [productImages, setProductImages] = useState(product.images.length != 0)
+    const [isProductHover, setIsProductHover] = useState(false)
+
+    const productHover = () => {
+        setIsProductHover(!isProductHover)
+    }
 
     let prevImgsList = [];
 
     product.images.forEach((prev, index) => {
-        prevImgsList.push(<CarouselItem key={index}><Link to={`/${product.url}`} className="img-link" reloadDocument={true}><img src={prev.url} /></Link></CarouselItem>);
+        prevImgsList.push(<CarouselItem key={index}><Link to={`/product/${product.url}`} className="img-link" reloadDocument={true}><img src={prev.url} /></Link></CarouselItem>);
     });
 
 
@@ -40,7 +42,7 @@ const Card = ({ product }) => {
     }
 
     return (
-        <div className="list-item">
+        <div className="list-item" onMouseEnter={productHover} onMouseLeave={productHover}>
             <div className="list-item-header">
                 <div className="list-item-promo-label">
                     Хiт продаж
@@ -67,7 +69,7 @@ const Card = ({ product }) => {
 
             </div>
             <div className="list-item-info">
-                <Link to={`/${product.url}`} className="item-info-name" reloadDocument={true} >{product.name}</Link>
+                <Link to={`/product/${product.url}`} className="item-info-name" reloadDocument={true} >{product.name}</Link>
                 <div className="list-item-info-content">
                     <div className="content-feedback-labels">
                         <div className="content-feedback">
@@ -128,6 +130,26 @@ const Card = ({ product }) => {
                     </div>
                 </div>
             </div>
+            {isProductHover &&
+                <div className="list-item-more-info">
+                    <StarRating defaultState={product.rating} />
+                    <div className="list-item-more-info-characteristics">
+                        { product.characteristicGroups.length != 0 
+                        ? product.characteristicGroups[0].characteristics.map(characteristic => (
+                            <div className="more-info-characteristics" key={characteristic.name}>
+                                <div className="more-info-characteristics-name">
+                                    {characteristic.name}
+                                </div>
+                                <div className="more-info-characteristics-value">
+                                    {characteristic.value}
+                                </div>
+                            </div >
+                            ))
+                        : <></>
+                        }
+                    </div>
+                </div>
+            }
         </div>
     );
 }

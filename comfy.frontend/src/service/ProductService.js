@@ -12,5 +12,11 @@ export const ProductService = {
         const response = await axios.get(`http://localhost:20080/api/Products/byUrl?url=${url}`)
 
         return response.data   
+    },
+
+    async getReviewsByProductId(id,pageNumber,pageSize){
+        const response = await axios.get(`http://localhost:20080/api/Reviews?productId=${id}&pageNumber=${pageNumber}&pageSize=${pageSize}`)
+
+        return response.data   
     }
 }

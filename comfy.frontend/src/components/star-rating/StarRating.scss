@@ -1,0 +1,16 @@
+input[type="radio"] {
+    display: none;
+  }
+  
+  .star-rating {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .star-rating-product-page{
+    display: flex;
+  }
+
+  .star{
+    padding: 0 0.3rem;
+  }

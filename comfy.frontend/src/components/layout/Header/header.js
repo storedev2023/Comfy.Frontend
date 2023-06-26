@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-
-import './header.scss'
-import Icon from "../../icon/icon";
 import { CSSTransition } from 'react-transition-group'
-import { useInView } from 'react-intersection-observer'
+
+
+import Icon from "../../icon/icon";
 import { CategoriesService } from "../../../service/CategoriesService";
 import Cart from "../../cart/Cart";
+
+import './header.scss'
+
 
 function HeaderTOP() {
 
@@ -103,15 +105,15 @@ function HeaderTOP() {
 
 
 function HeaderBOTTOM() {
-    // Header icon hover
-    const [showCart, setShowCart] = useState(false)
+    // Header cart
+    const [isShowCart, setIsShowCart] = useState(false)
+    const [isCartOverlay, setIsCartOverlay] = useState(false)
 
     // Header password show/hide  
-    const [showPass, setShowPass] = useState(false)
-
+    const [isShowPass, setIsShowPass] = useState(false)
     const passwordLogic  = () => {
-        setShowPass(!showPass)
-        if(showPass){
+        setIsShowPass(!isShowPass)
+        if(isShowPass){
             document.querySelector(".input-password").setAttribute("type","password")
         }
         else{
@@ -120,7 +122,16 @@ function HeaderBOTTOM() {
     }
 
     // Header overlay
-    const [showOverlayProfile, setShowOverlayProfile] = useState(false)
+    const [overlayProfile, setOverlayProfile] = useState(false)
+    const authorizationModelLogic = () =>{
+        setOverlayProfile(!overlayProfile)
+        if(overlayProfile) 
+        {  
+            document.querySelector(".input-password").setAttribute("type","password")
+            setIsShowPass(false) 
+        }
+    }
+
     const [showOverlaySearch, setShowOverlaySearch] = useState(false)
     const [showOverlayCatalog, setShowOverlayCatalog] = useState(false)
 
@@ -239,7 +250,7 @@ function HeaderBOTTOM() {
                         </form>
                     </div>
                     <div className="header-bottom-controls">
-                        <div className="header-bottom-profile controls-items" onClick={() => setShowOverlayProfile(!showOverlayProfile)}>
+                        <div className="header-bottom-profile controls-items" onClick={authorizationModelLogic}>
                             <a className="header-bottom-profile-link">
                                 <span>Увійти</span>
                             </a>
@@ -250,8 +261,8 @@ function HeaderBOTTOM() {
                         <div className="header-bottom-compare controls-items">
                             <Icon id="compare" className="header-icon" />
                         </div>
-                        <div className="header-bottom-cart controls-items" onMouseEnter={() => setShowCart(true)} onMouseLeave={() => setShowCart(false)}>
-                            <Cart active={showCart} />
+                        <div className="header-bottom-cart controls-items" onMouseEnter={() => setIsShowCart(true)} onMouseLeave={() => {setIsShowCart(false); setIsCartOverlay(false)}}>
+                            <Cart isShow={isShowCart} setIsShow={setIsShowCart} setIsCartOverlay={setIsCartOverlay}/>
                         </div>
                     </div>
 
@@ -260,16 +271,16 @@ function HeaderBOTTOM() {
                     }
                 </div>
             </div>
-            {showOverlayCatalog &&
+            {(showOverlayCatalog || isCartOverlay) &&
                 <div className="catalog-overlay"></div>
             }
-            <CSSTransition in={showOverlayProfile} classNames="overlay" timeout={300} unmountOnExit>
+            <CSSTransition in={overlayProfile} classNames="overlay" timeout={300} unmountOnExit>
                 <div className="auth-modal">
-                    <div className="auth-modal-overlay" onClick={() => setShowOverlayProfile(!showOverlayProfile)}>
+                    <div className="auth-modal-overlay" onClick={authorizationModelLogic}>
                     </div>
                 </div>
             </CSSTransition>
-            <CSSTransition in={showOverlayProfile} classNames="auth" timeout={300} unmountOnExit>
+            <CSSTransition in={overlayProfile} classNames="auth" timeout={300} unmountOnExit>
 
                 <div className="auth-modal">
                     <div className="auth-modal-dialog" >
@@ -284,7 +295,7 @@ function HeaderBOTTOM() {
                                 </div>
                             </div>
                             <div className="auth-block-form">
-                                <div className="auth-block-form-exit" onClick={() => setShowOverlayProfile(!showOverlayProfile)}>
+                                <div className="auth-block-form-exit" onClick={authorizationModelLogic}>
                                     <Icon id="close" classList="auth-close" />
                                 </div>
                                 <div className="auth-block-form-title">
@@ -299,9 +310,10 @@ function HeaderBOTTOM() {
                                         <span>Пароль</span>
                                         <input type="password" className="input-password" />
                                         <a className="inputs-password-control" onClick={passwordLogic}>
-                                            {showPass === true 
-                                            ? <>&mdash;</> 
-                                            : <>0</>
+                                            
+                                           {isShowPass === true 
+                                            ? <Icon id="hide-pass"/>
+                                            : <Icon id="show-pass"/> 
                                             }
                                         </a>
                                     </div>

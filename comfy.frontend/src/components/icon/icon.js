@@ -127,15 +127,21 @@ const Icon = (props) => {
         </defs>
       </svg>
     case 'show-pass':
-      return <svg version="1.1" id="Layer_1"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"   space="preserve">
-        <g><path class="st4" d="M178.1,97.21c0.21-0.26,1.76-2.06,4.35-2.07c2.82-0.01,4.44,2.1,4.6,2.33" />
-          <circle class="st4" cx="182.58" cy="97.68" r="2.04" />
-          <path d="M183.32,97.68c0,0.41-0.33,0.75-0.75,0.75c-0.41,0-0.75-0.33-0.75-0.75s0.33-0.75,0.75-0.75
-        C182.99,96.93,183.32,97.27,183.32,97.68z"/></g>
+      return <svg width="24" height="15" viewBox="0 0 24 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g clipPath="url(#clip0_201_5)">
+          <path d="M1.00001 7.29914C4.54983 3.34329 13.521 -2.41923 23 7.30024" stroke="#2B3946" stroke-width="2" strokeLinecap="round" />
+          <circle cx="11.9981" cy="8.29763" r="5" transform="rotate(0.71753 11.9981 8.29763)" stroke="#2B3946" stroke-width="2" />
+          <circle cx="11.9981" cy="8.29762" r="2" transform="rotate(0.71753 11.9981 8.29762)" fill="#2B3946" />
+        </g>
+        <defs>
+          <clipPath id="clip0_201_5">
+            <rect width="24" height="15" fill="white" />
+          </clipPath>
+        </defs>
       </svg>
     case 'hide-pass':
-      return <svg version="1.1" id="Layer_1"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" space="preserve">
-        <path class="st4" d="M178.15,111.8c0.17,0.22,1.71,2.11,4.4,2.12c2.72,0.01,4.28-1.91,4.45-2.12" />
+      return <svg width="25" height="15" viewBox="0 0 25 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M23.5 5.00012C20.0004 9.00046 10.6009 14.6014 0.999976 5.0023" stroke="#2B3946" stroke-width="2" strokeLinecap="round"/>
       </svg>
     default:
       return <></>

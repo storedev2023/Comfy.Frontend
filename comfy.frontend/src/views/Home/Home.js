@@ -2,10 +2,8 @@ import React, { useEffect, useState } from "react";
 //Components
 import  Card                from "../../components/card/Card";
 import  Icon                from "../../components/icon/icon";
-import  CarouselWithCards   from "../../components/carousels/carousel_w_cards";
 import  Carousel            from 'react-bootstrap/Carousel';
 import CarouselItem         from "react-bootstrap/esm/CarouselItem";
-import { useInView }        from 'react-intersection-observer'
 //styles
 import './Home.scss'
 //Images
@@ -22,21 +20,6 @@ import { ProductService } from "../../service/ProductService";
 
 function Home() {
 
-    //Header sticky
-    const [ref, inView] = useInView({threshold: 0});
-    // useEffect(()=>{
-    //     var header_bottom = document.getElementById("header-bottom")
-    //     var categories_menu = document.getElementById("categories-menu-block")
-    //     if(inView)
-    //     {
-    //         header_bottom.classList.remove('sticky');
-    //         categories_menu.classList.remove('display-none');
-    //     }
-    //     else{
-    //         header_bottom.classList.add('sticky');
-    //         categories_menu.classList.add('display-none');
-    //     }
-    // })
 
     // main carousel
     const [index, setIndex] = useState(0);
@@ -66,7 +49,7 @@ function Home() {
 
   return (
         <main id="home-page">
-            <div className="body-top" id="body-top" ref={ref}>
+            <div className="body-top" id="body-top">
                 <div className="body-top-info">
                     <div className="body-top-info-banners">
                         <Carousel activeIndex={index} onSelect={handleSelect} className="main-carousel">

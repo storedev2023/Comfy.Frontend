@@ -4,8 +4,8 @@ import style from'./404.module.scss'
 function EmptyPage() {
   return (
     <>
-      <div class={style.body}>
-        <div class = {style.error}>
+      <div className={style.body}>
+        <div className = {style.error}>
             <p>
                 404
             </p>
