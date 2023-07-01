@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 //Components
-import  Card                from "../../components/card/Card";
+import  Card                from "../../components/card/card";
 import  Icon                from "../../components/icon/icon";
 import  Carousel            from 'react-bootstrap/Carousel';
 import  CarouselItem        from "react-bootstrap/esm/CarouselItem";

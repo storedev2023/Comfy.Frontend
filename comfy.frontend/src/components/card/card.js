@@ -8,7 +8,7 @@ import Icon from "../icon/icon";
 import Carousel from 'react-bootstrap/Carousel';
 import CarouselItem from "react-bootstrap/esm/CarouselItem";
 //style
-import './Card.scss'
+import './card.scss'
 import { calcDiscount, priceFormat } from "../../scripts";
 import StarRating from "../star-rating/StarRating";
 
