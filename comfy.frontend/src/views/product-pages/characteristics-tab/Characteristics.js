@@ -25,7 +25,7 @@ function Characteristics() {
                   {product?.characteristicGroups.indexOf(characteristicGroup) === 0 ?<></> : characteristicGroup.name }
               </div>
               {characteristicGroup.characteristics.map(characteristic => (
-              <div className="product-page-characteristics">
+              <div className="product-page-characteristics" key={characteristic.name}>
                   <div className="product-page-characteristics-name">
                     {characteristic.name}
                   </div>

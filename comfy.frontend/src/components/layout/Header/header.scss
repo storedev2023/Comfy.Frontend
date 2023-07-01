@@ -27,7 +27,7 @@ $font-size: 14px;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        max-width: 110rem;
+        max-width: 96.25rem;
         margin: 0 auto;
         padding: 0.7rem 0rem;
     }
@@ -72,6 +72,7 @@ $font-size: 14px;
             border-left: none;
             cursor: pointer;
             svg {
+                pointer-events: none !important;
                 path {
                     fill:white;
                 }
@@ -143,7 +144,7 @@ $font-size: 14px;
     font-size: $font-size;
     background: $top-background-color;
     color: $top-font-color;
-    width: 110rem;
+    width: 96.25rem;
     margin: 0 2rem;
     height: 4.5rem;
 
@@ -282,6 +283,7 @@ $font-size: 14px;
     }
 }
 
+
 .header-nav-feedback {
     position: relative;
     margin: 0 1rem;
@@ -293,6 +295,7 @@ $font-size: 14px;
     cursor: pointer;
     transition: all .15s linear;
 }
+
 
 .header-nav-feedback-list {
     position: absolute;
@@ -336,7 +339,7 @@ $font-size: 14px;
     flex-wrap: nowrap;
     justify-content: space-between;
     align-items: center;
-    width: 110rem;
+    width: 96.25rem;
     margin: 0 2rem;
     height: 4rem;
     font-size: $font-size;
@@ -349,6 +352,7 @@ $font-size: 14px;
     position: relative;
     min-width: 19rem;
     width: 19rem;
+    padding: 0.2rem 0rem;
     height: 100%;
     
     .header-bottom-categories-menu {
@@ -359,6 +363,7 @@ $font-size: 14px;
         height: 100%;
         background:#2B3946;
         box-sizing: border-box;
+        
         border-radius: 8px;
         span{
             width: 100%;
@@ -438,14 +443,31 @@ $font-size: 14px;
     position: absolute;
     top:0;
     left: 100%;
-    width: 91rem;
+    width: auto;
+    min-width: 77.25rem;
     height: 100%;
     font-size: 14px;
-    background: #EFEFEF;;
+    padding: 1rem 0 2.5rem 0;
+    background: #EFEFEF;
+    display: flex;
+    flex-wrap: nowrap;
 
     .sub-categories{
-        margin: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        flex-direction: column;
+        margin: 0.8rem;
         color: #9ACD6A;
+        width: auto;
+
+        .sub-categories-title{
+            color: #9ACD6A;
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 22px;
+
+        }
     }
 
 }
@@ -454,18 +476,11 @@ $font-size: 14px;
 .header-bottom-search {
     position: relative;
     display: flex;
-    width: 100%;
-}
-
-
-
-.header-bottom-search form {
-    display: flex;
-    position: relative;
     min-width: 300px;
     width: 100%;
     z-index: 150;
 }
+
 
 .header-search-input {
     font-size: $font-size;
@@ -473,9 +488,9 @@ $font-size: 14px;
     color:white;
     width: 100%;
     height: 50px;
-    padding: 3px 0px 3px 15px ;
+    padding: 3px 0px 3px 19px ;
     margin-left: 2rem;
-    border: 2px solid rgba(0, 0, 0, 0.5);
+    border: 0px solid rgba(0, 0, 0, 0.5);
     border-radius: 8px 0px 0px 8px;
     border-color: transparent;
     border-right: none;
@@ -488,25 +503,25 @@ $font-size: 14px;
 }
 
 .header-search-input:focus {  
-    border: 2px solid $second-color;
+    border: none;
     border-right: none;
     outline:none;
 }
 
 .header-search-input:active {  
-    border: 2px solid $second-color;
+    border: none;
     border-right: none;
     outline:none;
 }
 
 .header-search-input:focus + .header-search-btn {  
-    border: 2px solid $second-color;
+    border: none;
     border-left: none;
     outline:none;
 }
 
 .header-search-input:active + .header-search-btn {  
-    border: 2px solid $second-color;
+    border: none;
     border-left: none;
     outline:none;
 }
@@ -526,8 +541,54 @@ $font-size: 14px;
     cursor: pointer;
 
     svg {
+        pointer-events: none !important;
         path {
             fill:white;
+        }
+    }
+}
+
+.header-bottom-search-result{
+    position: absolute;
+    transform: translateX(2.1rem) translateY(3.5rem);
+    height: auto;
+    width: 96%;
+    z-index: 150;
+
+}
+
+.header-bottom-searcher{
+    display: grid;
+    grid-template-areas: "all products";
+    grid-template-columns: 50% 50%;
+    background: white;
+    border-radius: 8px;
+    width: 100%;
+}
+
+
+.header-bottom-searcher-history{
+    padding: 1rem;
+    width: 50%;
+    .header-bottom-searcher-history-title{
+        color:#2B3946;
+        font-weight: 600;
+    }
+}
+
+
+.header-bottom-searcher-products{
+    padding: 1rem;
+    .header-bottom-searcher-history-product{
+        display: flex;
+        color:#2B3946;
+        .header-bottom-searcher-history-product-info-name{
+            font-size: 14px;
+            font-weight: 400;
+            a{
+                text-decoration: none;
+                color:#2B3946;
+            }
         }
     }
 }

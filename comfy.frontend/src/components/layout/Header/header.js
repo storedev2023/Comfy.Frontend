@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, redirect } from "react-router-dom";
 import { CSSTransition } from 'react-transition-group'
 
 
@@ -8,6 +8,7 @@ import { CategoriesService } from "../../../service/CategoriesService";
 import Cart from "../../cart/Cart";
 
 import './header.scss'
+import { searchService } from "../../../service/SearchService";
 
 
 function HeaderTOP() {
@@ -207,6 +208,26 @@ function HeaderBOTTOM() {
 
     }
 
+    // Search
+    const [searchPreviewProducts, setSearchPreviewProducts] = useState([])
+    const showPreviewSearch = async (event) =>{
+        if(event.target.value === ""){
+            setSearchPreviewProducts(null)
+            return
+        }
+    
+        const response = await searchService.getPreviewSearch(event.target.value)
+        setSearchPreviewProducts(response)
+        console.log(response)
+    }
+
+    const navigate = useNavigate();
+    const searchProducts = (event) =>{ 
+        if (event.key === 'Enter' || event.target.type === "submit") { 
+            setShowOverlaySearch(false)
+            return navigate(`/search/${document.querySelector(".header-search-input").value}`)
+        }
+    }
 
     return (
         <>
@@ -232,7 +253,12 @@ function HeaderBOTTOM() {
                                         <div className="sub-categories-block display-none" data-main_id={category.id} >
                                             {category.categories.map(subCategory => (
                                                 <div key={subCategory.id} className="sub-categories">
-                                                    {subCategory.name}
+                                                    <div className="sub-categories-title">
+                                                        {subCategory.name}
+                                                    </div>
+                                                    <div className="sub-categories-filters">
+                                                        {subCategory.filters}
+                                                    </div>
                                                 </div>
                                             ))}
                                         </ div>
@@ -241,13 +267,44 @@ function HeaderBOTTOM() {
                             </div>
                         </div>
                     </div>
-                    <div className="header-bottom-search" id="header-bottom-search">
-                        <form>
-                            <input type="text" placeholder="Пошук товарів" className="header-search-input" onMouseDown={() => setShowOverlaySearch(true)} />
-                            <button className="header-search-btn">
+                    <div className="header-bottom-search" >
+                            <input type="text" placeholder="Пошук товарів" className="header-search-input" onChange={showPreviewSearch} onKeyDown={searchProducts} onMouseDown={() => setShowOverlaySearch(true)} />
+                            <button className="header-search-btn" onClick={searchProducts}>
                                 <Icon id="search" />
                             </button>
-                        </form>
+                        {showOverlaySearch &&                        
+                        <div className="header-bottom-search-result">
+                            <div className="header-bottom-searcher">
+                                <div className="header-bottom-searcher-history">
+                                    <div className="header-bottom-searcher-history-title">
+                                        Історія пошуку
+                                    </div>
+                                    <div className="header-bottom-searcher-history-list">
+
+                                    </div>
+                                </div>
+                                { searchPreviewProducts !== null &&
+                                <div className="header-bottom-searcher-products">
+                                    {searchPreviewProducts.map(product =>(
+                                    <div className="header-bottom-searcher-history-product" key={product.name}>
+                                        <div className="header-bottom-searcher-history-product-img">
+                                            <img src={product.image}/>
+                                        </div>
+                                        <div className="header-bottom-searcher-history-product-info">
+                                            <div className="header-bottom-searcher-history-product-info-name">
+                                                <Link to={`/product/${product.url}`} reloadDocument={true}>{product.name}</Link>
+                                            </div>
+                                            <div className="header-bottom-searcher-history-product-info-prise">
+                                                {product.price}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    ))}
+                                </div>
+                                }
+                            </div>
+                        </div>}
+
                     </div>
                     <div className="header-bottom-controls">
                         <div className="header-bottom-profile controls-items" onClick={authorizationModelLogic}>

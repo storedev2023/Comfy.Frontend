@@ -29,21 +29,25 @@ const Cart = (props) => {
         }
     }
 
-    const [ref, inView] = useInView({threshold: 0});
+    const [ref, inView] = useInView({ threshold: 0 });
 
     useEffect(() => {
-        console.log(inView)
-        if(inView){
+        if (inView) {
             props.setIsCartOverlay(true)
         }
-    
+
     }, [inView])
 
 
-   
+
 
     return (
         <>  <Icon id="cart" className="header-icon" />
+            {products.length !== 0 &&
+            <div className="cart-number-of-goods">
+                {products.length}
+            </div>
+            }
             {props.isShow &&
                 <>
                     {products.length === 0
@@ -73,11 +77,15 @@ const Cart = (props) => {
                                         {products.map(product => (
                                             <div className="cart-product" key={product.url} >
                                                 <div className="cart-product-img">
+                                                <Link to={`/product/${product.url}`} reloadDocument={true}>
                                                     <img src={product.images[0].url} alt="" />
+                                                </Link>    
                                                 </div>
                                                 <div className="cart-product-info">
-                                                    <div className="cart-product-name">
-                                                        {product.name}
+                                                    <div className="cart-product-name" >
+                                                       <Link to={`/product/${product.url}`} reloadDocument={true}>
+                                                            {product.name}
+                                                       </Link>
                                                     </div>
                                                     <div className="cart-product-code">
                                                         Код:

@@ -12,7 +12,7 @@ main{
     align-self: center;
     position: relative;
 
-    width: 110rem;
+    width: 96.25rem;
     max-width: calc(100% - 4rem);
 }
 
@@ -24,6 +24,7 @@ main{
     flex-direction: column;
     gap: 0.5rem;
     padding-top: 0.5rem;
+    margin-bottom: 2.5rem;
     min-height: 48rem;
     transition: all 600ms ease-out; 
 }
@@ -59,7 +60,11 @@ main{
     margin-top: 1rem;
    
     .info-link{
-        padding: 1rem 8%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        padding: 1rem;
         margin: 0 0.5rem;
         background: white;
         border-radius: 6px;
@@ -83,7 +88,7 @@ main{
     position: relative;
     margin-left: auto;
     margin-right: auto;
-    max-width: 110rem;
+    max-width: 99.049rem;
     width: 100%;
 }
 
@@ -97,7 +102,7 @@ main{
         line-height: 3rem;
         font-weight: 500;
         padding: 0;
-        margin: 2rem 0 2rem 2rem;
+        margin: 0.75rem 0rem;
         letter-spacing: inherit;
     }
 
@@ -123,7 +128,7 @@ main{
     .home-section-body-list{
         display: grid;
         grid-template-columns: repeat(5,minmax(0,1fr));
-        grid-gap: 1rem;
+        grid-gap: 0.65rem;
     }
     
 }
@@ -133,4 +138,62 @@ main{
     width: 97%;
     margin: 0 auto;
     background: white;
+}
+
+.about-us{
+    padding: 0 1.4rem 1.4rem;
+    position: relative;
+    margin-top: 2rem;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 99.049rem;
+    width: 100%;
+
+
+    .about-us-info{
+        height: 128px;
+        --sq-color: #EFEFEF;
+
+        &::after{
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            z-index: 1;
+            box-shadow: 10px -35px 20px 80px var(--sq-color);
+        }
+    
+    }
+
+
+    .about-us-title{
+        margin-bottom: 0.2rem;
+        font-size: 20px;
+        font-weight: 700;
+        color:#383A3B;
+    }
+
+    .about-us-title-2{
+        margin-bottom: 0.2rem;
+        font-size: 14px;
+        font-weight: 700;
+        color:#383A3B;
+    }
+
+    .about-us-text{
+        margin-bottom: 1rem;
+        font-size: 14px;
+        color:#383A3B;
+    }
+
+    .about-us-btn{
+        position: relative;
+        z-index: 10;
+        margin-top: 0.8rem;
+        color:#9ACD6A;
+        cursor: pointer;
+    }
+
 }

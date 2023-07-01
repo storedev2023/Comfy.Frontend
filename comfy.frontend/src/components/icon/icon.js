@@ -129,8 +129,8 @@ const Icon = (props) => {
     case 'show-pass':
       return <svg width="24" height="15" viewBox="0 0 24 15" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g clipPath="url(#clip0_201_5)">
-          <path d="M1.00001 7.29914C4.54983 3.34329 13.521 -2.41923 23 7.30024" stroke="#2B3946" stroke-width="2" strokeLinecap="round" />
-          <circle cx="11.9981" cy="8.29763" r="5" transform="rotate(0.71753 11.9981 8.29763)" stroke="#2B3946" stroke-width="2" />
+          <path d="M1.00001 7.29914C4.54983 3.34329 13.521 -2.41923 23 7.30024" stroke="#2B3946" strokeWidth="2" strokeLinecap="round" />
+          <circle cx="11.9981" cy="8.29763" r="5" transform="rotate(0.71753 11.9981 8.29763)" stroke="#2B3946" strokeWidth="2" />
           <circle cx="11.9981" cy="8.29762" r="2" transform="rotate(0.71753 11.9981 8.29762)" fill="#2B3946" />
         </g>
         <defs>
@@ -141,7 +141,15 @@ const Icon = (props) => {
       </svg>
     case 'hide-pass':
       return <svg width="25" height="15" viewBox="0 0 25 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M23.5 5.00012C20.0004 9.00046 10.6009 14.6014 0.999976 5.0023" stroke="#2B3946" stroke-width="2" strokeLinecap="round"/>
+      <path d="M23.5 5.00012C20.0004 9.00046 10.6009 14.6014 0.999976 5.0023" stroke="#2B3946" strokeWidth="2" strokeLinecap="round"/>
+      </svg>
+    case 'slider-arrow-left':
+      return <svg xmlns="http://www.w3.org/2000/svg" width="17" height="28" viewBox="0 0 17 28" fill="none">
+      <path d="M15 2C5.784 11.2 3.16 13.8333 3 14L15 26" stroke="#2B3946" strokeWidth="4" strokeLinecap="round"/>
+      </svg>
+    case 'slider-arrow-right':
+      return <svg xmlns="http://www.w3.org/2000/svg" width="18" height="28" viewBox="0 0 18 28" fill="none">
+      <path d="M2 2C11.6 11.2 14.3333 13.8333 14.5 14L2 26" stroke="#2B3946" strokeWidth="4" strokeLinecap="round"/>
       </svg>
     default:
       return <></>

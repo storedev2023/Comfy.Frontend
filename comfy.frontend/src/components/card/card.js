@@ -12,26 +12,20 @@ import './Card.scss'
 import { calcDiscount, priceFormat } from "../../scripts";
 import StarRating from "../star-rating/StarRating";
 
+//Img
+import EmptyImage from "../../assets/images/empty_image/empty-image.jpg"
 
 
 
-const Card = ({ product }) => {
+const Card = ({
+    product,
+    hit,
+    slider,
+    hover,
+}) => {
 
 
-    const [productDiscount, setProductDiscount] = useState(product.discountAmount > 0)
-    const [productImages, setProductImages] = useState(product.images.length != 0)
     const [isProductHover, setIsProductHover] = useState(false)
-
-    const productHover = () => {
-        setIsProductHover(!isProductHover)
-    }
-
-    let prevImgsList = [];
-
-    product.images.forEach((prev, index) => {
-        prevImgsList.push(<CarouselItem key={index}><Link to={`/product/${product.url}`} className="img-link" reloadDocument={true}><img src={prev.url} /></Link></CarouselItem>);
-    });
-
 
     const dispatch = useDispatch();
     const items = useSelector(state => state.cart.itemsInCart)
@@ -42,10 +36,12 @@ const Card = ({ product }) => {
     }
 
     return (
-        <div className="list-item" onMouseEnter={productHover} onMouseLeave={productHover}>
+        <div className="list-item" onMouseEnter={() => setIsProductHover(true)} onMouseLeave={() => setIsProductHover(false)}>
             <div className="list-item-header">
                 <div className="list-item-promo-label">
-                    Хiт продаж
+                    {hit &&
+                        <>Хiт продаж</>
+                    }
                 </div>
                 <div className="list-item-list-control">
                     <div className="control-compare control-item">
@@ -57,13 +53,21 @@ const Card = ({ product }) => {
                 </div>
             </div>
             <div className="list-item-img">
-
                 <div className="img-carousel">
-                    {productImages
+                    {product?.images?.length !== 0 && slider
                         ? <Carousel interval={null} variant="dark">
-                            {prevImgsList}
+                            {product.images.map(image => (
+                                <CarouselItem key={product.images.indexOf(image)}>
+                                    <Link to={`/product/${product.url}`} className="img-link" reloadDocument={true}>
+                                        <img src={image.url} />
+                                    </Link>
+                                </CarouselItem>
+                            ))}
                         </Carousel>
-                        : <img url="https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg" />
+                        : 
+                        <Link to={`/product/${product.url}`} className="img-link" reloadDocument={true}> 
+                            <img src={product?.images[0]?.url}/> 
+                        </Link>
                     }
                 </div>
 
@@ -87,7 +91,7 @@ const Card = ({ product }) => {
                     <div className="content-price-actions">
                         <div className="content-price-actions-content">
                             <div className="actions-content-price">
-                                {productDiscount &&
+                                {product.discountAmount > 0 &&
                                     <div className="actions-content-price-old">
                                         <span>
                                             {priceFormat(product.price)}
@@ -98,7 +102,7 @@ const Card = ({ product }) => {
                                     </div>
                                 }
                                 <div className="actions-content-price-current">
-                                    {productDiscount
+                                    {product.discountAmount > 0
                                         ? <>{priceFormat(calcDiscount(product.price, product.discountAmount))}</>
                                         : <>{priceFormat(product.price)}</>
                                     }
@@ -118,34 +122,25 @@ const Card = ({ product }) => {
                                 }
                             </div>
                         </div>
-                        <div className="content-price-actions-annotations">
-                            <div className="bonus">
-                                <div className="bonus-label">
-                                    <i className="icon-comfy bonus-label__icon icon-comfy__bonus"></i>
-                                    <span className="bonus-label-value">+300 ₴</span>
-                                    <span className="bonus-label-text">на бонусний рахунок</span>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
-            {isProductHover &&
+            {isProductHover && hover &&
                 <div className="list-item-more-info">
                     <StarRating defaultState={product.rating} />
                     <div className="list-item-more-info-characteristics">
-                        { product.characteristicGroups.length != 0 
-                        ? product.characteristicGroups[0].characteristics.map(characteristic => (
-                            <div className="more-info-characteristics" key={characteristic.name}>
-                                <div className="more-info-characteristics-name">
-                                    {characteristic.name}
-                                </div>
-                                <div className="more-info-characteristics-value">
-                                    {characteristic.value}
-                                </div>
-                            </div >
+                        {product.characteristicGroups.length != 0
+                            ? product.characteristicGroups[0].characteristics.map(characteristic => (
+                                <div className="more-info-characteristics" key={characteristic.name}>
+                                    <div className="more-info-characteristics-name">
+                                        {characteristic.name}
+                                    </div>
+                                    <div className="more-info-characteristics-value">
+                                        {characteristic.value}
+                                    </div>
+                                </div >
                             ))
-                        : <></>
+                            : <></>
                         }
                     </div>
                 </div>

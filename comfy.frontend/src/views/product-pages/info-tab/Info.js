@@ -1,26 +1,35 @@
-import React, { useEffect, useState } from "react";
-import { Link, useParams, Navigate } from "react-router-dom";
+import React, {useEffect} from "react";
+import { Link, useParams, Navigate} from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux"
 
+
+import Icon from "../../../components/icon/icon";
 import { ProductService } from "../../../service/ProductService";
 import { setItemInCart } from "../../../redux/reducers/cart-reducer"
-import Icon from "../../../components/icon/icon";
 import { priceFormat, calcDiscount, upPage } from "../../../scripts";
 import StarRating from "../../../components/star-rating/StarRating";
 import CarouselProductImages from "../../../components/carousel/product-imgs/Carousel-product-imgs";
-
+import CarouselProductViewed from "../../../components/carousel/product-viewed/Carousel-product-viewed";
 import './Info.scss'
 
 
 
 function Info() {
-  upPage()
+
   const { id } = useParams()
   const dispatch = useDispatch();
   const items = useSelector(state => state.cart.itemsInCart)
   const product = useSelector(state => state.product.currentProduct)
+
+  useEffect(()=>{
+    if(product === (null || undefined || ""))
+    {
+      return <Navigate to="/404" replace />
+    }
+  }, [product])
+
+  const viewedProducts = useSelector(state => state.v_product.itemsInViewedProductsSlider)
   const isItemInCart = items.some(item => item.id === product?.id)
-  console.log(product)
   // const [productImages, setProductImages] = useState(product?.images.length != 0)
 
 
@@ -79,10 +88,9 @@ function Info() {
             </div>
             <div className="action-section">
               <div className="action-section-star-rating">
-                <StarRating listClass={"star-rating-product-page"} defaultState={product?.rating} width={20} height={20} />
-                <div className="bonus-section">
-                  <span className="bonus-section-price">+300 ₴</span>
-                  <span className="bonus-section-text"> на бонусний рахунок</span>
+                <StarRating listClass={"star-rating-product-page"} defaultState={product?.rating} width={23} height={23} />
+                <div className="code-section">
+                  
                 </div>
               </div>
               <div className="action-section-btn-control">
@@ -182,9 +190,9 @@ function Info() {
       </div>
       <div className="product-page-bottom">
         <div className="product-page-bottom-characteristics-section">
-          <div className="characteristics-section">
-            <div className="characteristics-section-name">
-              Характеристики {product?.name}
+          <div className="section">
+            <div className="section-name">
+              Технічні характеристики
             </div>
             <div className="characteristics-section-table">
               {product?.characteristicGroups.length !== 0 
@@ -210,9 +218,9 @@ function Info() {
           </div>
         </div>
         <div className="product-page-bottom-description-section">
-          <div className="description-section">
-            <div className="description-section-name">
-              Опис {product?.name}
+          <div className="section">
+            <div className="section-name">
+              Опис
             </div>
             <div className="description-section-info">
               {product?.description}
@@ -220,8 +228,8 @@ function Info() {
           </div>
         </div>
         <div className="product-page-bottom-reviews-section">
-          <div className="reviews-section">
-            <div className="reviews-section-name">
+          <div className="section">
+            <div className="section-name">
               Відгуки
             </div>
             <div className="more-btn">
@@ -232,18 +240,18 @@ function Info() {
             </div>
           </div>
         </div>
-        <div className="product-page-bottom-images-section">
-          <div className="images-section">
-            <div className="images-section-name">
-              Фото
-            </div>
-            <div className="images-section-info">
-              {product?.images?.map(image => (
-                <img src={image.url} key={image.url} />
-              ))}
+        {viewedProducts.length !== 0 &&
+            <div className="product-page-bottom-images-section">
+            <div className="section">
+              <div className="section-name">
+                Переглянуті товари
+              </div>
+              <div className="slider-section-info">
+                <CarouselProductViewed/>
+              </div>
             </div>
           </div>
-        </div>
+        }
       </div>
     </div>
   );

@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Link, Outlet, useParams} from "react-router-dom";
+import { Link, Outlet, useParams, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
 import { ProductService } from "../../service/ProductService";
@@ -7,22 +7,35 @@ import { setProduct } from "../../redux/reducers/product-reducer";
 
 
 import './Product.scss'
+import { priceFormat, calcDiscount, upPage } from "../../scripts";
+import { setViewedProductToSlider } from "../../redux/reducers/viewed-products-slider-reducer";
 
 const Product = () => {
 
   const { id } = useParams()
   const dispatch = useDispatch();
-
-
+  const navigate = useNavigate();
+  
   useEffect(()=>{
-    const fetchData = async () => {    
-        const response = await ProductService.getProductByUrl(id)
-        setProduct(response)
-        dispatch(setProduct(response))
+    const fetchData = async () => {  
+
+          const response = await ProductService.getProductByUrl(id)
+          console.log(response)
+          if(response === (null || undefined || ""))
+          {
+            return navigate("/404")
+          }
+          setProduct(response)
+          dispatch(setProduct(response))
+          dispatch(setViewedProductToSlider(response))
     }
       
     fetchData()
   }, [id])
+
+  useEffect(()=>{
+    upPage()
+  })
 
 
   return (

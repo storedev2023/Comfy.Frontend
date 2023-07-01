@@ -53,13 +53,13 @@ const CarouselProductImages = ({
                     </Slide>
                 ))}
                 {isDot && 
-                <>                    
+                <div className="product-page-slider-dot-list">                    
                     {items?.map(image => (
                         <Dot onClick={displayNone} className={dotClass} slide={items?.indexOf(image)} key={items?.indexOf(image)}>
                             <img src={image.url} />
                         </Dot>
                     ))}
-                </>
+                </div>
                 }
             </Slider>
         </CarouselProvider>

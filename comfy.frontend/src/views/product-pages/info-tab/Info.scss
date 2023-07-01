@@ -3,8 +3,7 @@
     display: flex;
     margin-left: auto;
     margin-right: auto;
-
-    margin-bottom: 0.4rem;
+    max-width: 96.25rem;
     display: grid;
     grid-auto-flow: column;
     grid-template-columns: 45% 55%;
@@ -12,8 +11,8 @@
         "A B"
         "A C";
     border: 20px solid white;
-    border-width: 0 20px;
-    background: white;
+    border-width: 0 0px;
+    background: transparent;
     box-sizing: border-box;
 }
 
@@ -23,11 +22,9 @@
     background-color: white;
     border-bottom: 0.4rem #EFEFEF solid;
 
-    // .gallery-section{
-    //     display: flex;
-    //     align-items: center;
-    //     justify-content: center;
-    // }
+    .gallery-section{
+        
+    }
 }
 
 
@@ -35,7 +32,7 @@
     grid-area: C;
     box-sizing: border-box;
     background: white;
-    border-left: 4px solid #EFEFEF;
+    border-left: 2px solid #EFEFEF;
 }
 
 .product-page-info-name{
@@ -82,7 +79,7 @@
     
         .old-price-discount {    
             margin-left: 15px;
-            color: #9ACD6A;
+            color: #D03F3F;
             font-weight: 500;
         }
     }
@@ -348,43 +345,39 @@
     background: white;
     margin-left: auto;
     margin-right: auto;
-    max-width: 140.6rem;
+    max-width: 96.25rem;
     width: 100%;
+    border-radius: 6px;
 }
 
 
 .product-page-bottom-characteristics-section, .product-page-bottom-reviews-section, .product-page-bottom-description-section, .product-page-bottom-images-section {
-    font-size: 18px;
+    display: flex;
+    flex-direction: column;
     position: relative;
+    font-size: 18px;
     padding: 1.5rem;
     margin: 0;
-    border-radius: 0;
-    flex-direction: row;
-    border-left: 4px solid #EFEFEF;
     border-bottom: 0.4rem #EFEFEF solid;
     width: 100%;
-    display: flex;
-    flex-direction: column;
-}
 
-.characteristics-section, .reviews-section, .description-section, .images-section {
-    position: relative;
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    flex-direction: column;
-    justify-content: center;
-    max-width: 75rem;
-    width: 100%;
-    margin: 0 auto;
-
-    .characteristics-section-name, .reviews-section-name, .description-section-name, .images-section-name {
-        font-size: 28px;
-        font-weight: 600;
-        text-align: center;
-        margin-bottom: 2rem;
+    .section{
+        position: relative;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        width: 100%;
+    
+        .section-name{
+            width: 100%;
+            font-size: 28px;
+            font-weight: 600;
+            margin: 0 0 0.8rem 2rem ;
+        }
     }
 }
+
+
 
 .characteristics-section-table {
     display: flex;
@@ -436,3 +429,6 @@
     }
 }
 
+.slider-section-info{
+    width: 100%;
+}
