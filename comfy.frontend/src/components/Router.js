@@ -16,8 +16,8 @@ import Reviews from '../views/product-pages/reviews-tab/Reviews'
 import Questions from '../views/product-pages/question-tab/Questions'
 import EmptyPage from '../views/404/404'
 import SearchPage from '../views/search/Search'
-import OrderPage from '../views/order/Order'
-
+import SubcategoriesPage from '../views/categories-pages/Subcategories/Subcategories'
+import ProductsCategoriesPage from '../views/categories-pages/products-categories/ProductsCategories'
 
 const Router = () => {
     return (
@@ -27,14 +27,15 @@ const Router = () => {
                     <Header />
                     <Routes>
                         <Route path="/" element={<Home />} />
-                        <Route path='/product/:id' element={<Product />}  >
+                        <Route path='/product/:id/' element={<Product />}  >
                             <Route index element={<Info />} />
                             <Route path="characteristics" element={<Characteristics />} />
                             <Route path="reviews" element={<Reviews />} />
                             <Route path="questions" element={<Questions />} />
                         </Route>
-                        <Route path="/search/:value" element={<SearchPage/>}/>
-                        <Route path="/order" element={<OrderPage/>}/>
+                        <Route path="/search/:value/" element={<SearchPage/>}/>
+                        <Route path="/categories/:name/" element={<SubcategoriesPage/>} />
+                        <Route  path="/categories/:name/:subName/" element={<ProductsCategoriesPage/>}  />
                         <Route path='/404' element={<EmptyPage />} /> {/* for wrong data  */}
                         <Route path='*' element={<EmptyPage />} />    {/* for invalid url data */}
                     </Routes>

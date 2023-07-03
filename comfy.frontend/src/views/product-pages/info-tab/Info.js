@@ -39,22 +39,6 @@ function Info() {
   }
 
 
-  // const [productReviews, setProductReviews] = useState({})
-
-  // useEffect(()=>{
-  //   const fetchData = async () => {    
-  //       const response = await ProductService.getReviewsByProductId(product?.id, 1, 5)
-  //       setProductReviews(response)
-  //       console.log(response)
-  //       console.log(productReviews)
-
-  //   }
-
-  //   fetchData()
-  // }, [id])
-
-
-
   return (
     <div className="product-page-content">
       <div className="product-page-top">

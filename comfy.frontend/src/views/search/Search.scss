@@ -1,0 +1,134 @@
+.search-page{
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    width: 96.25rem;
+}
+
+.search-page-empty{
+    margin: 5rem 0;
+    text-align: center;
+    .search-page-empty-title{
+        font-size: 40px;
+        margin-bottom: 0.5rem;
+    }
+    .search-page-empty-text{
+        width: 50%;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 20px;
+    }
+}
+
+.search-page-section{
+
+    .search-page-section-header{
+        display: flex;
+        align-items: end;
+        justify-content: start;
+        padding: 1.5rem 0 2rem 0;
+
+        .search-page-section-header-title{
+            font-size: 20px;
+        }
+
+        .search-page-section-header-count{
+            font-size: 16px;
+            margin-left: 2rem;
+        }
+    }
+
+    .search-page-section-body{
+        display: flex;
+        flex-direction: row;
+
+        .search-page-section-body-filter{
+            background:white;
+            flex: 1 1 25%;
+            max-width: 25%;
+            height: 100%;
+            padding: 1.2rem 2rem ;
+            margin-right: 2rem;
+            border-radius: 8px;
+            z-index: 6;
+
+            .search-page-section-body-filter-price{
+                margin-top: 0.4rem;
+                width: 100%;
+                .filter-price-title{
+                    font-size: 20px;
+                    font-weight: 500;
+                    margin-bottom: 1.5rem;
+                }
+
+                .filter-price-inputs{
+                    display: flex;
+                    align-items: center;
+                    margin-bottom: 1.5rem;
+
+                    .filter-price-input-label{
+                        font-size: 14px;
+                    }
+
+                    .filter-price-input{
+                        display: flex;
+                        justify-content: center;
+                        margin: auto;
+                        max-width: 7rem;
+
+                        input{
+                            border: none;
+                            background: #EFEFEF;
+                            height: 2.5rem;
+                            font-size: 18px;
+                            padding: 0.5rem;
+                            width:100%;
+                        }
+
+                        input:focus{
+                            border: none;
+                            border-right: none;
+                            outline:none;
+                        }
+                        input:active{
+                            border: none;
+                            border-right: none;
+                            outline:none;
+                        }
+                    }
+                }
+
+                .filter-price-btn{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    button{
+                        width: 100%;
+                        background: #9ACD6A;
+                        border-radius: 8px;
+                        color:white;
+                        padding: 1rem;
+                        border: none;
+                    }
+                }
+            }
+        }
+
+        .search-page-section-body-products{
+            flex: 1 1 75%;
+            width: 100%;
+
+            .search-page-section-body-products-sort{
+
+            }
+
+            .search-page-section-body-products-catalog{
+                display: grid;
+                grid-auto-flow: row dense;
+                grid-template-columns: repeat(4,minmax(0,1fr));
+                gap: 1rem;
+            }
+        }
+    }
+}

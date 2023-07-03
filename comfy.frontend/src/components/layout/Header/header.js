@@ -9,7 +9,10 @@ import Cart from "../../cart/Cart";
 
 import './header.scss'
 import { searchService } from "../../../service/SearchService";
-
+import { useDispatch, useSelector } from "react-redux";
+import { setCategoriesList } from "../../../redux/reducers/categories-reducer";
+import { setHistoryToSearchList } from "../../../redux/reducers/search-reducer";
+import { priceFormat, calcDiscount } from "../../../scripts";
 
 function HeaderTOP() {
 
@@ -174,10 +177,12 @@ function HeaderBOTTOM() {
     const [categoriesMenu, setCategoriesMenu] = useState([])
 
     // Getting data in the categories menu
+    const dispatch = useDispatch()
     useEffect(() => {
         const fetchData = async () => {
             const response = await CategoriesService.getCategoriesMenu()
             console.log(response)
+            dispatch(setCategoriesList(response))
             setCategoriesMenu(response)
         }
 
@@ -210,6 +215,7 @@ function HeaderBOTTOM() {
 
     // Search
     const [searchPreviewProducts, setSearchPreviewProducts] = useState([])
+    const historyList = useSelector(state => state.search_history.searchHistory)
     const showPreviewSearch = async (event) =>{
         if(event.target.value === ""){
             setSearchPreviewProducts(null)
@@ -222,12 +228,24 @@ function HeaderBOTTOM() {
     }
 
     const navigate = useNavigate();
+
     const searchProducts = (event) =>{ 
         if (event.key === 'Enter' || event.target.type === "submit") { 
-            setShowOverlaySearch(false)
-            return navigate(`/search/${document.querySelector(".header-search-input").value}`)
+            updateDataHistory(document.querySelector(".header-search-input").value)
         }
     }
+
+    const clickToHistoryItem = (event) =>{
+        document.querySelector(".header-search-input").value = event.target.innerHTML
+        updateDataHistory(event.target.innerHTML)
+    }
+
+    const updateDataHistory = (value) =>{
+        dispatch(setHistoryToSearchList(value))
+        setShowOverlaySearch(false)
+        return navigate(`/search/${value}`)
+    }
+
 
     return (
         <>
@@ -243,18 +261,20 @@ function HeaderBOTTOM() {
                             <div className="header-bottom-categories-menu-items">
                                 {categoriesMenu.map(category => (
                                     <div key={category.id} className="categories-menu-items" onMouseEnter={(event) => showSubCatalogs(event, true)} onMouseLeave={(event) => showSubCatalogs(event, false)}>
+                                        <Link className="menu-item-link" to={`categories/${category.url}`} reloadDocument={true}>
                                         <div className="menu-item" data-id={category.id} >
                                             <Icon id={category.id} className="categories-icon" />
                                             <div className="categories-menu-item-and-icon">
-                                                <a>{category.name}</a>
+                                                <span>{category.name}</span>
                                                 <Icon id="categories-arrow" className="categories-arrow" />
                                             </div>
                                         </div>
+                                        </Link>
                                         <div className="sub-categories-block display-none" data-main_id={category.id} >
                                             {category.categories.map(subCategory => (
                                                 <div key={subCategory.id} className="sub-categories">
                                                     <div className="sub-categories-title">
-                                                        {subCategory.name}
+                                                        <Link to={`categories/${category.url}/${subCategory.url}`} reloadDocument={true}>{subCategory.name}</Link>
                                                     </div>
                                                     <div className="sub-categories-filters">
                                                         {subCategory.filters}
@@ -280,7 +300,12 @@ function HeaderBOTTOM() {
                                         Історія пошуку
                                     </div>
                                     <div className="header-bottom-searcher-history-list">
-
+                                    {historyList.map(history=>(
+                                        <div className="history-list-item" key={history} >
+                                            <p onClick={clickToHistoryItem}>{history}</p>
+                                            <Icon id="delete-item-cart"/>
+                                        </div>
+                                    ))}
                                     </div>
                                 </div>
                                 { searchPreviewProducts !== null &&
@@ -288,14 +313,27 @@ function HeaderBOTTOM() {
                                     {searchPreviewProducts.map(product =>(
                                     <div className="header-bottom-searcher-history-product" key={product.name}>
                                         <div className="header-bottom-searcher-history-product-img">
-                                            <img src={product.image}/>
+                                        <Link to={`/product/${product.url}`} reloadDocument={true}><img src={product.imageUrl}/></Link>
                                         </div>
                                         <div className="header-bottom-searcher-history-product-info">
                                             <div className="header-bottom-searcher-history-product-info-name">
                                                 <Link to={`/product/${product.url}`} reloadDocument={true}>{product.name}</Link>
                                             </div>
                                             <div className="header-bottom-searcher-history-product-info-prise">
-                                                {product.price}
+                                                {product?.discountAmount > 0 &&
+                                                    <div className="price-section-old-price">
+                                                    <span className="old-price-value">
+                                                        {priceFormat(product?.price)} ₴
+                                                    </span>
+                                                    </div>
+                                                }
+                                                <div className="price-section-current-price">
+                                                    {product?.discountAmount > 0
+                                                    ? <>{priceFormat(calcDiscount(product?.price, product?.discountAmount))}</>
+                                                    : <>{priceFormat(product?.price)}</>
+                                                    }
+                                                    <span> ₴</span>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

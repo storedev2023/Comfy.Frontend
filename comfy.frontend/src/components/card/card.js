@@ -8,12 +8,10 @@ import Icon from "../icon/icon";
 import Carousel from 'react-bootstrap/Carousel';
 import CarouselItem from "react-bootstrap/esm/CarouselItem";
 //style
-import './Card.scss'
+import "./Card.scss"
 import { calcDiscount, priceFormat } from "../../scripts";
 import StarRating from "../star-rating/StarRating";
 
-//Img
-import EmptyImage from "../../assets/images/empty_image/empty-image.jpg"
 
 
 
@@ -54,7 +52,7 @@ const Card = ({
             </div>
             <div className="list-item-img">
                 <div className="img-carousel">
-                    {product?.images?.length !== 0 && slider
+                    {slider
                         ? <Carousel interval={null} variant="dark">
                             {product.images.map(image => (
                                 <CarouselItem key={product.images.indexOf(image)}>

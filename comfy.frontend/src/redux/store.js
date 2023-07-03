@@ -15,12 +15,14 @@ import searchReducer from "./reducers/search-reducer";
 import cartReducer from "./reducers/cart-reducer";
 import productReducer from "./reducers/product-reducer";
 import viewedProductsSliderReducer from "./reducers/viewed-products-slider-reducer";
+import categoriesReducer from "./reducers/categories-reducer";
 
 const rootReducer = combineReducers({        
     cart: cartReducer,
     product: productReducer,
     v_product: viewedProductsSliderReducer,
     search_history: searchReducer,
+    categories_list: categoriesReducer,
 });
 
 const persistConfig = {

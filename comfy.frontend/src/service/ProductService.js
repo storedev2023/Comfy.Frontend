@@ -18,5 +18,55 @@ export const ProductService = {
         const response = await axios.get(`http://localhost:20080/api/Reviews?productId=${id}&pageNumber=${pageNumber}&pageSize=${pageSize}`)
 
         return response.data   
-    }
+    },
+
+    async getProductsInCategory(
+        id,
+        priceFrom = 0,
+        priceTo = 0,
+        sortColumn = null,
+        sortOrder = null,
+        filterQuery = null,
+        pageNumber = 0,
+        pageSize = 0
+        ){
+            
+        let url = `http://localhost:20080/api/Products`
+        
+        if(id !== (undefined || null || ""))
+        {
+            url += `?subcategoryId=${id}`
+        }
+        else{
+            return null
+        }
+
+        if(priceFrom !== (undefined || null || 0)){
+            url += `&priceFrom=${priceFrom}`
+        }
+        if(priceTo !== (undefined || null || 0)){
+            url += `&priceTo=${priceTo}`
+        }
+        if(filterQuery !== (undefined || null || "")){
+            url += `&filterQuery=${filterQuery}`
+            
+        }
+        if(sortColumn !== (undefined || null || "")){
+            url += `&priceFrom=${priceTo}`
+        } 
+        if(sortOrder !== (undefined || null || "")){
+            url += `&sortOrder=${sortOrder}`
+        }
+        if(pageNumber !== (undefined || null || 0)){
+            url += `&pageNumber=${pageNumber}`
+        }
+        if(pageSize !== (undefined || null || 0)){
+            url += `&pageSize=${pageSize}`
+        }
+
+        
+        const response = await axios.get(url)
+
+        return response.data
+    },
 }
