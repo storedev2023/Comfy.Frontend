@@ -100,7 +100,7 @@ function Info() {
                       <Icon id="cart" className="card-btn-icon" />
                       Купити
                     </button>
-                    : <Link className="action-section-buy-btn_link" to="">
+                    : <Link reloadDocument={true} className="action-section-buy-btn_link" to="/order">
                       <Icon id="cart-full" className="card-btn-icon-full" />
                     </Link>
                   }

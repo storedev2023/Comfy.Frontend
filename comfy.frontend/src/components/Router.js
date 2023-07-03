@@ -16,6 +16,7 @@ import Reviews from '../views/product-pages/reviews-tab/Reviews'
 import Questions from '../views/product-pages/question-tab/Questions'
 import EmptyPage from '../views/404/404'
 import SearchPage from '../views/search/Search'
+import OrderPage from '../views/order/Order'
 
 
 const Router = () => {
@@ -33,6 +34,7 @@ const Router = () => {
                             <Route path="questions" element={<Questions />} />
                         </Route>
                         <Route path="/search/:value" element={<SearchPage/>}/>
+                        <Route path="/order" element={<OrderPage/>}/>
                         <Route path='/404' element={<EmptyPage />} /> {/* for wrong data  */}
                         <Route path='*' element={<EmptyPage />} />    {/* for invalid url data */}
                     </Routes>

@@ -8,7 +8,7 @@ import Icon from "../icon/icon";
 import Carousel from 'react-bootstrap/Carousel';
 import CarouselItem from "react-bootstrap/esm/CarouselItem";
 //style
-import './card.scss'
+import './Card.scss'
 import { calcDiscount, priceFormat } from "../../scripts";
 import StarRating from "../star-rating/StarRating";
 
@@ -116,7 +116,7 @@ const Card = ({
                                     ? <button className="list-item-btn" onClick={addToCart}>
                                         <Icon id="cart" className="card-btn-icon" />
                                     </button>
-                                    : <Link className="list-item-btn_link" to="">
+                                    : <Link reloadDocument={true}  className="list-item-btn_link" to="/order">
                                         <Icon id="cart-full" className="card-btn-icon-full" />
                                     </Link>
                                 }

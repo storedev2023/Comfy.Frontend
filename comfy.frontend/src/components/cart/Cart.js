@@ -115,7 +115,7 @@ const Cart = (props) => {
                                         <span className="cart-products-price-total">{priceFormat(totalPrice)} ₴</span>
                                     </div>
                                     <div className="default-cart-products-btn">
-                                        <Link>Оформити замовлення</Link>
+                                        <Link to="/order" reloadDocument={true}>Оформити замовлення</Link>
                                     </div>
                                 </div>
                             </div>
