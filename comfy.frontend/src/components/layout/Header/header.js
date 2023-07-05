@@ -354,7 +354,9 @@ function HeaderBOTTOM() {
                     <div className="header-bottom-controls">
                         <div className="header-bottom-profile controls-items" onClick={authorizationModelLogic}>
                             <a className="header-bottom-profile-link">
-                                <span>Увійти</span>
+                            <Link to={`/profile`} reloadDocument={true}> 
+                                Увійти
+                            </Link>
                             </a>
                         </div>
                         <div className="header-bottom-wishlist controls-items"  >
