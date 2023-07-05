@@ -26,13 +26,10 @@
 }
 
 .product-categories-section-body-filters{
-    background: white;
+    
     flex: 1 1 25%;
-    max-width: 25%;
-    height: 100%;
-    padding: 1.2rem 2rem;
-    margin-right: 2rem;
-    border-radius: 8px;
+
+    margin-right: 1rem;
     z-index: 6;
 }
 
@@ -44,5 +41,12 @@
         grid-auto-flow: row dense;
         grid-template-columns: repeat(4, minmax(0, 1fr));
         gap: 1rem;
+    }
+    .product-categories-products-catalog-empty{
+        display: flex;
+        margin-top: 2rem;
+        align-items: top;
+        justify-content: center;
+        font-size:30px
     }
 }

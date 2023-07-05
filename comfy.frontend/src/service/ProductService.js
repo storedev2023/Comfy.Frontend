@@ -32,8 +32,8 @@ export const ProductService = {
         ){
             
         let url = `http://localhost:20080/api/Products`
-        
-        if(id !== (undefined || null || ""))
+
+        if(id !== (undefined && null && ""))
         {
             url += `?subcategoryId=${id}`
         }
@@ -47,15 +47,14 @@ export const ProductService = {
         if(priceTo !== (undefined || null || 0)){
             url += `&priceTo=${priceTo}`
         }
-        if(filterQuery !== (undefined || null || "")){
-            url += `&filterQuery=${filterQuery}`
-            
-        }
         if(sortColumn !== (undefined || null || "")){
-            url += `&priceFrom=${priceTo}`
+            url += `&sortColumn=${sortColumn}`
         } 
         if(sortOrder !== (undefined || null || "")){
             url += `&sortOrder=${sortOrder}`
+        }
+        if(filterQuery !== (undefined || null || "")){
+            url += `&filterQuery=${encodeURIComponent(filterQuery)}`
         }
         if(pageNumber !== (undefined || null || 0)){
             url += `&pageNumber=${pageNumber}`

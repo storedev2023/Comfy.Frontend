@@ -18,8 +18,8 @@ function Info() {
 
   const { id } = useParams()
   const dispatch = useDispatch();
-  const items = useSelector(state => state.cart.itemsInCart)
-  const product = useSelector(state => state.product.currentProduct)
+  const items = useSelector((state) => state?.cart.itemsInCart)
+  const product = useSelector((state) => state.product.currentProduct)
 
   useEffect(()=>{
     if(product === (null || undefined || ""))
@@ -28,7 +28,7 @@ function Info() {
     }
   }, [product])
 
-  const viewedProducts = useSelector(state => state.v_product.itemsInViewedProductsSlider)
+  const viewedProducts = useSelector((state) => state.v_product.itemsInViewedProductsSlider)
   const isItemInCart = items.some(item => item.id === product?.id)
   // const [productImages, setProductImages] = useState(product?.images.length != 0)
 
@@ -72,7 +72,9 @@ function Info() {
             </div>
             <div className="action-section">
               <div className="action-section-star-rating">
-                <StarRating listClass={"star-rating-product-page"} defaultState={product?.rating} width={23} height={23} />
+                { product?.rating !== undefined && 
+                  <StarRating defaultState={product?.rating} listClass={"star-rating-product-page"}  width={23} height={23} />
+                }
                 <div className="code-section">
                   
                 </div>

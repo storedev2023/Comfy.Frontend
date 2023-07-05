@@ -18,6 +18,7 @@ import EmptyPage from '../views/404/404'
 import SearchPage from '../views/search/Search'
 import SubcategoriesPage from '../views/categories-pages/Subcategories/Subcategories'
 import ProductsCategoriesPage from '../views/categories-pages/products-categories/ProductsCategories'
+import Compare from '../views/compare/Сompare'
 
 const Router = () => {
     return (
@@ -33,9 +34,17 @@ const Router = () => {
                             <Route path="reviews" element={<Reviews />} />
                             <Route path="questions" element={<Questions />} />
                         </Route>
+                        {/* <Route path='/profile/:id/' element={<UserPage />} >
+                            <Route index element={<UserData />} />
+                            <Route path="orders" element={<UserOrders />} />
+                            <Route path="wishlist" element={<UserWishlist />} />
+                            <Route path="review" element={<UserReviews />} />
+                        </Route> */}
                         <Route path="/search/:value/" element={<SearchPage/>}/>
                         <Route path="/categories/:name/" element={<SubcategoriesPage/>} />
-                        <Route  path="/categories/:name/:subName/" element={<ProductsCategoriesPage/>}  />
+                        <Route path="/categories/:name/:subName/" element={<ProductsCategoriesPage/>}  />
+                        <Route path="/compare/:id" element={<Compare/>}/>
+                        {/* <Route path="/order" element={<Order/>}/> */}
                         <Route path='/404' element={<EmptyPage />} /> {/* for wrong data  */}
                         <Route path='*' element={<EmptyPage />} />    {/* for invalid url data */}
                     </Routes>

@@ -39,7 +39,6 @@ export default function StarRating({
     setHover(value);
     onChangeHover(value);
   }
-
   return (
     <>
       <StarRatingContext.Provider

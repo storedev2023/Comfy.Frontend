@@ -11,7 +11,7 @@ import './header.scss'
 import { searchService } from "../../../service/SearchService";
 import { useDispatch, useSelector } from "react-redux";
 import { setCategoriesList } from "../../../redux/reducers/categories-reducer";
-import { setHistoryToSearchList } from "../../../redux/reducers/search-reducer";
+import { setHistoryToSearchList, deleteHistoryInSearchList } from "../../../redux/reducers/search-reducer";
 import { priceFormat, calcDiscount } from "../../../scripts";
 
 function HeaderTOP() {
@@ -181,11 +181,9 @@ function HeaderBOTTOM() {
     useEffect(() => {
         const fetchData = async () => {
             const response = await CategoriesService.getCategoriesMenu()
-            console.log(response)
-            dispatch(setCategoriesList(response))
+            dispatch(setCategoriesList(response))   
             setCategoriesMenu(response)
         }
-
         fetchData()
     }, [])
 
@@ -246,6 +244,11 @@ function HeaderBOTTOM() {
         return navigate(`/search/${value}`)
     }
 
+    const deleteHistoryInList = (history) => {
+        console.log(history)
+        dispatch(deleteHistoryInSearchList(history))
+    }
+
 
     return (
         <>
@@ -277,7 +280,7 @@ function HeaderBOTTOM() {
                                                         <Link to={`categories/${category.url}/${subCategory.url}`} reloadDocument={true}>{subCategory.name}</Link>
                                                     </div>
                                                     <div className="sub-categories-filters">
-                                                        {subCategory.filters}
+                                                        {/* {subCategory.filters} */}
                                                     </div>
                                                 </div>
                                             ))}
@@ -300,10 +303,12 @@ function HeaderBOTTOM() {
                                         Історія пошуку
                                     </div>
                                     <div className="header-bottom-searcher-history-list">
-                                    {historyList.map(history=>(
+                                    {historyList?.map(history=>(
                                         <div className="history-list-item" key={history} >
                                             <p onClick={clickToHistoryItem}>{history}</p>
-                                            <Icon id="delete-item-cart"/>
+                                            <div onClick={() => deleteHistoryInList(history)}>
+                                                <Icon id="delete-item-cart"/>
+                                            </div>    
                                         </div>
                                     ))}
                                     </div>
@@ -311,13 +316,14 @@ function HeaderBOTTOM() {
                                 { searchPreviewProducts !== null &&
                                 <div className="header-bottom-searcher-products">
                                     {searchPreviewProducts.map(product =>(
+                                        <Link to={`/product/${product.url}`} reloadDocument={true} className="product-link">
                                     <div className="header-bottom-searcher-history-product" key={product.name}>
                                         <div className="header-bottom-searcher-history-product-img">
-                                        <Link to={`/product/${product.url}`} reloadDocument={true}><img src={product.imageUrl}/></Link>
+                                            <img src={product.imageUrl}/>
                                         </div>
                                         <div className="header-bottom-searcher-history-product-info">
                                             <div className="header-bottom-searcher-history-product-info-name">
-                                                <Link to={`/product/${product.url}`} reloadDocument={true}>{product.name}</Link>
+                                                {product.name}
                                             </div>
                                             <div className="header-bottom-searcher-history-product-info-prise">
                                                 {product?.discountAmount > 0 &&
@@ -337,6 +343,7 @@ function HeaderBOTTOM() {
                                             </div>
                                         </div>
                                     </div>
+                                    </Link>
                                     ))}
                                 </div>
                                 }

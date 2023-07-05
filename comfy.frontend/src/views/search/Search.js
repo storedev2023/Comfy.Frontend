@@ -42,7 +42,6 @@ const SearchPage = () => {
                 </div>
                 <div className="search-page-empty-text">
                     Можливо, ви ввели некоректний запит. Перевірте правильність написання.
-                    Намагайтеся використовувати тільки ключові слова.
                 </div>
             </div>
             :<div className="search-page-section">
@@ -90,6 +89,7 @@ const SearchPage = () => {
                         </div>
                         <div className="search-page-section-body-products-catalog">
                             {searchProducts?.products?.map(product => (
+                                
                                 <Card product={product} slider={true} hover={true}  key={product.id}/>
                             ))}
                         </div>

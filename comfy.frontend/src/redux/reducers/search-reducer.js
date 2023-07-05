@@ -8,21 +8,22 @@ const searchSlice = createSlice({
     reducers:{
         setHistoryToSearchList: (state,action) => {
             const index = state.searchHistory.findIndex(product => product == action.payload)
-            if(index === -1){                                               // adding new product
-                                                                            // limit of 10 objects. The new object replaces the old one
+            if(index === -1){                               // adding new product
+                                                            // limit of 10 objects. The new object replaces the old one
                 if (state.searchHistory.length >= 10) {   
                     state.searchHistory.pop()
                 }
                 state.searchHistory.unshift(action.payload) 
             }
-            else{                                                           // updating the item in the array
+            else{                                             // updating the item in the array
 
                 state.searchHistory.splice(index,1)           // deleting
                 state.searchHistory.unshift(action.payload)   // adding
             }
         },
         deleteHistoryInSearchList: (state,action) => {
-            state.searchHistory = state.searchHistory.filter(product => product.id !== action.payload)
+            console.log(action.payload)
+            state.searchHistory = state.searchHistory.filter(history => history !== action.payload)
         }
     }
 });

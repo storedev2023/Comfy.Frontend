@@ -32,10 +32,8 @@ function Home() {
     useEffect(()=>{
 
         const fetchData = async () => {
-            const response = await ProductService.getShowcase()
-            
+            const response = await ProductService.getShowcase()   
             setShowcases(response)
-            console.log(response)
         }
 
         fetchData()

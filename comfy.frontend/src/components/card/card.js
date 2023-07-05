@@ -125,7 +125,9 @@ const Card = ({
             </div>
             {isProductHover && hover &&
                 <div className="list-item-more-info">
-                    <StarRating defaultState={product.rating} />
+                    { product?.rating !== undefined && 
+                    <StarRating defaultState={product?.rating} />
+                    }
                     <div className="list-item-more-info-characteristics">
                         {product.characteristicGroups.length != 0
                             ? product.characteristicGroups[0].characteristics.map(characteristic => (
