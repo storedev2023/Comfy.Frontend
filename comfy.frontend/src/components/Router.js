@@ -18,6 +18,13 @@ import EmptyPage from '../views/404/404'
 import SearchPage from '../views/search/Search'
 import SubcategoriesPage from '../views/categories-pages/Subcategories/Subcategories'
 import ProductsCategoriesPage from '../views/categories-pages/products-categories/ProductsCategories'
+import Orders from '../views/order/Order'
+import UserPage from '../views/user-profile/UserPage'
+import Wishlist from '../views/user-profile/wishlist-page/Wishlist'
+import UserPersonalData from '../views/user-profile/personal-data/UserPersonalData'
+import OrdersPage from '../views/user-profile/user-orders/Orders'
+import ReviewsPage from '../views/user-profile/reviews/UserReviews'
+import QuestionsPage from '../views/user-profile/questions/UserQuestions'
 
 const Router = () => {
     return (
@@ -36,6 +43,16 @@ const Router = () => {
                         <Route path="/search/:value/" element={<SearchPage/>}/>
                         <Route path="/categories/:name/" element={<SubcategoriesPage/>} />
                         <Route  path="/categories/:name/:subName/" element={<ProductsCategoriesPage/>}  />
+                        <Route  path="/order" element={<Orders/>}  />
+
+                        <Route path='/profile/' element={<UserPage />}  >
+                            <Route index element={<UserPersonalData />} />
+                            <Route path="wishlist" element={<Wishlist />} />
+                            <Route path="orders" element={<OrdersPage />} />
+                            <Route path="reviews" element={<ReviewsPage />} />\
+                            <Route path="questions" element={<QuestionsPage />} />
+                        </Route>
+                        
                         <Route path='/404' element={<EmptyPage />} /> {/* for wrong data  */}
                         <Route path='*' element={<EmptyPage />} />    {/* for invalid url data */}
                     </Routes>

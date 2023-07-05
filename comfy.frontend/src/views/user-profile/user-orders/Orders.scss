@@ -1,0 +1,195 @@
+.orders-block{
+    margin-left: 10px;
+    width:80%;
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    padding: 20px 20px 20px 20px;
+}
+
+.orders-title{
+    font-size: 30px;
+    font-weight: 400;
+}
+
+.order-block{
+    margin-top: 20px;
+}
+
+.expander {
+    width: 100%;
+    padding: 10px 10px 10px 10px;
+    border: 2px solid #EFEFEF;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+  }
+  
+  .content {
+    padding: 10px 10px 10px 10px;
+    display: none;
+    border: 2px solid #EFEFEF;
+    border-radius: 8px;
+  }
+  
+  .checkbox {
+    display: none;
+  }
+  
+  .checkbox:checked + .content {
+    display: block;
+  }
+
+  .order-number{
+    width: 15%;
+  }
+
+  .order-data{
+    width: 15%;
+  }
+
+  .order-status-succes{
+    width: 15%;
+    color: rgb(0, 196, 0);
+    font-weight: 600;
+  }
+
+  .order-status-canceled{
+    width: 15%;
+    color: red;
+    font-weight: 600;
+  }
+
+   .order-price{
+    width: 15%;
+  }
+
+  .order-image{
+    display: flex;
+    width: 35%;
+  }
+
+  .small-img{
+    margin-left: 10px;
+    width: 50px ;
+    height: 50px;
+    background-color: lightgray;
+  }
+
+  
+  .large-img{
+    margin-left: 10px;
+    width: 150px ;
+    height: 150px;
+    background-color: lightgray;
+  }
+
+  .arrow-down-span {
+    transform: translateY(-50%);
+    width: 10px;
+    height: 10px;
+    border-left: 3px solid black;
+    border-bottom: 3px solid black;
+    transform: rotate(-45deg);
+    margin-left: 90px;
+}
+
+.delivery-title{
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.full-name-text{
+    margin-left: 120px;
+    font-size: 14px;
+    font-weight: 400;
+    color: #2B3946;
+    display: inline;
+}
+
+.mail-div{
+    margin-top: 10px;
+}
+
+.mail-text{
+    margin-left: 100px;
+    font-size: 14px;
+    font-weight: 400;
+    color: #2B3946;
+    display: inline;
+}
+
+.phone-div{
+    margin-top: 10px;
+}
+
+.phone-text{
+    margin-left: 30px;
+    font-size: 14px;
+    font-weight: 400;
+    color: #2B3946;
+    display: inline;
+}
+
+.city-div{
+    margin-top: 10px;
+}
+
+.city-text{
+    margin-left: 40px;
+    font-size: 14px;
+    font-weight: 400;
+    color: #2B3946;
+    display: inline;
+}
+
+.border{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    background-color: #EFEFEF;
+    height: 2px;
+}
+
+.payment-title{
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.payment-div{
+    margin-top: 10px;
+}
+
+.payment-text{
+    margin-left: 50px;
+    font-size: 14px;
+    font-weight: 400;
+    color: #2B3946;
+    display: inline;
+}
+
+.product-info{
+    width: 50%;
+}
+
+.product-name{
+    font-size: 14px;
+    font-weight: 400;
+}
+
+
+.product-price{
+    margin-top: 50px;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.ordered-product{
+    padding: 10px 10px 10px 10px;
+    display: flex;
+}
+
+

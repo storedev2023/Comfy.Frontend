@@ -1,0 +1,67 @@
+.user-page-block{
+    width: 100%;
+    align-self: center;
+    position: relative;
+    max-width: 96.25rem;
+    margin-top: 30px;
+    display: flex;
+}
+
+.buttons-block{
+    width: 20%;
+    background-color: #FFFFFF;
+    height: 260px;
+    border-radius: 8px;
+    padding: 20px 20px 20px 20px;
+}
+
+.viewed-products{
+    margin-top: 10px;
+    border-radius: 8px;
+    width: 80%;
+    background-color: #FFFFFF;
+    padding: 20px 20px 20px 20px;
+    align-self: center;
+    position: relative;
+    max-width: 96.25rem;
+}
+
+.buttons-ul{
+    list-style-type:none;
+    margin-bottom: 0px;
+    padding-left: 0px;
+}
+
+.buttons-text{
+    color: #2B3946;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.buttons-li{
+    padding: 20px 0 0 0;
+    margin-left: 0px;
+    
+}
+
+.buttons-exit-text{
+    color: red;
+    font-size: 14px;
+    font-weight: 400; 
+    padding-left: 35px;
+}
+
+.icon-svg{
+    margin-right: 20px;
+    fill: #2B3946;
+    width: 16px;
+    height: 14px;
+}
+
+
+
+.viewed-products-title{
+    font-size: 20px;
+    font-weight: 700;
+    
+}
