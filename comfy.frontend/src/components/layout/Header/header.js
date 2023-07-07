@@ -1,18 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate, redirect } from "react-router-dom";
-import { CSSTransition } from 'react-transition-group'
+import { useDispatch, useSelector } from "react-redux";
 
-
+import './header.scss'
 import Icon from "../../icon/icon";
 import { CategoriesService } from "../../../service/CategoriesService";
 import Cart from "../../cart/Cart";
-
-import './header.scss'
 import { searchService } from "../../../service/SearchService";
-import { useDispatch, useSelector } from "react-redux";
 import { setCategoriesList } from "../../../redux/reducers/categories-reducer";
 import { setHistoryToSearchList, deleteHistoryInSearchList } from "../../../redux/reducers/search-reducer";
-import { priceFormat, calcDiscount } from "../../../scripts";
+import { priceFormat, calcDiscount, sortByField } from "../../../scripts";
+import { addFilterCheckBox, deleteAllFilters } from "../../../redux/reducers/filter-reducer";
+import Authorization from "../../auth/authorization";
 
 function HeaderTOP() {
 
@@ -109,33 +108,15 @@ function HeaderTOP() {
 
 
 function HeaderBOTTOM() {
+
+
+    const [isAuthorization, setIsAuthorization ] = useState(false)
+
     // Header cart
     const [isShowCart, setIsShowCart] = useState(false)
     const [isCartOverlay, setIsCartOverlay] = useState(false)
 
-    // Header password show/hide  
-    const [isShowPass, setIsShowPass] = useState(false)
-    const passwordLogic  = () => {
-        setIsShowPass(!isShowPass)
-        if(isShowPass){
-            document.querySelector(".input-password").setAttribute("type","password")
-        }
-        else{
-            document.querySelector(".input-password").setAttribute("type","text")
-        }
-    }
-
     // Header overlay
-    const [overlayProfile, setOverlayProfile] = useState(false)
-    const authorizationModelLogic = () =>{
-        setOverlayProfile(!overlayProfile)
-        if(overlayProfile) 
-        {  
-            document.querySelector(".input-password").setAttribute("type","password")
-            setIsShowPass(false) 
-        }
-    }
-
     const [showOverlaySearch, setShowOverlaySearch] = useState(false)
     const [showOverlayCatalog, setShowOverlayCatalog] = useState(false)
 
@@ -187,12 +168,12 @@ function HeaderBOTTOM() {
         fetchData()
     }, [])
 
-
+    let mainCategory
     const showSubCatalogs = (event, action) => {
         setShowSubCatalog(action)
 
         let mainId = event.target.dataset.id != undefined ? event.target.dataset.id : event.target.dataset.main_id
-        let mainCategory = document.querySelector('div[data-id="' + mainId + '"]')
+        mainCategory = document.querySelector('div[data-id="' + mainId + '"]')
         let subCategory = document.querySelector('div[data-main_id="' + mainId + '"]')
 
         try {
@@ -249,6 +230,12 @@ function HeaderBOTTOM() {
         dispatch(deleteHistoryInSearchList(history))
     }
 
+    const addFiltersPage = (filterQuery) =>{
+        dispatch(deleteAllFilters())
+        dispatch(addFilterCheckBox(filterQuery))
+        setShowOverlayCatalog(false)
+        mainCategory.classList.remove('menu-items-active')
+    }
 
     return (
         <>
@@ -277,10 +264,16 @@ function HeaderBOTTOM() {
                                             {category.categories.map(subCategory => (
                                                 <div key={subCategory.id} className="sub-categories">
                                                     <div className="sub-categories-title">
-                                                        <Link to={`categories/${category.url}/${subCategory.url}`} reloadDocument={true}>{subCategory.name}</Link>
+                                                        <Link to={`categories/${category.url}/${subCategory.url}`} reloadDocument={true} >{subCategory.name}</Link>
                                                     </div>
                                                     <div className="sub-categories-filters">
-                                                        {/* {subCategory.filters} */}
+                                                        { subCategory.filters.map(filter=>(
+                                                            <Link key={filter.filterQuery} to={`categories/${category.url}/${subCategory.url}`}>
+                                                                <div  className="categories-filters-name" onClick={() => addFiltersPage(filter.filterQuery)}>
+                                                                    {filter.name}
+                                                                </div>
+                                                            </Link>
+                                                        ))}
                                                     </div>
                                                 </div>
                                             ))}
@@ -352,12 +345,8 @@ function HeaderBOTTOM() {
 
                     </div>
                     <div className="header-bottom-controls">
-                        <div className="header-bottom-profile controls-items" onClick={authorizationModelLogic}>
-                            <a className="header-bottom-profile-link">
-                            <Link to={`/profile`} reloadDocument={true}> 
-                                Увійти
-                            </Link>
-                            </a>
+                        <div className="header-bottom-profile controls-items" onClick={() => {setIsAuthorization(true)}}>
+                            <span>Увійти</span>
                         </div>
                         <div className="header-bottom-wishlist controls-items"  >
                             <Icon id="wishlist" className="header-icon" />
@@ -378,70 +367,13 @@ function HeaderBOTTOM() {
             {(showOverlayCatalog || isCartOverlay) &&
                 <div className="catalog-overlay"></div>
             }
-            <CSSTransition in={overlayProfile} classNames="overlay" timeout={300} unmountOnExit>
-                <div className="auth-modal">
-                    <div className="auth-modal-overlay" onClick={authorizationModelLogic}>
-                    </div>
-                </div>
-            </CSSTransition>
-            <CSSTransition in={overlayProfile} classNames="auth" timeout={300} unmountOnExit>
-
-                <div className="auth-modal">
-                    <div className="auth-modal-dialog" >
-                        <div className="auth-block" >
-                            <div className="auth-block-picture">
-                                <div className="auth-block-picture-figure">
-                                    <div className="auth-block-picture-figure-triangle "></div>
-                                    <div className="auth-block-picture-figure-circle "></div>
-                                </div>
-                                <div>
-                                    <div className="auth-block-picture-figure-rectangle "></div>
-                                </div>
-                            </div>
-                            <div className="auth-block-form">
-                                <div className="auth-block-form-exit" onClick={authorizationModelLogic}>
-                                    <Icon id="close" classList="auth-close" />
-                                </div>
-                                <div className="auth-block-form-title">
-                                    Увійти
-                                </div>
-                                <div className="auth-block-form-inputs">
-                                    <div className="auth-block-form-inputs-email auth-form-inputs">
-                                        <span>Поштова адресса</span>
-                                        <input type="email" className="input-email" />
-                                    </div>
-                                    <div className="auth-block-form-inputs-password auth-form-inputs">
-                                        <span>Пароль</span>
-                                        <input type="password" className="input-password" />
-                                        <a className="inputs-password-control" onClick={passwordLogic}>
-                                            
-                                           {isShowPass === true 
-                                            ? <Icon id="hide-pass"/>
-                                            : <Icon id="show-pass"/> 
-                                            }
-                                        </a>
-                                    </div>
-                                </div>
-                                <div className="auth-block-form-login-btn">
-                                    <button>Увійти</button>
-                                </div>
-                                <div className="auth-block-form-forgot-pass">
-                                    <span>Забули пароль? Натисніть </span>
-                                    <span className="forgot-pass-span">сюды </span>
-                                </div>
-                                <div className="auth-block-form-register">
-                                    <span>Якщо у вас все ще нема профелю, будь-ласка </span>
-                                    <span className="form-register-span">Зареєструватися</span>
-                                </div>
-                                <div className="auth-block-form-google-btn">
-                                    <span>Увійти за допомогою : </span>
-                                    <span className="auth-google-btn">Google</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </CSSTransition>
+            {isAuthorization &&
+                <>
+                {console.log("auth")}
+                <Authorization/>
+                </>
+                
+            }
         </>
 
     );

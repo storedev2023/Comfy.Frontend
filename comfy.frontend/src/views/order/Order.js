@@ -1,14 +1,19 @@
 import React, { useEffect, useState } from "react";
 //Components
-import  Card                from "../../components/card/Card";
-import  Icon                from "../../components/icon/icon";
+import Card from "../../components/card/Card";
+import Icon from "../../components/icon/icon";
 //styles
 import './Order.scss'
+import { useSelector } from "react-redux";
 
 
 
 function Orders() {
-  return (
+
+
+    const products = useSelector(state => state.cart.itemsInCart)
+
+    return (
         <main>
             <div className="title-order">
                 <p>Оформити замовлення</p>
@@ -17,12 +22,12 @@ function Orders() {
                 <div className="info-block">
                     <div className="block">
                         <p className="city-title">Ваше  місто</p>
-                        <div class="dropdown">
-                            <button className="dropdown-button"><span>Одеса</span><span class="arrow-down"></span></button>
-                            <div class="dropdown-content">
+                        <div className="dropdown">
+                            <button className="dropdown-button"><span>Одеса</span><span className="arrow-down"></span></button>
+                            <div className="dropdown-content">
                                 <div className="city-search-div">
                                     <div>Місто</div>
-                                    <input className="city-name" placeholder="Введіть назву міста" type="text"/>
+                                    <input className="city-name" placeholder="Введіть назву міста" type="text" />
                                 </div>
                                 <ul className="city-ul">
                                     <li><div>Пункт меню 1</div></li>
@@ -35,60 +40,41 @@ function Orders() {
                     <div className="block">
                         <div>
                             <div className="yourorder-title">
-                            <p >Ваше замовлення </p> 
-                            <div className="delete-order-div">
-                                <Icon id="delete-item-cart" className="card-btn-icon-full" />
-                            </div> </div>
+                                <p >Ваше замовлення </p>
+                                <div className="delete-order-div">
+                                    <Icon id="delete-item-cart" className="card-btn-icon-full" />
+                                </div> </div>
                         </div>
                         <div>
                             <ul className="product-ul">
-                                <li className="product-li">
+                                {products.map(product => (
+                                <li className="product-li" key={product.url}>
                                     <div className="product-image"></div>
                                     {/* <img className="product-image" src="" alt="Product Image"/> */}
                                     <div className="product-info">
-                                        <div className="product-name">Ноутбук Apple MacBook Pro 14'' M2 Pro 1TB MPHF3 Space Gray</div>
+                                        <div className="product-name">{product.name}</div>
                                         <div className="product-code">Код: 34869023</div>
                                     </div>
                                     <div className="product-count-div">
                                         <div className="product-count">1</div>
                                         <div className="product-counts">
                                             <button className="product-minus-button" type="">-</button>
-                                            <button className="product-plus-button"  type="">+</button>
+                                            <button className="product-plus-button" type="">+</button>
                                         </div>
 
                                     </div>
                                     <div className="price-div">
                                         <div className="old-p-price">39 999 ₴</div>
-                                        <div className="p-price">29 999 ₴</div>
+                                        <div className="p-price">{product.price}</div>
                                     </div>
 
                                     <div className="delete-product-svg">
                                         <Icon id="delete-item-cart" className="card-btn-icon-full" />
                                     </div>
                                 </li>
-                                <li className="product-li">
-                                    <div className="product-image"></div>
-                                    {/* <img className="product-image" src="" alt="Product Image"/> */}
-                                    <div className="product-info">
-                                        <div className="product-name">Ноутбук Apple MacBook Pro 14'' M2 Pro 1TB MPHF3 Space Gray</div>
-                                        <div className="product-code">Код: 34869023</div>
-                                    </div>
-                                    <div className="product-count-div">
-                                        <p className="product-count">1</p>
-                                        <div className="product-counts">
-                                            <button className="product-minus-button" type="">-</button>
-                                            <button className="product-plus-button"  type="">+</button>
-                                        </div>
+                                ))
+                                }
 
-                                    </div>
-                                    <div className="price-div">
-                                        <p className="p-price">29 999 ₴</p>
-                                    </div>
-
-                                    <div className="delete-product-svg">
-                                        <Icon id="delete-item-cart" className="card-btn-icon-full" />
-                                    </div>
-                                </li>
                             </ul>
                         </div>
                     </div>
@@ -100,13 +86,13 @@ function Orders() {
                             <div>
                                 <div className="phone-number-title">Номер телефону</div>
                                 <input className="phone-number-input" placeholder="(380) 000 000 000" type="number"></input>
-                                
+
                             </div>
                             <div className="name-inputs">
                                 <div className="name-title">Ім`я</div>
                                 <input className="name-input" placeholder="" type="text"></input>
-                            </div> 
-                               <div className="email-inputs">
+                            </div>
+                            <div className="email-inputs">
                                 <div className="email-title">Email</div>
                                 <input className="email-input" placeholder="" type="email"></input>
                                 <button className="login-button" type="">Увійти</button>
@@ -118,7 +104,7 @@ function Orders() {
                     </div>
                     <div className="block">
                         <div className="giftcard">
-                            <input className="gif-card-checkbox" type="checkbox"/>
+                            <input className="gif-card-checkbox" type="checkbox" />
                             <div className="gift-card-title"> В мене є подарункова карта</div>
                             <div className="help-tag">
                                 <div className="help-tag-title">
@@ -134,14 +120,14 @@ function Orders() {
                         <div className="discount-div">
                             <div className="discount-input-title">Код знижки / промокод</div>
                             <div>
-                                <input className="discount-code-input" placeholder="Код знижки" type="text"/>
+                                <input className="discount-code-input" placeholder="Код знижки" type="text" />
                                 <button className="discount-code-button" type="">Застосувати</button>
                             </div>
                         </div>
                         <div className="bonuscard-div">
                             <div className="bonuscard-input-title">Номер вашої бонусної картки</div>
                             <div>
-                                <input className="discountcard-code-input" placeholder="0000-0000-0000" type="text"/>
+                                <input className="discountcard-code-input" placeholder="0000-0000-0000" type="text" />
                                 <button className="discountcard-button" type="">Ок</button>
                             </div>
                         </div>
@@ -157,13 +143,13 @@ function Orders() {
                         <div className="placing-order">
                             <button className="placing-order-button" type="">Застосувати</button>
                         </div>
-           
-                        
+
+
                     </div>
                 </div>
             </div>
         </main>
-  );
+    );
 }
 
 export default Orders;

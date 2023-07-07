@@ -1,0 +1,69 @@
+.filter-marks-row{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width: 100%;
+}
+
+.filter-marks{
+    display: flex;
+    flex-direction: row;
+    row-gap: 0.3rem;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.filter-mark{
+    display: flex;
+    align-items: center;
+    background: #3F4E5D;
+    padding: 0.3rem 0.8rem;
+    margin: 0.2rem;
+    border-radius: 30px;
+    color: white;
+    cursor: pointer;
+    .filter-mark-title{
+        font-size: 14px;
+        span{
+            font-weight: 600;
+        }
+    }
+    .filter-mark-delete{
+        display: flex;
+        align-items: center;
+        margin-left: 0.3rem;
+        svg{
+            width: 0.8rem;
+            path{
+                stroke-width: 5;
+            }
+        }
+    }
+
+}
+
+.filter-marks-delete-all{
+    display: flex;
+    align-items: center;
+    margin-left: 1rem;
+    
+    cursor: pointer;
+
+    .delete-btn{
+
+        border-bottom: 2px solid transparent;
+        svg{
+            margin-left: 0.3rem;
+            width: 0.8rem;
+            path{
+                stroke: #3F4E5D;
+                stroke-width: 5;
+            }
+        }
+    }
+
+
+    &:hover .delete-btn{
+        border-bottom: 2px solid #3F4E5D;
+    }
+}

@@ -1,3 +1,6 @@
+
+
+
 .product-categories-page{
     position: relative;
     margin-left: auto;
@@ -36,6 +39,21 @@
 .product-categories-section-body-products{
     flex: 1 1 75%;
     width: 100%;
+
+    
+    .product-categories-products-sorting{
+        display: flex;
+        align-items: right;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+        .active-filters{
+            width: 75%;           
+        }
+        .active-select{
+            width: 24%;
+        }
+    }
+
     .product-categories-products-catalog{
         display: grid;
         grid-auto-flow: row dense;
