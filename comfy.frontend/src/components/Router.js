@@ -45,7 +45,6 @@ const Router = () => {
                         <Route path="/categories/:name/" element={<SubcategoriesPage/>} />
                         <Route path="/categories/:name/:subName/" element={<ProductsCategoriesPage/>}  />
                         <Route path="/compare/:id" element={<Compare/>}/>
-                        <Route  path="/categories/:name/:subName/" element={<ProductsCategoriesPage/>}  />
                         <Route  path="/order" element={<Orders/>}  />
                         <Route path='/profile/' element={<UserPage />}  >
                             <Route index element={<UserPersonalData />} />

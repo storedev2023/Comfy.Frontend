@@ -5,7 +5,8 @@ function Сompare() {
 
 
   return (
-    <main>     
+    <main> 
+          
     </main>
   );
 }
