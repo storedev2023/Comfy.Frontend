@@ -26,6 +26,12 @@ import UserPersonalData from '../views/user-profile/personal-data/UserPersonalDa
 import OrdersPage from '../views/user-profile/user-orders/Orders'
 import ReviewsPage from '../views/user-profile/reviews/UserReviews'
 import QuestionsPage from '../views/user-profile/questions/UserQuestions'
+import AboutCompany from '../views/footer-pages/about-company/AboutCompany'
+import CashlessPayment from '../views/footer-pages/cashless-payment/CashlessPayment'
+import Contacts from '../views/footer-pages/contacts/Contacts'
+import Guarantee from '../views/footer-pages/guarantee/Guarantee'
+import Payment from '../views/footer-pages/payment/Payment'
+import Security from '../views/footer-pages/security/Security'
 
 const Router = () => {
     return (
@@ -45,8 +51,17 @@ const Router = () => {
                         <Route path="/categories/:name/" element={<SubcategoriesPage/>} />
                         <Route path="/categories/:name/:subName/" element={<ProductsCategoriesPage/>}  />
                         <Route path="/compare/:id" element={<Compare/>}/>
-                        <Route  path="/categories/:name/:subName/" element={<ProductsCategoriesPage/>}  />
                         <Route  path="/order" element={<Orders/>}  />
+                        
+                        <Route  path="/aboutcompany" element={<AboutCompany/>}  />
+                        <Route  path="/cashlesspayment" element={<CashlessPayment/>}  />
+                        <Route  path="/contacts" element={<Contacts/>}  />
+                        <Route  path="/guarantee" element={<Guarantee/>}  />
+                        <Route  path="/payment" element={<Payment/>}  />
+                        <Route  path="/security" element={<Security/>}  />
+
+
+
                         <Route path='/profile/' element={<UserPage />}  >
                             <Route index element={<UserPersonalData />} />
                             <Route path="wishlist" element={<Wishlist />} />

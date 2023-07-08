@@ -1,15 +1,22 @@
 .order-page{
     margin-left: auto;
     margin-right: auto;
-    width: 80%;
     display: flex;
     max-width: 96.25rem;
+    width: 80%;
 }
 
-.title-order{
+.orders-pages{
+    max-width: 96.25rem;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.title-order{ 
     max-width: 110rem;
     margin-top: 20px;
-    margin-left: 10%;
+    font-size: 20px;
 }
 
 .info-block{
@@ -18,6 +25,7 @@
 }
 
 .total-block{
+    margin-top: 55px;
     margin-left: 10px;
     background-color: #EFEFEF;
     width: 35%;
@@ -125,7 +133,7 @@
 }
 
 .product-li{
-
+    width: 100%;
     margin-top: 10px;
     display: flex;
 }
@@ -145,12 +153,13 @@
     height: 20px;
     font-weight: 400;
     font-size: 16px;
-    line-height: 40px;
     width: 100%;
+    display: flex;
+
  }
  
  .product-code{
-    margin-top: 20px;
+    margin-top: 30px;
     color: #6B6B6B;
     height: 10px;
     font-weight: 400;
@@ -162,10 +171,10 @@
 .product-count-div{
     display: flex;
     border-radius: 8px;
-    margin-left: 20px;
+    margin-left: 10px;
     align-self: center;
     background-color: #EFEFEF;
-    width: 160px;
+    width: 170px;
     height: 64px;
 }
 .product-count{
@@ -204,20 +213,21 @@
     display: flex;
     flex-direction: column;
     margin-left: 25px;
-    width: 130px;
+    width: 17%;
     height: 80px;
 }
 
-.old-p-price{
+.old-price{
     position: relative;
     margin-top: 10px;
     height: 10px;
     font-size: 14px;
     color: #6B6B6B;
     z-index: 2;
+    text-decoration: line-through;
 }
 
-.p-price{
+.price{
     position: relative;
     height: 5px;
     font-size: 30px;
@@ -242,20 +252,23 @@
 }
 
 .discount-div{
+    width: 100%;
     margin-top: 10px;
 }
 
 .discount-code-input{
+    display: inline;
     background-color:#EFEFEF;
     border: none;
     border-radius: 8px;
-    width: 265px;
+    width: 65%;
     height: 48px;
     padding-left: 20px;
 }
 .discount-code-button{
+    display: inline;
     margin-left: 20px;
-    width: 200px;
+    width: 30%;
     height: 40px;
     border-radius: 30px;
     border: none;
@@ -263,6 +276,7 @@
     color: #FFFFFF;
 }
 .bonuscard-div{
+    width: 100%;
     margin-top: 10px;
 }
 
@@ -275,14 +289,14 @@
     background-color:#EFEFEF;
     border: none;
     border-radius: 8px;
-    width: 365px;
+    width: 70%;
     height: 48px;
     padding-left: 20px;
 }
 
 .discountcard-button{
     margin-left: 20px;
-    width: 100px;
+    width: 25%;
     height: 40px;
     border-radius: 30px;
     border: none;
@@ -297,12 +311,15 @@
 }
 
 .products-count{
+    width: 50%;
     font-size: 14px;
     font-weight: 400;
     color: #2B3946;
 }
 
 .products-prices{
+    width: 50%;
+    text-align: right;
     margin-left: 50%;
     font-size: 20px;
     font-weight: 700;
@@ -316,6 +333,7 @@
 }
 
 .payment-title{
+    width: 50%;
     font-weight: 700;
     font-size: 14px;
 }
@@ -327,9 +345,10 @@
 }
 
 .payment-price{
-    margin-left: 35%;
+    width: 50%;
     font-size: 40px;
     font-weight: 700;
+    text-align: right;
 }
 
 .placing-order{
@@ -339,9 +358,8 @@
 }
 
 .placing-order-button{
-
     align-self: center;
-    width: 400px;
+    width: 80%;
     border-radius: 8px;
     height: 40px;
     border: none;
@@ -364,73 +382,34 @@
 .contacts-inputs{
     display: flex;
     margin-top: 10px;
+    width: 100%;
 }
 
+.contact-div{
+    margin-left: 10px;
+    width: 32%;
+}
 
-.phone-number-input{
-    background-color:#EFEFEF;
-    border: none;
-    border-radius: 8px;
-    width: 230px;
+.contact-div-long{
+    margin-left: 10px;
+    width: 100%;
+}
+
+.callback-inputs{
+    margin-left: 10px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.input{
+    padding: 10px;
+    width: 100%;
     height: 48px;
-    padding-left: 20px;
-}
-
-.login-button{
-    margin-left: 20px;
-    width: 120px;
-    height: 40px;
-    border-radius: 30px;
     border: none;
-    background-color: #E0E0E0;
-    color: #FFFFFF;
-}
+    border-radius: 6px;
+    background-color: #EFEFEF;
 
-.phone-number-title{
-    position: relative;
-    font-size: 14px;
-    font-weight: 400;
-    color: #5C6875;
-}
-
-.name-inputs{
-    float:left;
-    margin-left: 25px;
-}
-
-.name-title{
-    font-size: 14px;
-    font-weight: 400;
-    color: #5C6875;
-}
-
-.name-input{
-    background-color:#EFEFEF;
-    border: none;
-    border-radius: 8px;
-    width: 260px;
-    height: 48px;
-    padding-left: 20px;
-}
-
-.email-inputs{
-    float:left;
-    margin-left: 25px;
-}
-
-.email-title{
-    font-size: 14px;
-    font-weight: 400;
-    color: #5C6875;
-}
-
-.email-input{
-    background-color:#EFEFEF;
-    border: none;
-    border-radius: 8px;
-    width: 260px;
-    height: 48px;
-    padding-left: 20px;
 }
 
 .continue-order{
@@ -455,10 +434,11 @@
 }
 
 .gif-card-checkbox{
+    align-self: center;
     border: none;
     border-radius: 8px;
-    width: 40px;
-    height: 40px;
+    width: 20px;
+    height: 20px;
     color: #EFEFEF;
 }
 
@@ -484,3 +464,10 @@
     color: #9ACD6A;
 
 }
+
+.custom-checkbox {
+    margin-left: 10px;
+    height: 20px;
+    width: 20px;
+  }
+  
