@@ -1,5 +1,6 @@
 import React from "react";
 import "./footer.scss"
+import { Link } from "react-router-dom";
 
 
 function Footer() {
@@ -7,7 +8,7 @@ function Footer() {
     <div className="footer">
        <div className="footer-info-block">
           <ul className="info-footer-ul">
-            <li className="info-footer-li">
+            <li className="info-footer-li-first">
                 <div>
                     <span>Доставка</span>
                     <p>Самовивіз із магазину "Comfy", доставка за адресою або у відділення"Нова Пошта" і "Meest"</p>
@@ -56,23 +57,38 @@ function Footer() {
                 <div className="footer-nav-loffy">
                     <p> Loffy </p>
                     <ul>
-                        <li><a href="">Про компанію</a></li>
-                        <li><a href="">Контакти</a></li>
-                        <li><a href="">Безпека та застереження</a> </li>
+                        <li> 
+                        <Link to={`/aboutcompany`}>
+                            <a href="">Про компанію</a> 
+                        </Link>
+                        </li>
+                      
+                        <li>
+                        <Link to={`/contacts`}>
+                            <a href="">Контакти</a>
+                        </Link>
+                            </li>
+                        <li>
+                        <Link to={`/security`}>
+                            <a href="">Безпека та застереження</a>
+                        </Link>
+                             </li>
                     </ul>
                 </div>
                 <div className="footer-nav-services"> 
-                    <p> Послуги і сервіси </p>
+                        <p> Послуги і сервіси </p>
                     <ul>
-                    <li><a href="">Бонусна програма</a></li>
-                    <li><a href="">Оплата</a></li>
+               
+                    <li> <Link to={`/cashlesspayment`}><a href="">Безготівкова оплата</a></Link></li>
+                    
+                    <li><Link to={`/payment`}><a href="">Оплата</a></Link></li>
                     </ul>
                 </div>
 
                 <div className="footer-nav-help">  
                     <p> Допомога покупцеві</p>
                     <ul>
-                    <li><a href="">Гарантія</a></li>
+                    <li><Link to={`/guarantee`}><a href="">Гарантія</a></Link></li>
                     </ul>
                 </div>
         </div>
