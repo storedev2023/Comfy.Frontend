@@ -2,19 +2,21 @@
     margin-left: auto;
     margin-right: auto;
     display: flex;
+    max-width: 96.25rem;
+    width: 80%;
 }
 
 .orders-pages{
     max-width: 96.25rem;
     width: 80%;
-    
     margin-left: auto;
     margin-right: auto;
 }
 
-.title-order{
+.title-order{ 
     max-width: 110rem;
     margin-top: 20px;
+    font-size: 20px;
 }
 
 .info-block{
@@ -23,6 +25,7 @@
 }
 
 .total-block{
+    margin-top: 55px;
     margin-left: 10px;
     background-color: #EFEFEF;
     width: 35%;

@@ -45,15 +45,19 @@ function Home() {
         setIsHideAboutUs(!isHideAboutUs)
 
         const info_block = document.querySelector(".about-us-info")
+        const about_us_text_last = document.querySelector(".about-us-text-last")
+
         console.log(info_block,isHideAboutUs )
         if(isHideAboutUs === false){
             info_block.style.height="100%"
             console.log( info_block.classList.remove("after"))
             info_block.style.setProperty('--sq-color', "transparent")
+            about_us_text_last.style.setProperty('display','inline-block') 
         }
         else{
             info_block.style.height="128px"
             info_block.style.setProperty('--sq-color', "#EFEFEF")
+            about_us_text_last.style.setProperty('display','none')
         }
     }
 
@@ -126,7 +130,7 @@ function Home() {
                 При замовленні кількох товарів одразу Loffy доставляє всю техніку в один день.<br/>
                 </p>
                 <p className="about-us-title-2">Повний комплекс послуг інтернет-магазину Loffy</p>
-                <p className="about-us-text">
+                <p className="about-us-text-last">
                 Найширша мережа магазинів Loffy розкинулася по всій Україні, проте більшість споживачів воліє здійснювати покупки через офіційний сайт компанії. Чому? В інтернет-магазині перед вами відкривається повний список товарів з усіма доступними послугами додаткового обслуговування. Клієнт може замовити будь-який побутовий прилад або електронний гаджет із швидкою доставкою до свого міста, витративши на це мінімум зусиль та часу.<br/><br/>
                 Також, купуючи товар в Loffy ви відчуєте такі переваги, як:<br/><br/>
                 Унікальні системи знижок та регулярні розпродажі. На свою електронну пошту покупці отримують акційні промокоди, які можна застосувати просто на сторінці оформлення замовлення.<br/>

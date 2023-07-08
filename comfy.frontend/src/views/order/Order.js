@@ -2,24 +2,31 @@ import React, { useEffect, useState } from "react";
 //Components
 import Card from "../../components/card/Card";
 import Icon from "../../components/icon/icon";
+import { deleteItemFromCart } from "../../redux/reducers/cart-reducer";
+import { calcDiscount, priceFormat } from "../../scripts";
+import { useDispatch, useSelector } from "react-redux";
 //styles
 import './Order.scss'
-import { useSelector } from "react-redux";
 
 
 
 function Orders() {
-
-
     const products = useSelector(state => state.cart.itemsInCart)
+    const totalPrice = products.reduce((acc, product) => acc += calcDiscount(product.price, product.discountAmount), 0)
+    console.log(products)
+
+    const dispatch = useDispatch();
+    const deleteProduct = (event, id) => {
+        dispatch(deleteItemFromCart(id));
+    }
 
     return (
-        <main>
-            <div className="title-order">
-                <p>Оформити замовлення</p>
-            </div>
+            
             <div className="order-page">
                 <div className="info-block">
+                      <div className="title-order">
+                        <p>Оформити замовлення</p>
+                        </div>
                     <div className="block">
                         <p className="city-title">Ваше  місто</p>
                         <div className="dropdown">
@@ -49,11 +56,10 @@ function Orders() {
                             <ul className="product-ul">
                                 {products.map(product => (
                                 <li className="product-li" key={product.url}>
-                                    <div className="product-image"></div>
-                                    {/* <img className="product-image" src="" alt="Product Image"/> */}
+                                   <img className="product-image" src={product.images[0].url} alt="Product Image"/>
                                     <div className="product-info">
                                         <div className="product-name">{product.name}</div>
-                                        <div className="product-code">Код: 34869023</div>
+                                        <div className="product-code">Код: {product.code}</div>
                                     </div>
                                     <div className="product-count-div">
                                         <div className="product-count">1</div>
@@ -64,11 +70,13 @@ function Orders() {
 
                                     </div>
                                     <div className="price-div">
-                                        <div className="old-p-price">39 999 ₴</div>
-                                        <div className="p-price">{product.price}</div>
+                                    {product.discountAmount > 0 &&
+                                        <div className="old-price">{priceFormat(calcDiscount(product.price, product.discountAmount))} ₴</div>
+                                    }
+                                       <div className="price">{priceFormat(product.price)} ₴</div>
                                     </div>
 
-                                    <div className="delete-product-svg">
+                                    <div className="delete-product-svg" onClick={(e) => { deleteProduct(e, product.id) }}>
                                         <Icon id="delete-item-cart" className="card-btn-icon-full" />
                                     </div>
                                 </li>
@@ -80,26 +88,57 @@ function Orders() {
                     </div>
                     <div className="block">
                         <div className="contact-title">
-                            1. Контактна інформація
+                                Контактна інформація
                         </div>
                         <div className="contacts-inputs">
-                            <div>
-                                <div className="phone-number-title">Номер телефону</div>
-                                <input className="phone-number-input" placeholder="(380) 000 000 000" type="number"></input>
-
+                            <div className="contact-div">
+                                <div className="title">Пошта</div>
+                                <input className="input" type="email" name="" />
                             </div>
-                            <div className="name-inputs">
-                                <div className="name-title">Ім`я</div>
-                                <input className="name-input" placeholder="" type="text"></input>
+                            <div className="contact-div">
+                                <div className="title">Номер телефону</div>
+                                <input className="input" type="number" placeholder="+380 73 6343 817" name="" />
                             </div>
-                            <div className="email-inputs">
-                                <div className="email-title">Email</div>
-                                <input className="email-input" placeholder="" type="email"></input>
-                                <button className="login-button" type="">Увійти</button>
+                            <div className="contact-div">
+                              </div>
+                        </div>
+                            <div className="contacts-inputs">
+                                <div className="contact-div">
+                                    <div className="title">Ім`я</div>
+                                    <input className="input" type="text" name="" />
+                                </div>
+                                <div className="contact-div">
+                                    <div className="title">Фамілія</div>
+                                    <input className="input" type="text"  name=""/>
+                                </div>
+                                <div className="contact-div">
+                                    <div className="title">По батькові</div>
+                                    <input className="input" type="text"  name="" />
+                                </div>
+                             </div>
+                             <div className="contacts-inputs">
+                                <div className="contact-div">
+                                    <div className="title">Місто</div>
+                                    <input className="input" type="text" name=""/>
+                                </div>
+                                <div className="contact-div">
+                                    <div className="title">Адреса</div>
+                                    <input className="input" type="text"  name=""/>
+                                </div>
+                                <div className="contact-div">
+                                </div>
+                            </div>
+                            <div className="contacts-inputs">
+                            <div className="contact-div-long">
+                                <div className="title">Коментар до замовлення</div>
+                                <input className="input" type="text" name=""/>
                             </div>
                         </div>
-                        <div className="continue-order">
-                            <button className="continue-order-button" type="">Продовжити замовлення</button>
+                        <div className="contacts-inputs">
+                            <div className="callback-inputs">
+                            <label for="myCheckbox">Передзвонити після оформлення</label>
+                            <input type="checkbox" id="myCheckbox" class="custom-checkbox"/>
+                        </div>
                         </div>
                     </div>
                     <div className="block">
@@ -132,31 +171,21 @@ function Orders() {
                             </div>
                         </div>
                         <div className="product-counting">
-                            <div className="products-count">2 товари на суму:</div>
-                            <div className="products-prices">30 699.50 ₴</div>
+                            <div className="products-count">{products.length} товари на суму:</div>
+                            <div className="products-prices">{priceFormat(totalPrice)} ₴</div>
                         </div>
                         <div className="br-div"></div>
                         <div className="payment">
                             <div className="payment-title">До сплати: </div>
-                            <div className="payment-price">30 699.50 ₴ </div>
+                            <div className="payment-price">{priceFormat(totalPrice)} ₴ </div>
                         </div>
                         <div className="placing-order">
                             <button className="placing-order-button" type="">Застосувати</button>
                         </div>
-
-
                     </div>
                 </div>
             </div>
-        </main>
     );
 }
 
 export default Orders;
-
-
-
-
-
-
-
