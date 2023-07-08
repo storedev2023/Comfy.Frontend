@@ -11,6 +11,7 @@ import CarouselItem from "react-bootstrap/esm/CarouselItem";
 import "./Card.scss"
 import { calcDiscount, priceFormat } from "../../scripts";
 import StarRating from "../star-rating/StarRating";
+import Wishlist from "../wishlist/Wishlist";
 
 
 
@@ -46,7 +47,8 @@ const Card = ({
                         <Icon id="compare" className="card-icon" />
                     </div>
                     <div className="control-wishlist control-item" >
-                        <Icon id="wishlist" className="card-icon" />
+                        <Wishlist product_id={product.id} className="card-icon" />
+                        {/* //<Icon id="wishlist" className="card-icon" /> */}
                     </div>
                 </div>
             </div>

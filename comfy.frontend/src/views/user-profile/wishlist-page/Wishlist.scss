@@ -3,134 +3,19 @@
     width: 80%;
     background-color: #FFFFFF;
     border-radius: 8px;
-    padding: 20px 20px 20px 20px;
+    padding: 1.3rem 2rem;
 }
 
-.whishlist{
-    margin-top: 40px;
-}
-
-.whishlist-title{
+.wishlist-title{
     font-size: 30px;
     font-weight: 400;
+    margin-bottom: 1rem;
 }
 
-.whishlist-ul{
-    display: inline-block;
-    list-style-type:none;
-    padding-left: 0px;
-}
-.whishlist-li{
-    display: inline-block;
-    background-color:#EFEFEF;
-    border-radius: 8px;
-    padding: 5px 5px 5px 5px;
-    margin-left: 10px;    
-}
-  .whishlsit-title{
-    padding: 10px 10px 10px 10px;
-    display: inline-block;
-  } 
-  .whishlsit-botton{
-    display: inline-block;
-    margin-left: 90%;
-  }
-
-.wishlist-products-ul{
-    list-style-type:none;
-    margin-bottom: 0px;
-    padding-left: 0px;
-}
-
-.img{
-    height: 150px;
-    width: 150px;
-    background-color: #EFEFEF;
-}
-
-.wishlist-product{
-    border: 2px solid #EFEFEF;
-    border-radius: 8px;
-    padding: 10px 10px 10px 10px;
+.empty-wishlist{
+    margin-top: 2rem;
     display: flex;
-}
-
-.product-info{
-    width: 50%;
-}
-
-.product-name{
-    font-size: 14px;
-    font-weight: 400;
-}
-
-.product-rating{
-    margin-top: 15px;
-}
-.product-old-price{
-
-    margin-top: 15px;
-    font-size: 14px;
-    font-weight: 400;
-    text-decoration: line-through;
-    display: inline-block;
-    color: #6B6B6B;
-}
-.discount-title{
-    font-size: 14px;
-    font-weight: 400;
-    display: inline-block;
-    color: red;
-}
-
-.product-price{
-    font-size: 30px;
-    font-weight: 700;
-}
-
-.product-buttons{
-    width: 35%;
-    display: flex;
-    align-items: center;
     justify-content: center;
-}
+    font-size: 26px;
 
-.product-wishlist-button{
-    width: 25.33px;
-    height: 22.67px;
-}
-
-.product-compare-button{
-    width: 25.33px;
-    height: 22.67px;
-}
-
-.compare-full-svg-div{
-    margin-left: 50px;
-}
-
-.product-cart-svg{
-    fill: #FFFFFF;
-    width: 30.67px;
-    height: 28.52px;
-}
-
-.product-cart-svg-div{    
-    display: inline-block;
-}
-
-.buy-button{
-    border-radius: 20px 20px 0px 20px;
-    margin-left: 100px;
-    background-color:#2B3946;
-    color: #FFFFFF;
-    padding: 10px 20px 10px 20px;
-    font-size: 20px;
-    font-weight: 400;
-}
-
-.viewed-products-title{
-    font-size: 20px;
-    font-weight: 700;
-    
 }

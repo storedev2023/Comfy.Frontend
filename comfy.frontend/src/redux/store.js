@@ -17,6 +17,7 @@ import productReducer from "./reducers/product-reducer";
 import viewedProductsSliderReducer from "./reducers/viewed-products-slider-reducer";
 import categoriesReducer from "./reducers/categories-reducer";
 import filterReducer from "./reducers/filter-reducer";
+import userReducer from "./reducers/user-reducer";
 
 const rootReducer = combineReducers({        
     cart: cartReducer,
@@ -25,12 +26,13 @@ const rootReducer = combineReducers({
     search_history: searchReducer,
     categories_list: categoriesReducer,
     filter_query: filterReducer,
+    user: userReducer,
 });
 
 const persistConfig = {
     key: 'root',
     storage,
-    whitelist: ['cart','v_product','search_history'],
+    whitelist: ['cart','v_product','search_history','user'],
 };
 
 const persistedReducer = persistReducer(persistConfig,rootReducer)

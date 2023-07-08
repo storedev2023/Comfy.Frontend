@@ -1,7 +1,33 @@
+//errors
+.error-message{
+    margin-top: 0.1rem;
+    color: #D03F3F;
+}
+
+
+
+
 // CSSTransition Authorization
 .auth-enter {
     opacity: 0;
     transform: scale(0.1);
+}
+
+.active-profile-link{
+    background: #2B3946;
+    margin-right: 1rem;
+    margin-left: 2rem;
+    padding: 0.4rem 1rem;
+    border: 2px solid #9ACD6A ;
+    border-radius:100%;
+    transition: all .15s linear;
+
+}
+
+.active-profile{
+    font-size: 24px;
+    text-decoration: none;
+    color:white;
 }
 
 .auth-enter-active {
@@ -62,7 +88,6 @@
     bottom: 0;
     left: 0;
     right: 0;
-
     z-index: -1;
     pointer-events: all;
     outline: 0;
@@ -75,7 +100,6 @@
     bottom: 0;
     left: 0;
     right: 0;
-
     display: flex;
     align-items: center;
     justify-content: center;
@@ -83,7 +107,7 @@
 
     .auth-block {
         display: flex;
-
+        color:#1F1E24;
         background: white;
         width: 59rem;
         height: 43.125rem;
@@ -157,6 +181,12 @@
     font-size: 20px;
 }
 
+.auth-block-form-title-register{
+    margin-top: 2rem;
+    font-weight: 500;
+    font-size: 20px;
+}
+
 .auth-form-inputs {
     position: relative;
     display: flex;
@@ -192,45 +222,55 @@
         width: 25px;
         height: 15px;
         cursor: pointer;
+
+        svg{
+            pointer-events: none;
+            path{
+                stroke-width: 2;
+            }
+            circle{
+             
+                stroke-width: 2;
+            }
+        }
     }
 
 }
 
 .auth-block-form-login-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 40px;
+    background: #9ACD6A;
+    border-radius: 32px;
     margin-top: 0.2rem;
-
-    button {
-        width: 155px;
-        height: 40px;
+    transition: all .15s linear;
+    cursor: pointer;
+    span{
         color: white;
-        background: #9ACD6A;
-        border: none;
-        border-radius: 32px;
+        text-decoration: none;
     }
 }
 
-
-.auth-block-form-forgot-pass {
-    margin-top: 1.5rem;
-    font-weight: 400;
-    font-size: 14px;
-
-    .forgot-pass-span {
-        font-size: 14px;
-        color: #9ACD6A;
-        margin-left: 0.1rem;
-        cursor: pointer;
-    }
+.auth-block-form-login-btn:hover{
+    background: #78a053;
+    transition: all .15s linear;
 }
 
 
 .auth-block-form-register {
-    margin-top: 0.3rem;
+    margin-top: 1.5rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     font-weight: 400;
     font-size: 14px;
+
+    &:hover .form-register-span{
+        color: #78a053;
+    }
 
     .form-register-span {
         color: #9ACD6A;

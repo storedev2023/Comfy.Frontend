@@ -109,9 +109,6 @@ function HeaderTOP() {
 
 function HeaderBOTTOM() {
 
-
-    const [isAuthorization, setIsAuthorization ] = useState(false)
-
     // Header cart
     const [isShowCart, setIsShowCart] = useState(false)
     const [isCartOverlay, setIsCartOverlay] = useState(false)
@@ -150,8 +147,6 @@ function HeaderBOTTOM() {
 
 
     })
-
-
 
     //Header categories
     const [showSubCatalog, setShowSubCatalog] = useState(false)
@@ -234,7 +229,10 @@ function HeaderBOTTOM() {
         dispatch(deleteAllFilters())
         dispatch(addFilterCheckBox(filterQuery))
         setShowOverlayCatalog(false)
-        mainCategory.classList.remove('menu-items-active')
+        try{
+            mainCategory.classList.remove('menu-items-active')
+        }
+        catch{}
     }
 
     return (
@@ -345,9 +343,7 @@ function HeaderBOTTOM() {
 
                     </div>
                     <div className="header-bottom-controls">
-                        <div className="header-bottom-profile controls-items" onClick={() => {setIsAuthorization(true)}}>
-                            <span>Увійти</span>
-                        </div>
+                        <Authorization btn_className={"header-bottom-profile controls-items"} isBtnActive={true}/>
                         <div className="header-bottom-wishlist controls-items"  >
                             <Icon id="wishlist" className="header-icon" />
                         </div>
@@ -366,13 +362,6 @@ function HeaderBOTTOM() {
             </div>
             {(showOverlayCatalog || isCartOverlay) &&
                 <div className="catalog-overlay"></div>
-            }
-            {isAuthorization &&
-                <>
-                {console.log("auth")}
-                <Authorization/>
-                </>
-                
             }
         </>
 

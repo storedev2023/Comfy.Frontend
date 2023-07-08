@@ -29,7 +29,6 @@ const FilterSlice = createSlice({
         },
 
         addFilterMark: (state, action) => {
-            console.log(action.payload)
             if (state.activeCharacteristicMarks.findIndex(mark => mark.filter === action.payload.filter) === -1) {
                 state.activeCharacteristicMarks.unshift(action.payload)
             }

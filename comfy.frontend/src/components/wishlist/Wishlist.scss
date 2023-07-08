@@ -1,0 +1,11 @@
+.div{
+    svg{
+        pointer-events: none;
+    }
+}
+.div:hover{
+    path{
+        fill:#9ACD6A;
+        transition: all .15s linear;
+    }
+}

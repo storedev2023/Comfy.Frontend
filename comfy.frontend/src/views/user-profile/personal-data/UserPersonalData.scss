@@ -1,86 +1,140 @@
-.personal-data-block{
+.personal-data-page{
     margin-left: 10px;
     width:80%;
     background-color: #FFFFFF;
     border-radius: 8px;
-    padding: 20px 20px 20px 20px;
+    padding: 1.3rem 2rem;
 }
 
 .personal-data-title{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     font-size: 30px;
     font-weight: 400;
 }
 
-.personal-data-small-title{
-    margin-top: 20px;
-    font-size: 16px;
-    font-weight: 400;
-}
-
-.full-name-div{
-    margin-top: 10px;
-}
-
-.title{
+.personal-data-edit{
+    padding: 0.5rem 0.8rem;
+    color: #9ACD6A;
     font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    line-height: 24px;
+    letter-spacing: 1px;   
+}
+
+.personal-data-info,.personal-data-info-edit{
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    flex-direction: column;
+    height: 87%;
+}
+
+.personal-data___info, .personal-data-info___edit{
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+}
+.personal-data-info-title{
+
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    font-size: 20px;
     font-weight: 400;
-    color: #5C6875;
-    display: inline;
-
 }
 
-.full-name-text{
-    margin-left: 120px;
-    font-size: 14px;
-    font-weight: 400;
-    color: #2B3946;
-    display: inline;
+.personal-data-info-row{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-direction: row;
+    margin-top: 0.3rem;
+    padding: 0.2rem 0;
+    width: 100%; 
+    
+    .label{
+        width: 18%;
+        font-size: 18px;
+        color: #2B3946;
+        display: inline;
+    
+    }
+
+    .text{
+        margin-left: 1rem;
+        width: 18%;
+        font-size: 16px;
+        color: #2B3946;
+        display: inline;
+    }
+
+    .status{
+        margin-left: 1rem;
+        width: auto;
+        font-size: 16px;
+        color: #2B3946;
+        display: inline;
+    }
+
+    .input{
+        input{
+
+            border: none;
+            background: #EFEFEF;
+            border-radius: 8px;
+            padding: 0.5rem 0.8rem;
+        }
+    }
+
+    .factor-link{
+        margin-left: 1rem;
+        width: auto;
+        font-size: 16px;
+        color: #2B3946;
+        display: inline;
+    }
+    .factor-link:hover{
+        color:blue;
+        text-decoration: underline;
+    }
 }
 
-.mail-div{
-    margin-top: 10px;
-}
+.personal-data-info-edit-btn{
+    display: flex;
+    gap:1rem;
+    justify-content: start;
 
-.mail-text{
-    margin-left: 100px;
-    font-size: 14px;
-    font-weight: 400;
-    color: #2B3946;
-    display: inline;
-}
+    .personal-data-info-edit-btn-cancel{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: white ;
+        border: 1px solid #9ACD6A;
+        border-radius: 40px;
+        width: 200px;
+        height: 48px;
+        padding: 0.2rem 0.8rem;
+        color: #9ACD6A;;
+        font-size: 16px;
+        cursor: pointer;
+    }
 
-.phone-div{
-    margin-top: 10px;
-}
+    .personal-data-info-edit-btn-save{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 200px;
+        height: 48px;
+        border-radius: 40px;
+        padding: 0.5rem 0.8rem;
+        background: #9ACD6A;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+    }
 
-.phone-text{
-    margin-left: 30px;
-    font-size: 14px;
-    font-weight: 400;
-    color: #2B3946;
-    display: inline;
-}
-
-.bday-div{
-    margin-top: 10px;
-}
-
-.bday-text{
-    margin-left: 25px;
-    font-size: 14px;
-    font-weight: 400;
-    color: #2B3946;
-    display: inline;
-}
-
-.delivery-div{
-    margin-top: 10px;
-}
-
-.delivery-text{
-    margin-left: 30px;
-    font-size: 14px;
-    font-weight: 400;
-    color: #2B3946;
-    display: inline;
 }

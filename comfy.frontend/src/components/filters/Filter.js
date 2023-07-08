@@ -78,7 +78,6 @@ const Filter = ({
     const isActiveFilter = (id) => {
         const {current_filter_id, current_characteristic_id} = getActiveFiltersId()
         if (!current_filter_id) { return false }
-        //console.log(filter_id)
         if(current_filter_id.indexOf(isBrand ? "brand" : String(filter_id)) != -1){
             if (current_characteristic_id.indexOf(String(id)) != -1) {
                 return true
@@ -97,11 +96,9 @@ const Filter = ({
         if(isBrand)
         {
             const inputs = document.querySelectorAll('input[class="action-checkbox-brand"]:checked')
-            console.log(inputs)
             if(inputs.length > 0)
             {
                 Array.from(inputs).map((input) => {
-                console.log(input)
                     dispatch(addFilterMark({ name: title, value: input.name, filter: `brand=${input.value}` }))
                     return
                 })

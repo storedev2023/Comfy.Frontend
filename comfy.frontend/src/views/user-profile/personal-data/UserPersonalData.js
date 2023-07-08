@@ -1,61 +1,128 @@
 import React, { useEffect, useState } from "react";
-//Components
-import  Card                from "../../../components/card/Card";
-import  Icon                from "../../../components/icon/icon";
+
 //styles
 import './UserPersonalData.scss'
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 
 function UserPersonalData() {
+
+  const [isEdit, setIsEdit] = useState(false)
+
+  const editUserData = () => {
+
+  }
+
+  const dispatch = useDispatch()
+  const user = useSelector(state => state.user.user_data)
+
   return (
-          <div className="personal-data-block">
-              <div className="personal-data-title">
-                Ваші персональні дані
+    <div className="personal-data-page">
+      <div className="personal-data-title">
+        <span>Ваші персональні дані</span>
+      </div>
+      {isEdit ?
+        <div className="personal-data-info-edit">
+          <div className="personal-data-info___edit">
+            <div className="personal-data-info-title">
+              <span>Особисті дані:</span>
+            </div>
+            <div className="personal-data-info-row">
+              <div className="label">
+                Никнейм:
               </div>
-              <div className="personal-data-small-title">
-                Особисті дані:
+              <div className="input">
+                <input defaultValue={user.name} />
               </div>
-              <div className="full-name-div">
-                  <div className="title">
-                  ПІБ
-                </div>
-                <div className="full-name-text">
-                    Тіана Сідху
-                </div>
+            </div>
+            <div className="personal-data-info-row">
+              <div className="label">
+                Пошта:
               </div>
-              <div className="mail-div">
-                  <div className="title">
-                  Пошта
-                </div>
-                <div className="mail-text">
-                  tia.sidhu81@gmai.com
-                </div>
+              <div className="input">
+                <input defaultValue={user.email} />
               </div>
-              <div className="phone-div">
-                  <div className="title">
-                  Номер телефону
-                </div>
-                <div className="phone-text">             
-                  +38 (099) 222 - 22 - 22
-                </div>
+            </div>
+            <div className="personal-data-info-row">
+              <div className="label">
+                Номер телефону:
               </div>
-              <div className="bday-div">
-                  <div className="title">
-                  Дата народження
-                </div>
-                <div className="bday-text">
-                  18.11.2001
-                </div>
+              <div className="input">
+                <input defaultValue={user.phoneNumber} />
               </div>
-              <div className="delivery-div">
-                  <div className="title">
-                  Адреса доставки
-                </div>
-                <div className="delivery-text">
-                  Одеса, Садова 3, 1234
-                </div>
-              </div>
+            </div>
           </div>
+          <div className="personal-data-info-edit-btn">
+            <div className="personal-data-info-edit-btn-cancel" onClick={() => { setIsEdit(false) }}>
+              Скасувати
+            </div>
+            <div className="personal-data-info-edit-btn-save">
+              Зберегти
+            </div>
+          </div>
+        </div>
+        : <div className="personal-data-info">
+          <div className="personal-data___info">
+            <div className="personal-data-info-title">
+              <span>Особисті дані:</span>
+            </div>
+            <div className="personal-data-info-row">
+              <div className="label">
+                Никнейм:
+              </div>
+              <div className="text">
+                {user.name}
+              </div>
+            </div>
+            <div className="personal-data-info-row">
+              <div className="label">
+                Пошта:
+              </div>
+              <div className="text">
+                {user.email}
+              </div>
+              <div className="status">
+                {user.emailConfirmed
+                  ? <>Підтверджено</>
+                  : <>Не підтверджено</>}
+              </div>
+            </div>
+            <div className="personal-data-info-row">
+              <div className="label">
+                Номер телефону:
+              </div>
+              <div className="text">
+                {user.phoneNumber}
+              </div>
+              <div className="status">
+                {user.phoneNumberConfirmed
+                  ? <>Підтверджено</>
+                  : <>Не підтверджено</>}
+              </div>
+            </div>
+            <div className="personal-data-info-row">
+              <div className="label">
+                Двофакторний захист:
+              </div>
+              <div className="text">
+                {user.twoFactorEnabled
+                  ? <>Підтверджено</>
+                  : <>Вимкнено</>}
+              </div>
+              {!user.twoFactorEnabled &&
+                <Link to={"/profile/twoFactor"} className="factor-link">
+                  Увімкнути
+                </Link>}
+            </div>
+          </div>
+          <div className="personal-data-edit" onClick={()=>setIsEdit(true)}>
+            РЕДАГУВАТИ ПЕРСОНАЛЬНІ ДАННІ
+          </div>
+        </div>
+      }
+
+    </div>
   );
 }
 

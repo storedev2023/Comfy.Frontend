@@ -8,28 +8,36 @@
 }
 
 .buttons-block{
+    position: sticky;
+    top:8%;
     width: 20%;
+    display: flex;
+    flex-direction: column;
     background-color: #FFFFFF;
-    height: 260px;
+    height: 100%;
     border-radius: 8px;
-    padding: 20px 20px 20px 20px;
+    padding-top: 0.8rem;
 }
 
-.viewed-products{
-    margin-top: 10px;
-    border-radius: 8px;
-    width: 80%;
-    background-color: #FFFFFF;
-    padding: 20px 20px 20px 20px;
-    align-self: center;
-    position: relative;
-    max-width: 96.25rem;
+
+
+.link-pending, .link-active{
+    border-left: 2px solid transparent;
+    padding: 1rem;
+    color:#2B3946;
 }
 
-.buttons-ul{
-    list-style-type:none;
-    margin-bottom: 0px;
-    padding-left: 0px;
+.link-pending:hover, .link-active:hover{
+    color:#9ACD6A;
+    svg{
+        fill:#9ACD6A;
+    }
+}
+
+.link-active{
+    border-left: 2px solid #9ACD6A;
+    font-weight: 600;
+    background: #EFEFef;
 }
 
 .buttons-text{
@@ -38,17 +46,18 @@
     font-weight: 400;
 }
 
-.buttons-li{
-    padding: 20px 0 0 0;
-    margin-left: 0px;
-    
-}
 
 .buttons-exit-text{
+    display: flex;
+    align-items: center;
+
     color: red;
+    margin-left: 2.2rem;
     font-size: 14px;
     font-weight: 400; 
-    padding-left: 35px;
+    padding: 1rem;
+    padding-top: 0.5rem;
+    cursor: pointer;
 }
 
 .icon-svg{
