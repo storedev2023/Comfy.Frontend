@@ -2,24 +2,56 @@
 
 
 .header-icon{
-    width: 25.33px;
-    height: 22.67px;
+    width: 1.8rem;
+    height: 1.8rem;
     path{
         fill:white;
         transition: all .15s linear;
     }
 }
 
-
-
-.card-icon{
-    width: 30px;
-    height: 30px; 
+.header-icon-wishlist{
+    width: 1.8rem;
+    height: 1.8rem;
     path{
-        fill:#605D70;
+        fill:transparent;
+        stroke:white;
         transition: all .15s linear;
     }
 }
+
+
+.card-icon-control-wishlist{
+    width: 30px;
+    height: 30px;
+    transition: all .15s linear;
+    path{
+        fill:none;
+        stroke:#605D70;
+    }
+}
+
+.card-icon-control-wishlist:hover{
+    fill:#605D70;
+    path{
+        fill:#605D70;
+        stroke:#605D70;
+        transition: all .15s linear;
+    }
+}
+
+
+.card-icon-control-wishlist-full{
+    width: 30px;
+    height: 30px; 
+    transition: all .15s linear;
+    path{
+        fill:#9ACD6A;
+        stroke:#9ACD6A;
+    }
+}
+
+
 
 .card-icon:hover{
     path{
@@ -67,8 +99,13 @@
     width: 2rem;
     height: 2rem;
     margin: 1.2rem;
+    path{
+        fill:transparent;
+        stroke:#9ACD6A;
+    }
     rect{
-        stroke:#EFF7FB;
+        fill:transparent;
+        stroke:#9ACD6A;
     }
 }
 
@@ -136,3 +173,11 @@
     fill-opacity:1;
     
 }
+
+.carousel-fist-slide, .carousel-last-slide{
+    path{
+        stroke:rgb(188, 188, 188);
+    }
+}
+
+

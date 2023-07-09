@@ -52,25 +52,23 @@ function Footer() {
         </div>
 
         <div className="footer-links-block">
-            
-
                 <div className="footer-nav-loffy">
                     <p> Loffy </p>
                     <ul>
                         <li> 
                         <Link to={`/aboutcompany`}>
-                            <a href="">Про компанію</a> 
+                            Про компанію
                         </Link>
                         </li>
                       
                         <li>
                         <Link to={`/contacts`}>
-                            <a href="">Контакти</a>
+                            Контакти
                         </Link>
                             </li>
                         <li>
                         <Link to={`/security`}>
-                            <a href="">Безпека та застереження</a>
+                            Безпека та застереження
                         </Link>
                              </li>
                     </ul>
@@ -79,16 +77,16 @@ function Footer() {
                         <p> Послуги і сервіси </p>
                     <ul>
                
-                    <li> <Link to={`/cashlesspayment`}><a href="">Безготівкова оплата</a></Link></li>
+                    <li> <Link to={`/cashlesspayment`}>Безготівкова оплата</Link></li>
                     
-                    <li><Link to={`/payment`}><a href="">Оплата</a></Link></li>
+                    <li><Link to={`/payment`}>Оплата</Link></li>
                     </ul>
                 </div>
 
                 <div className="footer-nav-help">  
                     <p> Допомога покупцеві</p>
                     <ul>
-                    <li><Link to={`/guarantee`}><a href="">Гарантія</a></Link></li>
+                    <li><Link to={`/guarantee`}>Гарантія</Link></li>
                     </ul>
                 </div>
         </div>

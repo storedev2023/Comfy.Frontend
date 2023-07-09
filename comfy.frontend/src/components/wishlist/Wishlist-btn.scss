@@ -4,8 +4,12 @@
     }
 }
 .div:hover{
-    path{
+    .card-icon-control-wishlist{
         fill:#9ACD6A;
         transition: all .15s linear;
+        path{
+            fill:#605D70;;
+        }
     }
+
 }

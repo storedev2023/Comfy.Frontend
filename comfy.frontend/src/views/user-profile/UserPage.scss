@@ -29,9 +29,6 @@
 
 .link-pending:hover, .link-active:hover{
     color:#9ACD6A;
-    svg{
-        fill:#9ACD6A;
-    }
 }
 
 .link-active{
@@ -52,7 +49,6 @@
     align-items: center;
 
     color: red;
-    margin-left: 2.2rem;
     font-size: 14px;
     font-weight: 400; 
     padding: 1rem;
@@ -61,12 +57,31 @@
 }
 
 .icon-svg{
-    margin-right: 20px;
     fill: #2B3946;
-    width: 16px;
-    height: 14px;
+    width: 20px;
+    height: 20px;
 }
 
+.icon-svg-wishlist{
+    width: 20px;
+    height: 20px;
+    path{
+        fill:none;
+    }   
+}
+
+.icon-svg-cart{
+    width: 20px;
+    height: 20px;
+    path{
+        fill:#2B3946;
+        stroke:#2B3946;
+    }   
+}
+
+.link-title{
+    margin-left: 20px;
+}
 
 
 .viewed-products-title{

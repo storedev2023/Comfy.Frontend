@@ -52,16 +52,12 @@ const Router = () => {
                         <Route path="/categories/:name/:subName/" element={<ProductsCategoriesPage/>}  />
                         <Route path="/compare/:id" element={<Compare/>}/>
                         <Route  path="/order" element={<Orders/>}  />
-                        
                         <Route  path="/aboutcompany" element={<AboutCompany/>}  />
                         <Route  path="/cashlesspayment" element={<CashlessPayment/>}  />
                         <Route  path="/contacts" element={<Contacts/>}  />
                         <Route  path="/guarantee" element={<Guarantee/>}  />
                         <Route  path="/payment" element={<Payment/>}  />
                         <Route  path="/security" element={<Security/>}  />
-
-
-
                         <Route path='/profile/' element={<UserPage />}  >
                             <Route index element={<UserPersonalData />} />
                             <Route path="wishlist" element={<Wishlist />} />

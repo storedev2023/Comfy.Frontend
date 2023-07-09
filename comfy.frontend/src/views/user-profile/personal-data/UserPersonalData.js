@@ -17,6 +17,10 @@ function UserPersonalData() {
   const dispatch = useDispatch()
   const user = useSelector(state => state.user.user_data)
 
+  // if(user.userId === ''){
+  //   navigate("/")
+  // }
+
   return (
     <div className="personal-data-page">
       <div className="personal-data-title">

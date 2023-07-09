@@ -15,7 +15,7 @@
 }
 
 .personal-data-edit{
-    padding: 0.5rem 0.8rem;
+    padding: 0.5rem 0rem;
     color: #9ACD6A;
     font-size: 14px;
     font-weight: 600;
@@ -104,9 +104,11 @@
 }
 
 .personal-data-info-edit-btn{
+    margin-top: 1rem;
+    width: 100%;
     display: flex;
     gap:1rem;
-    justify-content: start;
+    justify-content: end;
 
     .personal-data-info-edit-btn-cancel{
         display: flex;

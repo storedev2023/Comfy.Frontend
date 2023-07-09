@@ -6,6 +6,26 @@ body{
 ;
 }
 
+::-webkit-scrollbar {
+    width: 12px; /* ширина нового скроллбара */
+} 
+::-webkit-scrollbar-track {
+    background: #D4D4D4; /* цвет фона у дорожки */
+    box-shadow: 0 0 2px rgba(0, 0, 0, .2) inset; /* тень у дорожки */
+}
+::-webkit-scrollbar-thumb {
+    background: #F9BB08; /* цвет фона у дорожки */
+    border-radius: 8px; /* скругление углов */
+    border: 3px solid #f5cdcd; /* толщина, стиль и цвет рамки */
+}
+
+ 
+
+::-webkit-scrollbar-thumb:hover {
+    border: 3px solid #ffffff;
+    background: #455A9F; /* ползунок меняет цвет при наведении */
+}
+
 *{
     box-sizing: border-box;
 }

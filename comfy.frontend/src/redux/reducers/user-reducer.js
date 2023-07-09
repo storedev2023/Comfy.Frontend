@@ -17,8 +17,6 @@ const UserSlice = createSlice({
     reducers: {
         setUserAuth: (state, action) => {
             state.user_access_data = action.payload;
-            console.log(action.payload)
-            console.log(state.user_access_data)
         },
         setUserData:(state, action) => {
             state.user_data = action.payload;
@@ -27,7 +25,7 @@ const UserSlice = createSlice({
             state.user_orders = action.payload;
         },
         setUserWishlist:(state, action) => {
-            state.user_orders = action.payload;
+            state.user_wishlist = action.payload;
         },
         setUserQuestions:(state, action) => {
             state.user_questions = action.payload;

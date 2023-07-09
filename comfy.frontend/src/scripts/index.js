@@ -19,3 +19,11 @@ export function parseLocaleNumber(stringNumber, locale) {
         .replace(new RegExp('\\' + decimalSeparator), '.')
     );
 }
+
+export const getMaxPrice = (categoryData) =>{
+    return categoryData?.products?.reduce((max, product) => (product.price > max ? product.price : max), 0)
+}
+
+export const getMinPrice = (categoryData) =>{
+    return categoryData?.products?.reduce((min, product) => (product.price < min ? product.price : min), getMaxPrice(categoryData))
+}

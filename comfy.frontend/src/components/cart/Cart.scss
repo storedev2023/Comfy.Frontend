@@ -1,6 +1,6 @@
 .cart-number-of-goods{
     position: absolute;
-    transform: translateX(90%) translateY(-170%);
+    transform: translateX(120%) translateY(-210%);
 
     display: flex;
     align-items: center;
@@ -51,7 +51,7 @@
 }
 
 .default-cart{
-    transform: translateX(-91%) translateY(1rem);
+    transform: translateX(-91%) translateY(0.9rem);
     padding-top: 0.3rem;
     position: absolute;
     margin-right: 2rem;
@@ -118,7 +118,28 @@
 
 }
 
-.default-cart-products-list::-webkit-scrollbar { width: 0; }
+.default-cart-products-list::-webkit-scrollbar {
+    width: 12px; /* ширина нового скроллбара */
+} 
+.default-cart-products-list::-webkit-scrollbar-track {
+    background: #EFEFEF; /* цвет фона у дорожки */
+    border-radius: 8px;
+    box-shadow: 0 0 2px rgba(0, 0, 0, .2) inset; /* тень у дорожки */
+}
+.default-cart-products-list::-webkit-scrollbar-thumb {
+    background: #D4D4D4; /* цвет фона у дорожки */
+    border-radius: 8px; /* скругление углов */
+    border: 3px solid #D4D4D4; /* толщина, стиль и цвет рамки */
+}
+
+ 
+
+.default-cart-products-list::-webkit-scrollbar-thumb:hover {
+    border: none;
+    background: #9ACD6A; /* ползунок меняет цвет при наведении */
+}
+
+//.default-cart-products-list::-webkit-scrollbar { width: 0; }
 
 
 .cart-product{
@@ -127,8 +148,10 @@
     width: 100%;
     min-height: 6rem;
     height: 100%;
+
     border-bottom: 1px solid #B1B7BA;
-    margin: 0.8rem 0rem;
+    margin-top: 0.8rem ;
+    
     
     .cart-product-img{
         display: flex;

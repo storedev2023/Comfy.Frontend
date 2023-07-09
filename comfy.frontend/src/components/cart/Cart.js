@@ -78,7 +78,11 @@ const Cart = (props) => {
                                             <div className="cart-product" key={product.url} >
                                                 <div className="cart-product-img">
                                                 <Link to={`/product/${product.url}`} reloadDocument={true}>
-                                                    <img src={product.images[0].url} alt="" />
+                                                    {product.hasOwnProperty("imageUrl")  
+                                                    ? <img src={product.imageUrl} alt="" />
+                                                    : <img src={product.images[0].url} alt="" />
+                                                    }
+                                                   
                                                 </Link>    
                                                 </div>
                                                 <div className="cart-product-info">
@@ -88,7 +92,7 @@ const Cart = (props) => {
                                                        </Link>
                                                     </div>
                                                     <div className="cart-product-code">
-                                                        Код:
+                                                        Код:  {product.code}
                                                     </div>
                                                 </div>
                                                 <div className="cart-product-price">

@@ -5,9 +5,11 @@ import Icon from "../../components/icon/icon";
 //styles
 import './UserPage.scss'
 import { useDispatch, useSelector } from "react-redux";
-import { logOutUser, setUserData } from "../../redux/reducers/user-reducer";
+import { logOutUser, setUserAuth, setUserData, setUserOrders, setUserQuestions, setUserWishlist } from "../../redux/reducers/user-reducer";
 import { userService } from "../../service/UserService";
 import { upPage } from "../../scripts";
+
+
 
 
 function UserPage() {
@@ -15,16 +17,43 @@ function UserPage() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
-  const user = useSelector(state => state.user.user_access_data)
-  useEffect(() => {
 
+  const [accessToken, setAccessToken] = useState('')
+
+  const user = useSelector(state => state.user.user_access_data)
+
+  const checkAccessToken = async (response) =>{
+    if(response.hasOwnProperty('newAccessToken'))
+    {
+      dispatch(setUserAuth({userId:user.userId, accessToken:response.newAccessToken, refreshToken:user.refreshToken}))
+      setAccessToken(response.newAccessToken)
+    }
+  }
+
+  useEffect(() => {
     if(user.userId === ''){
       navigate("/")
     }
 
     const fetchData = async () => {
-      const response = await userService.user_data(user?.userId, user?.accessToken)
-      dispatch(setUserData(response))
+      
+
+      const user_data = await userService.user_data(user?.userId, user?.accessToken, user?.refreshToken)
+      checkAccessToken(user_data)
+      dispatch(setUserData(user_data))
+
+      const user_orders = await userService.user_orders(user?.userId, user?.accessToken, user?.refreshToken)
+      dispatch(setUserOrders(user_orders))
+
+      const user_wishlist =  await userService.user_wishlist(user?.userId, user?.accessToken, user?.refreshToken)
+      dispatch(setUserWishlist(user_wishlist))
+
+      const user_questions =  await userService.user_questions(user?.userId)
+      dispatch(setUserQuestions(user_questions))
+
+      const user_reviews =  await userService.user_reviews(user?.userId)
+      dispatch(setUserQuestions(user_reviews))
+
     }
 
     fetchData()
@@ -40,31 +69,32 @@ function UserPage() {
       <div className="user-page-block">
         <div className="buttons-block">
           <NavLink to='/profile/' className={({ isActive }) => isActive ? "link-active" : "link-pending"} >
-            <Icon id="wishlist" className="icon-svg" />
-            Мій кабінет
+            <Icon id="cabinet" className="icon-svg" />
+            <span className="link-title">Мій кабінет</span>
           </NavLink>
           <NavLink to='orders' className={({ isActive }) => isActive ? "link-active" : "link-pending"} >
-            <Icon id="cart" className="icon-svg" />
-            Мої замовлення
+            <Icon id="cart" className="icon-svg-cart" />
+            <span className="link-title">Мої замовлення</span>
           </NavLink>
           <NavLink to='wishlist' className={({ isActive }) => isActive ? "link-active" : "link-pending"} >
-            <Icon id="wishlist" className="icon-svg" />
-            Список бажань
+            <Icon id="wishlist" className="icon-svg-wishlist" />
+            <span className="link-title">Лист бажань</span>
           </NavLink>
           <NavLink to='reviews' className={({ isActive }) => isActive ? "link-active" : "link-pending"} >
-            <Icon id="wishlist" className="icon-svg" />
-            Відгуки
+            <Icon id="reviews" className="icon-svg" />
+            <span className="link-title">Відгуки</span>
           </NavLink>
           <NavLink to='questions' className={({ isActive }) => isActive ? "link-active" : "link-pending"} >
-            <Icon id="wishlist" className="icon-svg" />
-            Питання
+            <Icon id="question" className="icon-svg" />
+            <span className="link-title">Питання</span>
           </NavLink>
-          <NavLink to='twoFactor' className={({ isActive }) => isActive ? "link-active" : "link-pending"} >
+          {/* <NavLink to='twoFactor' className={({ isActive }) => isActive ? "link-active" : "link-pending"} >
             <Icon id="wishlist" className="icon-svg" />
             Двофакторний захист
-          </NavLink>
+          </NavLink> */}
           <div className="buttons-exit-text" onClick={btnLogOutUser} >
-            <span>Вийти</span>
+            <Icon id="exit-cabinet" className="icon-svg" />
+            <span className="link-title">Вийти</span>
           </div>
         </div>
         <Outlet />

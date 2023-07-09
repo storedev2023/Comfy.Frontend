@@ -14,8 +14,6 @@ function Order({
         
       }
 
-      console.log(order)
-
     return (
         <div className="order-block">
             <div className="order-info" key={order.id} onClick={isOpen}>
@@ -50,7 +48,7 @@ function Order({
                                     <img src={product.imageUrl}/>
                                 </div>
                                 <div className="order-product-name">
-                                    <Link to={`/product/${product.url}`}>{product.name}</Link>
+                                    <Link to={`/product/${product.url}`} reloadDocument={true}>{product.name}</Link>
                                 </div>
                                 <div className="order-product-price">
                                     {product.price} ₴

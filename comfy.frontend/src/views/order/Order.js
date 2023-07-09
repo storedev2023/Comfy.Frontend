@@ -56,7 +56,10 @@ function Orders() {
                             <ul className="product-ul">
                                 {products.map(product => (
                                 <li className="product-li" key={product.url}>
-                                   <img className="product-image" src={product.images[0].url} alt="Product Image"/>
+                                    {product.hasOwnProperty("imageUrl")  
+                                    ? <img className="product-image" src={product.imageUrl} alt="Product Image"/>
+                                    : <img className="product-image" src={product.images[0].url} alt="Product Image"/>
+                                    }
                                     <div className="product-info">
                                         <div className="product-name">{product.name}</div>
                                         <div className="product-code">Код: {product.code}</div>
@@ -93,11 +96,11 @@ function Orders() {
                         <div className="contacts-inputs">
                             <div className="contact-div">
                                 <div className="title">Пошта</div>
-                                <input className="input" type="email" name="" />
+                                <input type="email" name="" />
                             </div>
                             <div className="contact-div">
                                 <div className="title">Номер телефону</div>
-                                <input className="input" type="number" placeholder="+380 73 6343 817" name="" />
+                                <input type="number" placeholder="+380 73 6343 817" name="" />
                             </div>
                             <div className="contact-div">
                               </div>
@@ -105,25 +108,25 @@ function Orders() {
                             <div className="contacts-inputs">
                                 <div className="contact-div">
                                     <div className="title">Ім`я</div>
-                                    <input className="input" type="text" name="" />
+                                    <input type="text" name="" />
                                 </div>
                                 <div className="contact-div">
                                     <div className="title">Фамілія</div>
-                                    <input className="input" type="text"  name=""/>
+                                    <input type="text"  name=""/>
                                 </div>
                                 <div className="contact-div">
                                     <div className="title">По батькові</div>
-                                    <input className="input" type="text"  name="" />
+                                    <input type="text"  name="" />
                                 </div>
                              </div>
                              <div className="contacts-inputs">
                                 <div className="contact-div">
                                     <div className="title">Місто</div>
-                                    <input className="input" type="text" name=""/>
+                                    <input type="text" name=""/>
                                 </div>
                                 <div className="contact-div">
                                     <div className="title">Адреса</div>
-                                    <input className="input" type="text"  name=""/>
+                                    <input type="text"  name=""/>
                                 </div>
                                 <div className="contact-div">
                                 </div>
@@ -131,7 +134,7 @@ function Orders() {
                             <div className="contacts-inputs">
                             <div className="contact-div-long">
                                 <div className="title">Коментар до замовлення</div>
-                                <input className="input" type="text" name=""/>
+                                <input type="text" name=""/>
                             </div>
                         </div>
                         <div className="contacts-inputs">

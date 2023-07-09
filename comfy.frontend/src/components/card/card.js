@@ -11,7 +11,7 @@ import CarouselItem from "react-bootstrap/esm/CarouselItem";
 import "./Card.scss"
 import { calcDiscount, priceFormat } from "../../scripts";
 import StarRating from "../star-rating/StarRating";
-import Wishlist from "../wishlist/Wishlist";
+import WishlistBtn from "../wishlist/Wishlist-btn";
 
 
 
@@ -44,11 +44,10 @@ const Card = ({
                 </div>
                 <div className="list-item-list-control">
                     <div className="control-compare control-item">
-                        <Icon id="compare" className="card-icon" />
+                        <Icon id="compare" className="card-icon-control-compare" />
                     </div>
                     <div className="control-wishlist control-item" >
-                        <Wishlist product_id={product.id} className="card-icon" />
-                        {/* //<Icon id="wishlist" className="card-icon" /> */}
+                        <WishlistBtn product_id={product.id}/>
                     </div>
                 </div>
             </div>
@@ -128,7 +127,9 @@ const Card = ({
             {isProductHover && hover &&
                 <div className="list-item-more-info">
                     { product?.rating !== undefined && 
-                    <StarRating defaultState={product?.rating} />
+                    <div className="list-item-more-info-rating">
+                         <StarRating defaultState={product?.rating} height={30} width={30}/>
+                    </div>
                     }
                     <div className="list-item-more-info-characteristics">
                         {product.characteristicGroups.length != 0

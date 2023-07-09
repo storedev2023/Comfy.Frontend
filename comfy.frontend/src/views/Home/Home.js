@@ -13,6 +13,7 @@ import s3 from "../../assets/images/main_carousel/s3.jpg"
 import s4 from "../../assets/images/main_carousel/s4.jpg"
 import s5 from "../../assets/images/main_carousel/s5.jpg"
 import { ProductService } from "../../service/ProductService";
+import CarouselProductViewed from "../../components/carousel/product-viewed/Carousel-product-viewed";
 
 
 
@@ -106,6 +107,16 @@ function Home() {
                     </div>
                 </section>
             ))}
+            <section className="home-section viewed-products">
+                <div className="home-section-header">
+                <   div className="home-section-title">
+                        Переглянуті товари
+                    </div>
+                </div>
+                <div className="home-section-body">
+                    <CarouselProductViewed/>
+                </div>
+                </section>
             <div className="about-us">
                 <div className="about-us-info">
                 <p className="about-us-title">Інтернет-магазин битової техніки та електроніки Loffy</p>

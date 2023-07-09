@@ -14,23 +14,18 @@ import Order from "../../../components/order/Order";
 function Orders() {
 
   const user = useSelector(state => state.user.user_access_data)
-  const [orderList, setOrderList] = useState([])
+  const orders = useSelector(state => state.user.user_orders)
 
   const dispatch = useDispatch()
 
   useEffect(() => {
-    const fetchData = async () => {
-      const response = await userService.user_orders(user?.userId, user?.accessToken)
-      setOrderList(response)
-      dispatch(setUserOrders(response))
-    }
-    fetchData()
+    // const fetchData = async () => {
+    //   const response = await userService.user_orders(user?.userId, user?.accessToken, user?.refreshToken)
+    //   setOrderList(response)
+    //   dispatch(setUserOrders(response))
+    // }
+    // fetchData()
   }, [user])
-
-
-
-
-
 
 
   return (
@@ -39,9 +34,9 @@ function Orders() {
         Мої замовлення
       </div>
       <div className="orders-list">
-        {orderList !== undefined  ?
+        {orders.length !== 0 ?
           <>
-            {Array.from(orderList).map(order => (
+            {orders.map(order => (
               <Order order={order} key={order.id}/>
             ))}
           </>

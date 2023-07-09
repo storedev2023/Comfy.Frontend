@@ -215,9 +215,12 @@ function HeaderBOTTOM() {
     }
 
     const updateDataHistory = (value) =>{
-        dispatch(setHistoryToSearchList(value))
-        setShowOverlaySearch(false)
-        return navigate(`/search/${value}`)
+        if(value.trim() !== "")
+        {
+            dispatch(setHistoryToSearchList(value.trim()))
+            setShowOverlaySearch(false)
+            return navigate(`/search/${value}`)
+        }
     }
 
     const deleteHistoryInList = (history) => {
@@ -345,7 +348,7 @@ function HeaderBOTTOM() {
                     <div className="header-bottom-controls">
                         <Authorization btn_className={"header-bottom-profile controls-items"} isBtnActive={true}/>
                         <div className="header-bottom-wishlist controls-items"  >
-                            <Icon id="wishlist" className="header-icon" />
+                            <Icon id="wishlist" className="header-icon-wishlist" />
                         </div>
                         <div className="header-bottom-compare controls-items">
                             <Icon id="compare" className="header-icon" />

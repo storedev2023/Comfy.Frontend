@@ -13,19 +13,17 @@ import Icon from "../../icon/icon";
 
 const GalleryPrevArrow = ({ currentSlide, slideCount, ...props }) => {
     const { onClick } = props;
-
     return (
       <div {...props} className="custom-prevArrow" onClick={onClick}>
-        <Icon id="slider-arrow-left"/>
+        <Icon id="slider-arrow-left" className={currentSlide === 0 ? "carousel-fist-slide" : undefined}/>
       </div>
     );
   };
   const GalleryNextArrow = ({ currentSlide, slideCount, ...props }) => {
     const {  onClick } = props;
-
     return (
       <div {...props} className="custom-nextArrow" onClick={onClick}>
-        <Icon id="slider-arrow-right"/>
+        <Icon id="slider-arrow-right" className={currentSlide === slideCount-4 ? "carousel-last-slide" : undefined} />
       </div>
     );
   };

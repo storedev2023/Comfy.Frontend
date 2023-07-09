@@ -88,9 +88,7 @@ function Authorization({
         return await result
     }
 
-    useEffect(() => {
 
-    }, [setUserData, user_data])
 
     const singIn = async () => {
         const auth_block = document.querySelector(".auth-block-form-inputs")
@@ -128,6 +126,10 @@ function Authorization({
         }
     }
 
+
+
+    console.log()
+
     return (
         <>
             {isBtnActive &&
@@ -140,7 +142,7 @@ function Authorization({
                         </div>
                         : <>
                             {user_data?.name !== undefined &&
-                                <Link to={`/profile`} reloadDocument={true} className="active-profile-link">
+                                <Link to={`/profile/`} reloadDocument={true} className="active-profile-link">
                                     <div className="active-profile">
                                         {user_data?.name[0]?.toUpperCase()}
                                     </div>

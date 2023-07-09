@@ -8,16 +8,10 @@ import Filter from "../../../components/filters/Filter";
 import FilterMarks from "../../../components/filters/marks/FilterMarks";
 import Sorting from "../../../components/product-sorting/Sorting";
 import Preloader from "../../../components/preloader/Preloader";
+import { getMaxPrice, getMinPrice } from "../../../scripts";
 
 
 
-const getMaxPrice = (categoryData) =>{
-    return categoryData?.products?.reduce((max, product) => (product.price > max ? product.price : max), 0)
-}
-
-const getMinPrice = (categoryData) =>{
-    return categoryData?.products?.reduce((min, product) => (product.price < min ? product.price : min), getMaxPrice(categoryData))
-}
 
 
 

@@ -5,8 +5,11 @@ import { useParams } from "react-router-dom";
 import './Search.scss'
 import { searchService } from "../../service/SearchService";
 import Card from "../../components/card/Card";
-import { priceFormat } from "../../scripts";
-
+import { priceFormat ,getMaxPrice, getMinPrice} from "../../scripts";
+import Preloader from "../../components/preloader/Preloader";
+import Filter from "../../components/filters/Filter";
+import Sorting from "../../components/product-sorting/Sorting";
+import { useSelector, useDispatch } from "react-redux";
 
 const SearchPage = () => {
 
@@ -33,75 +36,71 @@ const SearchPage = () => {
 
     event.target.value = priceFormat(event.target.value.match(regexp).join(''))
   }
-  return (
-    <main className="search-page" id="search-page">
-        { searchProducts?.products?.length === 0 
-            ?<div className="search-page-empty">
-                <div className="search-page-empty-title">
-                По запиту "{ value }" немає результатів
-                </div>
-                <div className="search-page-empty-text">
-                    Можливо, ви ввели некоректний запит. Перевірте правильність написання.
-                </div>
-            </div>
-            :<div className="search-page-section">
-                <div className="search-page-section-header">
-                    <div className="search-page-section-header-title">
-                        По запиту "{ value }" знайшлося
-                    </div>
-                    <div className="search-page-section-header-count">
-                        {searchProducts?.products?.length} моделей 
-                    </div>
-                </div>
-                <div className="search-page-section-body">
-                    <div className="search-page-section-body-filter">
-                        <div className="search-page-section-body-filter-price">
-                            <div className="filter-price-title">
-                                Ціна
-                            </div>
-                            <div className="filter-price-inputs">
-                                <div className="filter-price-input-label">
-                                    від
-                                </div>
-                                <div className="filter-price-input">
-                                   <input type="text" defaultValue="0" onChange={changeMoneyFormat}/> 
-                                </div>
-                                <div className="filter-price-input-label">
-                                    до
-                                </div>
-                                <div className="filter-price-input">
-                                    <input type="text" defaultValue="0" onChange={changeMoneyFormat}/> 
-                                </div>
-                                <div className="filter-price-input-label">
-                                    ₴
-                                </div>
-                            </div>
-                            <div className="filter-price-btn">
-                                <button>
-                                    Застосувати
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="search-page-section-body-products">
-                        <div className="search-page-section-body-products-sort">
 
-                        </div>
-                        <div className="search-page-section-body-products-catalog">
-                            {searchProducts?.products?.map(product => (
-                                
-                                <Card product={product} slider={true} hover={true}  key={product.id}/>
-                            ))}
-                        </div>
-                        <div className="search-page-section-body-products-pagination">
 
+    const categories = useSelector(state => state.categories_list.categoriesList)
+
+    const filterQuery = useSelector(state => state.filter_query.filterCheckBox)
+    const filterPrice = useSelector(state => state.filter_query.filterPrice)
+    const filterSort = useSelector(state => state.filter_query.filterSort)
+
+  const [categoryData, setCategoryData] = useState([])
+  const [isFilterClick, setFilterClick]= useState("")
+
+
+  if(categoryData === null){
+    return(<Preloader/>)
+    }
+    else{
+        return (
+            <main className="search-page" id="search-page">
+                { searchProducts?.products?.length === 0 
+                    ?<div className="search-page-empty">
+                        <div className="search-page-empty-title">
+                        По запиту "{ value }" немає результатів
+                        </div>
+                        <div className="search-page-empty-text">
+                            Можливо, ви ввели некоректний запит. Перевірте правильність написання.
                         </div>
                     </div>
-                </div>
-            </div>
-        }
-    </main>
-  );
+                    :<div className="search-page-section">
+                        <div className="search-page-section-header">
+                            <div className="search-page-section-header-title">
+                                По запиту "{ value }" знайшлося
+                            </div>
+                            <div className="search-page-section-header-count">
+                                {searchProducts?.products?.length} моделей 
+                            </div>
+                        </div>
+                        <div className="search-page-section-body">
+                            <div className="search-page-section-body-filter">
+                                <div className="search-page-section-body-filter-price">
+                                    {categoryData.length !== 0  &&
+                                        <Filter filter_query={filterQuery} isActive={setFilterClick} title={"Ціна"} isPrice={true} maxPrice={getMaxPrice(categoryData)} minPrice={getMinPrice(categoryData)} />
+                                    }
+                                </div>
+                            </div>
+                            <div className="search-page-section-body-products">
+                                <div className="search-page-section-body-products-sort">
+        
+                                </div>
+                                <div className="search-page-section-body-products-catalog">
+                                    {searchProducts?.products?.map(product => (
+                                        
+                                        <Card product={product} slider={true} hover={true}  key={product.id}/>
+                                    ))}
+                                </div>
+                                <div className="search-page-section-body-products-pagination">
+        
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </main>
+          );
+    }
+
 }
 
 export default SearchPage;

@@ -475,10 +475,11 @@ $font-size: 14px;
     min-width: 77.25rem;
     height: 100%;
     font-size: 14px;
-    padding: 1rem 0 2.5rem 0;
+    padding: 1rem 2rem 2.5rem 2rem;
     background: white;
-    display: flex;
-    flex-wrap: nowrap;
+    display: grid;
+    grid-template-columns: repeat(5,minmax(0,1fr));
+    grid-gap: 1rem;
     border-bottom-right-radius: 8px;
 
     .sub-categories {
@@ -794,7 +795,7 @@ $font-size: 14px;
 
 
 .controls-items {
-    padding: 1rem 1rem;
+    padding: 0.8rem 0.8rem;
     margin: 0 0.2rem;
     transition: all .15s linear;
     cursor: pointer;

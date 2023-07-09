@@ -1,22 +1,20 @@
 import axios from 'axios'
+import { ApiAddress } from './Address'
 
 export const ProductService = {
 
     async getShowcase(){
-        const response = await axios.get('http://localhost:20080/api/Showcase')
-
+        const response = await axios.get(`http://${ApiAddress}/api/Showcase`)
         return response.data
     },
 
     async getProductByUrl(url){
-        const response = await axios.get(`http://localhost:20080/api/Products/byUrl?url=${url}`)
-
+        const response = await axios.get(`http://${ApiAddress}/api/Products/byUrl?url=${url}`)
         return response.data   
     },
 
     async getReviewsByProductId(id,pageNumber,pageSize){
-        const response = await axios.get(`http://localhost:20080/api/Reviews?productId=${id}&pageNumber=${pageNumber}&pageSize=${pageSize}`)
-
+        const response = await axios.get(`http://${ApiAddress}/api/Reviews?productId=${id}&pageNumber=${pageNumber}&pageSize=${pageSize}`)
         return response.data   
     },
 
@@ -31,7 +29,7 @@ export const ProductService = {
         pageSize = 0
         ){
             
-        let url = `http://localhost:20080/api/Products`
+        let url = `http://${ApiAddress}/api/Products`
 
         if(id !== (undefined && null && ""))
         {

@@ -1,13 +1,14 @@
 import axios from 'axios'
+import { ApiAddress } from './Address'
 
 export const searchService = {
 
     async getPreviewSearch(key){
 
         const response = await axios.get(
-            key !== (undefined || null)
-            ? `http://localhost:20080/api/Products/forSearchTab?searchTerm=${key}`
-            : `http://localhost:20080/api/Products/forSearchTab`
+            key.trim() !== (undefined || null || "")
+            ? `http://${ApiAddress}/api/Products/forSearchTab?searchTerm=${key}`
+            : `http://${ApiAddress}/api/Products/forSearchTab`
         )
 
         return response.data
