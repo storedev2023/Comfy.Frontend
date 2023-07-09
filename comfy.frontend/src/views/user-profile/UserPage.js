@@ -5,7 +5,7 @@ import Icon from "../../components/icon/icon";
 //styles
 import './UserPage.scss'
 import { useDispatch, useSelector } from "react-redux";
-import { logOutUser, setUserAuth, setUserData, setUserOrders, setUserQuestions, setUserWishlist } from "../../redux/reducers/user-reducer";
+import { logOutUser, setUserAuth, setUserData, setUserOrders, setUserQuestions, setUserReviews, setUserWishlist } from "../../redux/reducers/user-reducer";
 import { userService } from "../../service/UserService";
 import { upPage } from "../../scripts";
 
@@ -52,7 +52,7 @@ function UserPage() {
       dispatch(setUserQuestions(user_questions))
 
       const user_reviews =  await userService.user_reviews(user?.userId)
-      dispatch(setUserQuestions(user_reviews))
+      dispatch(setUserReviews(user_reviews))
 
     }
 

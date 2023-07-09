@@ -17,9 +17,6 @@ function UserPersonalData() {
   const dispatch = useDispatch()
   const user = useSelector(state => state.user.user_data)
 
-  // if(user.userId === ''){
-  //   navigate("/")
-  // }
 
   return (
     <div className="personal-data-page">
@@ -84,7 +81,7 @@ function UserPersonalData() {
                 Пошта:
               </div>
               <div className="text">
-                {user.email}
+                {user.email !== null  ? user.email : <>Не вказано</>}
               </div>
               <div className="status">
                 {user.emailConfirmed
@@ -97,7 +94,7 @@ function UserPersonalData() {
                 Номер телефону:
               </div>
               <div className="text">
-                {user.phoneNumber}
+                {user.phoneNumber !== null  ? user.email : <>Не вказано</>}
               </div>
               <div className="status">
                 {user.phoneNumberConfirmed

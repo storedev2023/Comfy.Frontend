@@ -1,54 +1,56 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 //Components
-import  Card                from "../../../components/card/Card";
-import  Icon                from "../../../components/icon/icon";
+import Icon from "../../../components/icon/icon";
+import Preloader from "../../../components/preloader/Preloader";
+import { editDateFormat } from "../../../scripts";
 //styles
 import './UserQuestions.scss'
 
 
 function Questions() {
-  return (
-            <div className="questions-block">
-              <div className="questions-title">
-                  Ваші питання
+
+  const user = useSelector(state => state.user.user_access_data)
+  const user_questions = useSelector(state => state.user.user_questions)
+
+
+  if(user_questions.userId === "")
+  {
+    return( <Preloader/>)
+  }
+  else{
+    return (
+      <div className="questions-block">
+        <div className="questions-title">
+            Ваші питання
+        </div>
+        <div className="questions-list">
+          {user_questions?.questions.length !== 0 ? 
+          <>{user_questions?.questions.map(question => (
+              <div className="questions-list-question-info"  key={question.id}>
+                <div className="questions-list-question-title">
+                <Link to={`/product/${question.productUrl}`} reloadDocument={true}>{question.productName}</Link>   
                 </div>
-                <div className="questions">
-                    <div className="question">
-                      <div className="question-title">
-                        Питання про товар 
-                      </div> 
-                      <div className="question-product-name">
-                      Vestfrost CX263WB
-                      </div>
-                      <div className="border"></div>
-                      <div className="question-body">
-                        <div className="rtitle">
-                          Питання
-                        </div> 
-                        <div className="text">
-                            Холодильник Vestfrost CX263W Предусмотрена-ли функция "защита от перепада напряжения"
-                        </div>
-                      </div>
-                      <div className="border"></div>
-                      <div className="question-body">
-                        <div className="rtitle">
-                            Відповідь
-                        </div> 
-                        <div className="text">
-                            Нема
-                        </div>
-                      </div>
-                      <div className="border"></div>
-                      <div className="question-data">
-                        <div className="question-data">
-                          23.06.2024
-                        </div>
-                      </div>
-                    </div>
+                <div className="questions-list-question-text">
+                  {question.text}
                 </div>
-                
-            </div>
-  );
+                <div className="questions-list-question-data">
+                  <span>Дата створення:</span> {editDateFormat(question.createdAt)}
+                </div>
+              </div>
+          ))}
+          </>
+          :<div className="empty-list">
+            У вас немає питань
+          </div>
+        }
+        </div>  
+        
+    </div>
+    );
+  }
+
 }
 
 export default Questions;

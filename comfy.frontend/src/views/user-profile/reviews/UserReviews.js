@@ -1,69 +1,99 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 //Components
-import  Card                from "../../../components/card/Card";
-import  Icon                from "../../../components/icon/icon";
+import  Card from "../../../components/card/Card";
+import  Icon from "../../../components/icon/icon";
 //styles
 import './UserReviews.scss'
 
-
+import Preloader  from "../../../components/preloader/Preloader";
+import StarRating from "../../../components/star-rating/StarRating";
+import { editDateFormat } from "../../../scripts";
 function Reviews() {
-  return (
-            <div className="reviews-block">
-              <div className="reviews-title">
-                  Ваші відгуки
-                </div>
-                <div className="reviews">
-                    <div className="review">
-                      <div className="review-title">
-                        Відгук про товар 
-                      </div> 
-                      <div className="review-product-name">
-                        Ноутбук Apple MacBook Pro 14'' M2 Pro 1TB MPHF3 Space Gray
+
+  const user = useSelector(state => state.user.user_access_data)
+  const user_reviews = useSelector(state => state.user.user_reviews)
+
+
+
+  if(user_reviews.userId === "")
+  {
+    return( <Preloader/>)
+  }
+  else{
+    return (
+        <div className="reviews-block">
+          <div className="reviews-title">
+              Ваші відгуки
+          </div>
+          <div className="reviews-list">
+            {user_reviews?.reviews.length !== 0 ? 
+              <>{user_reviews?.reviews?.map(review => (  
+                <div className="reviews-list-review" key={review.id}>
+                  <div className="reviews-list-review-title">
+                    <div className="reviews-list-review-title-text">   
+                      <Link to={`/product/${review.productUrl}`} reloadDocument={true}>{review.productName}</Link>
+                    </div>
+                    <div className="reviews-list-review-title-rating">
+                    <StarRating defaultState={review.productRating} listClass={"star-rating-profile-reviews-page"}  width={23} height={23} />
+                    </div>
+                    <div className="reviews-list-review-title-likes-dislikes">
+                      <div className="reviews-list-review-title-like">
+                        <Icon id="like"/>
+                        <span>{review.dislikes}</span>
                       </div>
-                      <div className="border"></div>
-                      <div className="review-body">
-                        <div className="rtitle">
-                          Відгук
-                        </div> 
-                        <div className="text">
-                        Дуже сподобався! Дякую консультантам магазина Comfy! Влаштовуємо з друзями гриль вечірки! Друзі приїжджають до мене та я з гриль приїжджаю до друзів! Для поверхонь гриль хотілося б спеціальний портфель з відділеннями, для безпечного переміщення!
-                        </div>
-                      </div>
-                      <div className="border"></div>
-                      <div className="review-body">
-                        <div className="rtitle">
-                          Плюси
-                        </div> 
-                        <div className="text">
-                        Зручність та практичність
-                        </div>
-                      </div>
-                      <div className="border"></div>
-                      <div className="review-body">
-                        <div className="rtitle">
-                          Недоліки
-                        </div> 
-                        <div className="text">
-                        Не має портфеля для переміщення поверхонь гриль
-                        </div>
-                      </div>
-                      <div className="border"></div>
-                      <div className="review-rating-data">
-                        <div className="review-rating">
-                          Оцінка відгука
-                          <div className="rating">
-                            
-                          </div>
-                        </div>
-                        <div className="review-data">
-                          23.06.2024
-                        </div>
+                      <div className="reviews-list-review-title-dislikes">
+                        <Icon id="dislike"/>
+                        <span>{review.dislikes}</span>
                       </div>
                     </div>
+                   </div>
+                  <div className="reviews-list-review-text">
+                    {review.text}
+                  </div>
+                  <div className="reviews-list-review-advantages">
+                    <div className="advantages-title">
+                      Плюси:
+                    </div>
+                    <div className="advantages-text">
+                    {review.advantages}
+                    </div>
+                  </div>
+                  <div className="reviews-list-review-disadvantages">
+                    <div className="disadvantages-title">
+                      Мінуси:
+                    </div>
+                    <div className="disadvantages-text">
+                    {review.disadvantages}
+                    </div>
+                  </div>
+                  <div className="reviews-list-bottom">
+                    <div className="reviews-list-review-data">
+                      <span>Дата створення:</span> {editDateFormat(review.createdAt)}
+                    </div>
+                    <div className="reviews-list-review-btn">
+                      <div className="reviews-list-review-btn-edit">
+                        <button>Редагувати</button>
+                      </div>
+                      <div className="reviews-list-review-btn-delete">
+                        <button>Видалити</button>
+                      </div>
+                    </div>
+                  </div>
+  
                 </div>
-                
-            </div>
+              ))}</>
+              :<div className="empty-list">
+                Ви не залишали відгуків
+              </div>
+            }
+
+          </div>           
+        </div>
   );
+  }
+
 }
 
 export default Reviews;

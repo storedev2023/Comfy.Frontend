@@ -3,7 +3,7 @@
     width: 80%;
     background-color: #FFFFFF;
     border-radius: 8px;
-    padding: 20px 20px 20px 20px;
+    padding: 1.3rem 2rem;
 }
 
 .reviews-title{
@@ -11,69 +11,113 @@
     font-weight: 400;
 }
 
-.reviews{
-    margin-top: 20px;
-}
-
-.review{
-    padding: 10px 10px 10px 10px;
-    width: 100%;
-    border: 2px solid #efefef;
+.reviews-list-review{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    border:2px solid rgba(239, 239, 239, 1);
     border-radius: 8px;
-    margin-top: 20px;
+    padding: 1rem;
+    margin: 1rem 0;
+
+    .reviews-list-review-title{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        font-size:20px;
+        .reviews-list-review-title-text{
+            display: flex;
+            align-items: start;
+            justify-content: start;
+            width: 75%;
+            a{
+                font-weight: 600;
+                color:#1F1E24;
+                text-decoration: none;
+            }
+    
+            &:hover a{
+                text-decoration: underline;
+            }
+        }
+
+        .reviews-list-review-title-rating{
+            width: 15%;
+            display: flex;
+            align-items: start;
+            justify-content: start;
+
+            .star-rating-profile-reviews-page{
+                display: flex;
+                align-items: start;
+            }
+        }
+
+
+    }
+
+
+    .reviews-list-review-advantages, .reviews-list-review-disadvantages{
+        .advantages-title, .disadvantages-title{
+            font-weight: 600;
+        }
+        .advantages-text, .disadvantages-text{
+            margin-top: 0.2rem;
+        }
+    }
+
+    .reviews-list-review-title-likes-dislikes{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 10%;
+        .reviews-list-review-title-like, .reviews-list-review-title-dislikes{
+            padding: 0 0.3rem;
+            span{
+                margin-left: 0.4rem;
+            }
+        }
+        &:first-child{
+            border-right: 1px solid rgba(239, 239, 239, 1);
+        }
+    }
+
+    .reviews-list-bottom{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    
+    .reviews-list-review-data{
+        span{
+            font-weight: 600;
+        }
+    }
+
+    .reviews-list-review-btn{
+        display: flex;
+        align-items: center;
+        .reviews-list-review-btn-edit{
+            margin: 0 1rem;
+            button{
+                border:1px solid #9ACD6A;
+                color:#9ACD6A;
+            }
+        }
+        .reviews-list-review-btn-delete{
+            margin: 0 1rem;
+            button{
+                border:1px solid #D03F3F;
+                color:#D03F3F;
+            }
+        }
+        button{
+            border-radius: 30px;
+            padding: 1rem 3rem;
+            font-weight: 600;
+            background: none;
+        }
+    }
 }
 
-.review-title{
-    font-size: 16px;
-    font-weight: 400;
-    display: inline;
-}
-
-
-.review-product-name{
-    margin-left: 11px;
-    font-size: 16px;
-    font-weight: 400;
-    display: inline;
-}
-
-.review-body{
-    display: flex;
-    margin-top: 10px;
-    width: 100%;
-}
-
-.review-text{
-    margin-top: 10px;
-}
-
-.rtitle{
-    width: 12.5%;
-}
-.text{
-    width: 90%;
-}
-
-.border{
-    margin-top: 10px;
-    margin-bottom: 10px;
-    width: 100%;
-    background-color: #EFEFEF;
-    height: 2px;
-}
-.review-rating-data{
-    width: 100%;
-    display: flex;
-
-}
-.review-rating{
-    display: flex;
-    width: 50%;
-}
-.rating{
-    margin-left: 25px;
-}
-.review-data{
-    text-align: right;
-    width: 50%;
-}

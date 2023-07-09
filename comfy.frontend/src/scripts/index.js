@@ -27,3 +27,9 @@ export const getMaxPrice = (categoryData) =>{
 export const getMinPrice = (categoryData) =>{
     return categoryData?.products?.reduce((min, product) => (product.price < min ? product.price : min), getMaxPrice(categoryData))
 }
+
+export const editDateFormat = (dateAndTime) => {
+    const dateAndTimeArray = dateAndTime.split(' ')
+    let data = (dateAndTimeArray[0].split('/')).join('.')
+    return(data + " о " + dateAndTimeArray[1])
+  }
