@@ -11,11 +11,6 @@ import Preloader from "../../../components/preloader/Preloader";
 import { getMaxPrice, getMinPrice } from "../../../scripts";
 
 
-
-
-
-
-
 function ProductsCategoriesPage() {
 
     const { name, subName } = useParams()
@@ -147,7 +142,6 @@ function ProductsCategoriesPage() {
             </main>
         );
     }
-
 }
 
 export default ProductsCategoriesPage;

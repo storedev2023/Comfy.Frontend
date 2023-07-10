@@ -37,7 +37,7 @@ const FilterMarks = () => {
                     ))}
                     <div className="filter-marks-delete-all" onClick={deleteAllFilterMarks}>
                         <div className="delete-btn">
-                            Очистити всі
+                            Очистити
                             <Icon id="close" />
                         </div>
                     </div>

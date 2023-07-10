@@ -5,49 +5,81 @@ import { useParams } from "react-router-dom";
 import './Search.scss'
 import { searchService } from "../../service/SearchService";
 import Card from "../../components/card/Card";
-import { priceFormat ,getMaxPrice, getMinPrice} from "../../scripts";
+import { getMaxPrice, getMinPrice} from "../../scripts";
 import Preloader from "../../components/preloader/Preloader";
 import Filter from "../../components/filters/Filter";
 import { useSelector} from "react-redux";
+import Sorting from "../../components/product-sorting/Sorting";
 
 const SearchPage = () => {
 
     const { value } = useParams()
     const [searchProducts, setSearchProducts] = useState([])
+    const [isFilterClick, setFilterClick]= useState("")
+
+    const filterPrice = useSelector(state => state.filter_query.filterPrice)
+    const filterSort = useSelector(state => state.filter_query.filterSort)
+
+    // eslint-disable-next-line
+    const fetchData = async (
+        string = value,
+        priceForm = undefined,
+        priceTo = undefined,
+        sortColumn = undefined,
+        sortOrder = undefined,
+        pageNumber = undefined,
+        pageSize = undefined
+
+        ) => {
+        const response = await searchService.getProductsSearch(
+            string,
+            priceForm,
+            priceTo,
+            sortColumn,
+            sortOrder,
+            pageNumber,
+            pageSize
+            )
+        setSearchProducts(response)
+    }
+
+    useEffect(() => {
+        
+        const defaultData = () => {
+            if(value !== undefined){
+                fetchData(value, undefined, undefined, filterSort.sort_tag,filterSort.sorting_order)
+            }  
+        }
+
+        if(filterPrice.length !== 0 || filterSort.length !== 0)
+        {
+            fetchData(value, filterPrice.price_from, filterPrice.price_to, filterSort.sort_tag,filterSort.sorting_order)
+        }
+        else
+        {
+            defaultData()
+        } 
+        
+
+    }, [fetchData,isFilterClick,filterPrice.length,filterPrice.price_from,filterPrice.price_to,filterSort.length,filterSort.sort_tag,filterSort.sorting_order,value])
+
 
   useEffect(()=>{
     const fetchData = async () => {  
-        const response = await searchService.getProductsSearch(value)
+        const response = await searchService.getProductsSearch(value, undefined, undefined, filterSort.sort_tag,filterSort.sorting_order)
         setSearchProducts(response)
     }
       
     fetchData()
-  }, [value])
-
-  const changeMoneyFormat = (event) => { 
-    console.log(event.target.value)
-    if(event.target.value === (null || "")){ 
-        event.target.value = 0
-        return
-    }
-
-    let regexp = /\d/g;
-
-    event.target.value = priceFormat(event.target.value.match(regexp).join(''))
-  }
+  }, [value,filterSort.sort_tag,filterSort.sorting_order])
 
 
-    const categories = useSelector(state => state.categories_list.categoriesList)
-
-    const filterQuery = useSelector(state => state.filter_query.filterCheckBox)
-    const filterPrice = useSelector(state => state.filter_query.filterPrice)
-    const filterSort = useSelector(state => state.filter_query.filterSort)
-
-  const [categoryData, setCategoryData] = useState([])
-  const [isFilterClick, setFilterClick]= useState("")
 
 
-  if(categoryData === null){
+
+
+
+  if(searchProducts === null){
     return(<Preloader/>)
     }
     else{
@@ -74,18 +106,17 @@ const SearchPage = () => {
                         <div className="search-page-section-body">
                             <div className="search-page-section-body-filter">
                                 <div className="search-page-section-body-filter-price">
-                                    {categoryData.length !== 0  &&
-                                        <Filter filter_query={filterQuery} isActive={setFilterClick} title={"Ціна"} isPrice={true} maxPrice={getMaxPrice(categoryData)} minPrice={getMinPrice(categoryData)} />
+                                    {searchProducts.length !== 0  &&
+                                        <Filter isActive={setFilterClick} title={"Ціна"} isPrice={true} maxPrice={getMaxPrice(searchProducts)} minPrice={getMinPrice(searchProducts)} />
                                     }
                                 </div>
                             </div>
                             <div className="search-page-section-body-products">
                                 <div className="search-page-section-body-products-sort">
-        
+                                    <Sorting isActive={setFilterClick} sort_name={['За рейтінгом','Від дешевих до дорогих','Від дорогих до дешевих']}/>
                                 </div>
                                 <div className="search-page-section-body-products-catalog">
                                     {searchProducts?.products?.map(product => (
-                                        
                                         <Card product={product} slider={true} hover={true}  key={product.id}/>
                                     ))}
                                 </div>

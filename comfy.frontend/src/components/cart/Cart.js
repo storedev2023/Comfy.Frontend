@@ -56,10 +56,7 @@ const Cart = ({isShow, setIsShow, setIsCartOverlay}) => {
                                     <div className="empty-cart-title">
                                         Кошик порожній
                                     </div>
-                                    <div className="empty-cart-message">
-                                        Ознайомтеся з нашими
-                                        <Link> акціямі</Link>
-                                    </div>
+    
                                 </div>
                             </div>
                         </div>

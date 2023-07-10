@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { CSSTransition } from 'react-transition-group'
 
@@ -15,6 +15,7 @@ const email_regexp = /^[A-Z0-9][A-Z0-9._-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i
 function Authorization({
     btn_className,
     isBtnActive,
+    openAuth = false,
 }) {
 
     const dispatch = useDispatch()
@@ -22,7 +23,7 @@ function Authorization({
     const user_access_data = useSelector(state => state.user.user_access_data)
     const user_data = useSelector(state => state.user.user_data)
 
-    const [overlayProfile, setOverlayProfile] = useState(false)
+    const [overlayProfile, setOverlayProfile] = useState(openAuth)
     const [isRegistration, setIsRegistration] = useState(false)
 
     // Password show/hide  
@@ -99,12 +100,13 @@ function Authorization({
         const data = Array.from(inputs).map((input) => {
             if (input.value.trim() === '') {
                 setErrorMessage(input, "Поле не може бути порожнім")
+                // eslint-disable-next-line
                 return
             }
             return [input.type === "email" ? "email" : "password", input.value]
         })
 
-        if (data.indexOf(undefined) != -1) {
+        if (data.indexOf(undefined) !== -1) {
             return
         }
 
@@ -163,16 +165,6 @@ function Authorization({
                         <div className="auth-modal">
                             <div className="auth-modal-dialog" >
                                 <div className="auth-block" >
-                                    <div className="auth-block-picture">
-                                        <div className="auth-block-picture-figure">
-                                            <div className="auth-block-picture-figure-triangle "></div>
-                                            <div className="auth-block-picture-figure-circle "></div>
-                                        </div>
-                                        <div>
-                                            <div className="auth-block-picture-figure-rectangle "></div>
-                                        </div>
-                                    </div>
-
                                     <div className="auth-block-form">
                                         <div className="auth-block-form-exit" onClick={authorizationModelLogic}>
                                             <Icon id="close" classList="auth-close" />
@@ -205,10 +197,6 @@ function Authorization({
                                             <div className="auth-block-form-register">
                                                 <span>Якщо у вас все ще нема профелю, будь-ласка </span>
                                                 <span className="form-register-span" onClick={() => { setIsRegistration(true) }}>Зареєструватися</span>
-                                            </div>
-                                            <div className="auth-block-form-google-btn">
-                                                <span>Увійти за допомогою : </span>
-                                                <span className="auth-google-btn">Google</span>
                                             </div>
                                         </>
                                             : <>
@@ -252,7 +240,7 @@ function Authorization({
                                                 </div>
                                                 <div className="auth-block-form-register">
                                                     <span>Якщо у вас все вже э профель, будь-ласка </span>
-                                                    <span className="form-register-span" onClick={() => { setIsRegistration(false) }}>Авторизуйтесь</span>
+                                                    <span className="form-register-span" onClick={() => { setIsRegistration(false) }}>Авторизуватися</span>
                                                 </div>
                                             </>
                                         }

@@ -21,6 +21,7 @@
     border: 2px solid #9ACD6A ;
     border-radius:100%;
     transition: all .15s linear;
+    text-decoration: none;
 
 }
 
@@ -109,7 +110,7 @@
         display: flex;
         color:#1F1E24;
         background: white;
-        width: 59rem;
+        width: 33rem;
         height: 43.125rem;
         pointer-events: all;
         border-radius: 20px;
@@ -127,7 +128,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            width: 50%;
+            width: 100%;
         }
     }
 }
@@ -162,6 +163,7 @@
 }
 
 .auth-block-form-exit {
+    cursor: pointer;
     margin-left: 90%;
 
     svg {
@@ -176,7 +178,7 @@
 
 
 .auth-block-form-title {
-    margin-top: 4rem;
+    margin-top: 5.6rem;
     font-weight: 500;
     font-size: 20px;
 }
@@ -246,8 +248,13 @@
     background: #9ACD6A;
     border-radius: 32px;
     margin-top: 0.2rem;
+    font-size: 18px;
     transition: all .15s linear;
     cursor: pointer;
+    a{
+        text-decoration: none;
+        color: white;
+    }
     span{
         color: white;
         text-decoration: none;

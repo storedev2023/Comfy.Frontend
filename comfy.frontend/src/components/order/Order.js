@@ -16,6 +16,7 @@ function Order({
 
     return (
         <div className="order-block">
+            {console.log(order)}
             <div className="order-info" key={order.id} onClick={isOpen}>
                 <div className="order-number">
                     № {order.id}
@@ -44,6 +45,7 @@ function Order({
                     <div className="order-product-list">
                         {order.products.map(product => (
                            <div className="order-product" key={`${product.url}_${order.id}`}>
+                                
                                 <div className="order-product-img">
                                     <img src={product.imageUrl} alt=""/>
                                 </div>

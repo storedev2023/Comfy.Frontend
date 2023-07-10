@@ -4,12 +4,17 @@ import { ApiAddress } from './_DefaultService'
 export const ProductService = {
 
     async getShowcase(){
-        const response = await axios.get(`http://${ApiAddress}/api/Showcase`)
+        const response = await axios.get(`${ApiAddress}/api/Showcase`)
+        return response.data
+    },
+
+    async getBanners(){
+        const response = await axios.get(`${ApiAddress}/api/Banners`)
         return response.data
     },
 
     async getProductByUrl(url){
-        const response = await axios.get(`http://${ApiAddress}/api/Products/byUrl?url=${url}`)
+        const response = await axios.get(`${ApiAddress}/api/Products/byUrl?url=${url}`)
         return response.data   
     },
     
@@ -24,7 +29,7 @@ export const ProductService = {
         pageSize = 0
         ){
             
-        let url = `http://${ApiAddress}/api/Products`
+        let url = `${ApiAddress}/api/Products`
 
         if(id !== (undefined && null && ""))
         {
@@ -64,7 +69,7 @@ export const ProductService = {
 
     async getReviewsByProductId(id,pageNumber = 0,pageSize = 0){
 
-        let url  = `http://${ApiAddress}/api/Reviews?productId=${id}`
+        let url  = `${ApiAddress}/api/Reviews?productId=${id}`
 
         if(pageNumber !== (0 || null || undefined)){
             url+=`&pageNumber=${pageNumber}`
@@ -79,7 +84,7 @@ export const ProductService = {
 
     async getQuestionsByProductId(id,pageNumber,pageSize){
 
-        let url  = `http://${ApiAddress}/api/Questions?productId=${id}`
+        let url  = `${ApiAddress}/api/Questions?productId=${id}`
 
         if(pageNumber !== (0 || null || undefined)){
             url+=`&pageNumber=${pageNumber}`

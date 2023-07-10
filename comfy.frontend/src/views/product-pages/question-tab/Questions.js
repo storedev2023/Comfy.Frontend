@@ -47,7 +47,10 @@ function Questions() {
               </div>
             </div>
             <div className="product-reviews-body">
-              {product_questions?.questions?.map(question => (
+            { product_questions?.questions?.length === 0 
+              ? <div className="empty-list">Цей товар не має питань</div>
+              : <>
+               {product_questions?.questions?.map(question => (
                 <div className="reviews-body-review" key={question.id}>
                   <div className="reviews-body-review-user">
                     <div className="review-user-name">
@@ -67,11 +70,15 @@ function Questions() {
                   </div>
                 </div>
               ))}
+              </>
+            }
+
             </div>
           </div>
 
-
+          
         <div className="product-sub-page">
+
             <div className="sub-page-img">
               <img src={product?.images[0].url} alt="" />
             </div>

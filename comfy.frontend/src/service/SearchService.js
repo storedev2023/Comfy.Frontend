@@ -7,8 +7,8 @@ export const searchService = {
 
         const response = await axios.get(
             key.trim() !== (undefined || null || "")
-            ? `http://${ApiAddress}/api/Products/forSearchTab?searchTerm=${key}`
-            : `http://${ApiAddress}/api/Products/forSearchTab`
+            ? `${ApiAddress}/api/Products/forSearchTab?searchTerm=${key}`
+            : `${ApiAddress}/api/Products/forSearchTab`
         )
 
         return response.data
@@ -23,7 +23,7 @@ export const searchService = {
         pageNumber = 0,
         pageSize = 0
         ){      
-        let url = `http://localhost:20080/api/Products/bySearchTerm`
+        let url = `${ApiAddress}/api/Products/bySearchTerm`
         
         if(key !== (undefined || null || "")){
             url += `?searchTerm=${key}`

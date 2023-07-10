@@ -17,7 +17,6 @@ function HeaderTOP() {
 
     //Header cities
     const [showCities, setShowCities] = useState(false)
-    const [headerFeedbackLinks, setHeaderFeedbackLinks] = useState(false)
 
     return (
         <>
@@ -219,19 +218,12 @@ function HeaderTOP() {
                         </div>
                     </div>
                     <nav className="header-top-nav">
-                        <Link src="" className="header-link">Подарункові картки</Link>
-                        <Link src="" className="header-link">Магазини</Link>
-                        <Link src="" className="header-link">Замовлення</Link>
-                        <div className="header-nav-feedback" onMouseEnter={() => setHeaderFeedbackLinks(true)} onMouseLeave={() => setHeaderFeedbackLinks(false)}>
-                            <span>Зв’язатися</span>
-                            {headerFeedbackLinks &&
-                                <div className="header-nav-feedback-list" onMouseEnter={() => setHeaderFeedbackLinks(true)} onMouseLeave={() => setHeaderFeedbackLinks(false)}>
-                                    <Link href="" className="header-feedback-link">Messenger</Link>
-                                    <Link href="" className="header-feedback-link">Viber</Link>
-                                    <Link href="" className="header-feedback-link">Telegram</Link>
-                                </div>
-                            }
-                        </div>
+                        <Link to="/shops" className="header-link">Магазини</Link>
+                        {/* {user?.userId !== "" 
+                        ? <div onClick={returnAuthorization}>Замовлення</div> 
+                        :<Link to="profile/orders" className="header-link">Замовлення</Link>
+                        }
+                         */}
                     </nav>
                 </div>
             </div>
@@ -282,6 +274,7 @@ function HeaderBOTTOM() {
     })
 
     //Header categories
+    // eslint-disable-next-line
     const [showSubCatalog, setShowSubCatalog] = useState(false)
     const [categoriesMenu, setCategoriesMenu] = useState([])
 
@@ -331,7 +324,6 @@ function HeaderBOTTOM() {
     
         const response = await searchService.getPreviewSearch(event.target.value)
         setSearchPreviewProducts(response)
-        console.log(response)
     }
 
     const navigate = useNavigate();
@@ -443,10 +435,10 @@ function HeaderBOTTOM() {
                                 { searchPreviewProducts !== null &&
                                 <div className="header-bottom-searcher-products">
                                     {searchPreviewProducts.map(product =>(
-                                        <Link to={`/product/${product.url}`} reloadDocument={true} className="product-link">
+                                        <Link key={product.url} to={`/product/${product.url}`} reloadDocument={true} className="product-link">
                                     <div className="header-bottom-searcher-history-product" key={product.name}>
                                         <div className="header-bottom-searcher-history-product-img">
-                                            <img src={product.imageUrl}/>
+                                            <img src={product.imageUrl} alt=""/>
                                         </div>
                                         <div className="header-bottom-searcher-history-product-info">
                                             <div className="header-bottom-searcher-history-product-info-name">
@@ -482,9 +474,6 @@ function HeaderBOTTOM() {
                         <Authorization btn_className={"header-bottom-profile controls-items"} isBtnActive={true}/>
                         <div className="header-bottom-wishlist controls-items"  >
                             <Icon id="wishlist" className="header-icon-wishlist" />
-                        </div>
-                        <div className="header-bottom-compare controls-items">
-                            <Icon id="compare" className="header-icon" />
                         </div>
                         <div className="header-bottom-cart controls-items" onMouseEnter={() => setIsShowCart(true)} onMouseLeave={() => {setIsShowCart(false); setIsCartOverlay(false)}}>
                             <Cart isShow={isShowCart} setIsShow={setIsShowCart} setIsCartOverlay={setIsCartOverlay}/>

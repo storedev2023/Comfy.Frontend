@@ -14,16 +14,14 @@ body{
     box-shadow: 0 0 2px rgba(0, 0, 0, .2) inset; /* тень у дорожки */
 }
 ::-webkit-scrollbar-thumb {
-    background: #F9BB08; /* цвет фона у дорожки */
+    background: #9ACD6A; /* цвет фона у дорожки */
     border-radius: 8px; /* скругление углов */
-    border: 3px solid #f5cdcd; /* толщина, стиль и цвет рамки */
+    border: 3px solid #9ACD6A; /* толщина, стиль и цвет рамки */
 }
 
- 
-
 ::-webkit-scrollbar-thumb:hover {
-    border: 3px solid #ffffff;
-    background: #455A9F; /* ползунок меняет цвет при наведении */
+    border: 3px solid rgb(113, 173, 57);;
+    background: rgb(113, 173, 57);; /* ползунок меняет цвет при наведении */
 }
 
 *{

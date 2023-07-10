@@ -45,6 +45,9 @@ function Reviews() {
               </div>
             </div>
             <div className="product-reviews-body">
+              { product_reviews?.reviews?.length === 0 
+              ? <div className="empty-list">Цей товар не має відгуків</div>
+              : <>
               {product_reviews?.reviews?.map(review => (
                 <div className="reviews-body-review" key={review.id}>
                   <div className="reviews-body-review-user">
@@ -81,6 +84,11 @@ function Reviews() {
                   </div>
                 </div>
               ))}
+              </>
+
+              }
+              
+
             </div>
           </div>
           <div className="product-sub-page">

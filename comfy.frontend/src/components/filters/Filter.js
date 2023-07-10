@@ -107,7 +107,7 @@ const Filter = ({
     }, [isActiveFilter, dispatch, filter_query, isActive, isBrand, title])
 
 
-    return ( 
+    return( 
         <div className="product-filter">
             <div className="filter-header">
                 <div className="filter-header-name">

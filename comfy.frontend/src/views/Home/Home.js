@@ -6,12 +6,7 @@ import  Carousel            from 'react-bootstrap/Carousel';
 import  CarouselItem        from "react-bootstrap/esm/CarouselItem";
 //styles
 import './Home.scss'
-//Images
-import s1 from "../../assets/images/main_carousel/s1.jpg"
-import s2 from "../../assets/images/main_carousel/s2.jpg"
-import s3 from "../../assets/images/main_carousel/s3.jpg"
-import s4 from "../../assets/images/main_carousel/s4.jpg"
-import s5 from "../../assets/images/main_carousel/s5.jpg"
+
 import { ProductService } from "../../service/ProductService";
 import CarouselProductViewed from "../../components/carousel/product-viewed/Carousel-product-viewed";
 import { Link } from "react-router-dom";
@@ -23,14 +18,19 @@ function Home() {
     const [index, setIndex] = useState(0);
     const handleSelect = (selectedIndex, e) => { setIndex(selectedIndex); };
 
-    const images = [s1,s2,s3,s4,s5];
+    
+
+    //const images = [s1,s2,s3,s4,s5];
 
     //cards
+    const [Banners, setBanners] = useState([])
     const [Showcases,  setShowcases] = useState([])
     useEffect(()=>{
         const fetchData = async () => {
             const response = await ProductService.getShowcase()   
             setShowcases(response)
+            const banners = await ProductService.getBanners()
+            setBanners(banners)
         }
         fetchData()
     }, [])
@@ -63,23 +63,12 @@ function Home() {
                 <div className="body-top-info">
                     <div className="body-top-info-banners">
                         <Carousel activeIndex={index} onSelect={handleSelect} className="main-carousel">
-                            {images.map(image => (
-                                <CarouselItem key={images.indexOf(image)}>
-                                    <img src={image} alt=""/>
+                            {Banners.map(banner => (
+                                <CarouselItem key={Banners.indexOf(banner)}>
+                                    <img src={banner.imageUrl} alt=""/>
                                 </CarouselItem>
                             ))}
                         </Carousel>
-                    </div>
-                    <div className="body-top-info-links">
-                        {/* <div className="info-link">
-                            <a>Уцінені товари</a>
-                        </div>
-                        <div className="info-link">
-                            <a>Барахолка до -70%</a>
-                            </div>
-                        <div className="info-link">
-                            <a>Кращий вибiр</a>
-                        </div> */}
                     </div>
                 </div>
             </div>
