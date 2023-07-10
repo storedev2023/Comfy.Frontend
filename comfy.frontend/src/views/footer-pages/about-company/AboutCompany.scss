@@ -16,42 +16,56 @@
 
 .about-company-title{
     font-size: 20px;
-    font-weight: 400;
+    font-weight: 500;
 }
 
 .about-company-first-paragraph{
     width: 100%;  
     font-size: 16px;
-    font-weight: 400;
+    font-weight: 500;
     display: flex;
 }
 
 .first-paragraph{
     margin-right: 20px;
-    width: 60%;
+    width: 100%;
 }
 
-.first-paragraph-img{
-    width: 40%;
-    height: 400px;
-    background-color:rgb(231, 231, 231);
-}
 
 .about-company-second-paragraph{
     margin-top: 20px;
     width: 100%;  
     font-size: 16px;
-    font-weight: 400;
+    font-weight: 500;
     display: flex;
 }
 
 .second-paragraph{
-    width: 60%;
-    margin-left: 20px;
+    width: 100%;
 }
 
-.second-paragraph-img{
-    width: 40%;
-    height: 400px;
-    background-color:rgb(231, 231, 231);
+.about-company-third-paragraph{
+    margin-top: 20px;
+    width: 100%;  
+    font-size: 16px;
+    font-weight: 500;
+    display: flex;
+}
+
+.third-paragraph{
+    width: 100%;
+}
+
+.logo-text{
+    color: #9ACD6A;
+    margin-bottom: 0px;
+    display: inline-block;
+}
+
+
+
+.image-block{
+    display: flex;
+  justify-content: center;
+  align-items: center;
 }
