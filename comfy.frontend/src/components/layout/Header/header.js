@@ -76,7 +76,9 @@ function HeaderTOP() {
                             }
                         </div>
                         <a href="" className="header-link">Подарункові картки</a>
+                        <Link to="/shops">
                         <a href="" className="header-link">Магазини</a>
+                        </Link>
                         <a href="" className="header-link">Замовлення</a>
                         <div className="header-nav-more header-link" onMouseEnter={() => setHeaderMoreLinks(true)} onMouseLeave={() => setHeaderMoreLinks(false)}>
                             <span>Ще</span>

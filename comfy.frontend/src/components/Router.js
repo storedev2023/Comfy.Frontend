@@ -32,6 +32,7 @@ import Contacts from '../views/footer-pages/contacts/Contacts'
 import Guarantee from '../views/footer-pages/guarantee/Guarantee'
 import Payment from '../views/footer-pages/payment/Payment'
 import Security from '../views/footer-pages/security/Security'
+import Shops from '../views/header-pages/shops/ShopsPage'
 
 const Router = () => {
     return (
@@ -52,12 +53,16 @@ const Router = () => {
                         <Route path="/categories/:name/:subName/" element={<ProductsCategoriesPage/>}  />
                         <Route path="/compare/:id" element={<Compare/>}/>
                         <Route  path="/order" element={<Orders/>}  />
+                        
                         <Route  path="/aboutcompany" element={<AboutCompany/>}  />
                         <Route  path="/cashlesspayment" element={<CashlessPayment/>}  />
                         <Route  path="/contacts" element={<Contacts/>}  />
                         <Route  path="/guarantee" element={<Guarantee/>}  />
                         <Route  path="/payment" element={<Payment/>}  />
                         <Route  path="/security" element={<Security/>}  />
+                        <Route  path="/shops" element={<Shops/>}  />
+
+
                         <Route path='/profile/' element={<UserPage />}  >
                             <Route index element={<UserPersonalData />} />
                             <Route path="wishlist" element={<Wishlist />} />
