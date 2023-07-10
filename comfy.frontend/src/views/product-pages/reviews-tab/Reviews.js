@@ -1,153 +1,139 @@
 import React from "react";
-import  Icon from "../../../components/icon/icon";
+import Icon from "../../../components/icon/icon";
 import { upPage } from "../../../scripts/index";
-
+import { Link } from "react-router-dom";
+import { setItemInCart } from "../../../redux/reducers/cart-reducer"
 import './Reviews.scss'
-
-
+import { useSelector, useDispatch } from "react-redux";
+import StarRating from "../../../components/star-rating/StarRating";
+import { onlyDateFormat, priceFormat, calcDiscount } from "../../../scripts/index";
+import Preloader from "../../../components/preloader/Preloader"
+import WishlistBtn from "../../../components/wishlist/Wishlist-btn";
 function Reviews() {
   upPage()
+
+  const dispatch = useDispatch()
+
+  //const _access_data = useSelector(state => state.user.user_access_data)
+  //const user = useSelector(state => state.user.user_data)
+  const product = useSelector(state => state.product.currentProduct)
+  const product_reviews = useSelector(state => state.product.product_reviews)
+  const items = useSelector((state) => state?.cart.itemsInCart)
+  const isItemInCart = items?.some(item => item.id === product?.id)
+
+  const addToCart = (e) => {
+    e.stopPropagation();
+    dispatch(setItemInCart(product))
+  }
+
+
   return (
     <div className="product-reviews-page">
-      <div className="product-reviews-page-block">
-
-      <div className="product-name-title">
-          Ноутбук Apple MacBook Pro 14'' M2 Pro 1TB MPHF3 Space Gray
-          </div>
-          <div className="product-code-title">
-            Код:100010
-          </div>
-          <div className="review-block">
-            <div className="user-name">
-              Стасік
-            </div>
-            <div className="review-data-title">
-              5.9.2023
-            </div>
-            <div className="review-text-block">
-              вфывфывыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыывфывывывывывывывыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыывывывывывывывывывывывывывывывывывфывфывфывввввввввввввввввввввввввыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыы
-            </div>
-            <div className="assessment-review-text-block">
-              <div className="dislike-button">
-               &#128078;
-              </div>
-              <div className="like-button">
-              &#128077;
-              </div>
-            </div>
-            <div className="review-plus-title">
-              Переваги
-            </div>
-            <div className="review-text-block">
-              Можно дзвонити
-            </div>
-            <div className="review-plus-title">
-              Недоліки
-            </div>
-            <div className="review-text-block">
-              Все
-            </div>
-            <div className="question-buttons">
-              <div className="create-answer-button">
-                Відповісти
-              </div>
-              <div className="answer-button">
-                Показати відповіді
-              </div>
-            </div>
-            <div className="create-answer-block">
-            <textarea className="answer-input" rows="4" cols="50"></textarea>
-            <div className="submit-answer-button">
-                Відповісти
-              </div>
-            </div>
-          </div>
-          <div className="review-block">
-            <div className="user-name">
-              Стасік
-            </div>
-            <div className="review-data-title">
-              5.9.2023
-            </div>
-            <div className="review-text-block">
-              вфывфывыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыывфывывывывывывывыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыывывывывывывывывывывывывывывывывывфывфывфывввввввввввввввввввввввввыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыы
-            </div>
-            <div className="assessment-review-text-block">
-              <div className="dislike-button">
-               &#128078;
-              </div>
-              <div className="like-button">
-              &#128077;
-              </div>
-            </div>
-            <div className="review-plus-title">
-              Переваги
-            </div>
-            <div className="review-text-block">
-              Можно дзвонити
-            </div>
-            <div className="review-plus-title">
-              Недоліки
-            </div>
-            <div className="review-text-block">
-              Все
-            </div>
-            <div className="question-buttons">
-              <div className="create-answer-button">
-                Відповісти
-              </div>
-              <div className="answer-button">
-                Показати відповіді
-              </div>
-            </div>
-            <div className="answer-block">
-              <div className="answer">
-                <div className="answer-user-name">
-                  Сашко
-                </div>
-                <div className="answer-text">
-                  Стасік, ти дурак?
-                </div>
-              </div>
-              <div className="answer">
-                <div className="answer-user-name">
-                  Відповідь Loffy
-                </div>
-                <div className="answer-text">
-                  Стасік, ви заблоковані
-                </div>
-              </div>
-            </div>
-          </div>
-      </div>
-
-
-    <div className="product-page-block">
-      <div className="product-question-image">
-      </div>
-      <div className="product-information-block">
-        <div className="product-price-title">
-         12 00000
+      {product?.id === undefined || product_reviews === undefined ?
+        <div className="product-reviews-page-preloader">
+          <Preloader />
         </div>
-        <div className="product-old-price-title">
-         100 000
-        </div>
-        <div className="product-price-discount">
-         100%
-        </div>
-       <div className="product-wishlist-buttobs-block">
-        <Icon id="compare" className="icon-svg-question-page"/>
-        <Icon id="wishlist" className="icon-svg-question-page"/>
-       </div>
-       <div className="product-buy-button">
-       <Icon id="cart" className="icon-cart-svg-question-page"/>
-          Купити
-       </div>
-       
-      </div>
+
+        : <>
+          <div className="product-reviews-page-list">
+            <div className="product-reviews-header">
+              <div className="product-reviews-header-title">
+                {product?.name}
+              </div>
+              <div className="product-reviews-header-code">
+                <span>Код: {product?.code}</span>
+              </div>
+            </div>
+            <div className="product-reviews-body">
+              {product_reviews?.reviews?.map(review => (
+                <div className="reviews-body-review" key={review.id}>
+                  <div className="reviews-body-review-user">
+                    <div className="review-user-name">
+                      {review.username}
+                    </div>
+                    <div className="review-user-rating-data">
+                      <StarRating defaultState={review.productRating} listClass={"star-rating-product-reviews-page"} width={23} height={23} />
+                      <div className="rating-data">
+                        {onlyDateFormat(review.createdAt)}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="reviews-body-review-text">
+                    <div className="review-text">
+                      {review.text}
+                    </div>
+                    <div className="review-advantages">
+                      <div className="advantages-title">
+                        Плюси:
+                      </div>
+                      <div className="advantages-text">
+                        {review.advantages}
+                      </div>
+                    </div>
+                    <div className="review-disadvantages">
+                      <div className="disadvantages-title">
+                        Мінуси:
+                      </div>
+                      <div className="disadvantages-text">
+                        {review.disadvantages}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="product-sub-page">
+            <div className="sub-page-img">
+              <img src={product?.images[0].url} alt="" />
+            </div>
+            <div className="sub-page-price-action">
+              <div className="sub-page-price">
+                <div className="sub-page-price-current">
+                  {product.discountAmount > 0
+                    ? <>{priceFormat(calcDiscount(product?.price, product?.discountAmount))}</>
+                    : <>{priceFormat(product?.price)}</>
+                  }
+                  <span className="sub-page-price-currency">
+                    ₴
+                  </span>
+                </div>
+                {product.discountAmount > 0 &&
+                  <div className="sub-page-price-price-old">
+                    <span>
+                      {priceFormat(product?.price)} ₴
+                    </span>
+                    <span className="sub-page-price-discount">
+                      -{priceFormat(product?.discountAmount)}%
+                    </span>
+                  </div>
+                }
+              </div>
+              <div className="sub-page-action">
+                <WishlistBtn product_id={product?.id} />
+              </div>
+            </div>
+            <div className="sub-page-btn">
+              {!isItemInCart
+                ? <button className="sub-page-buy-btn" onClick={addToCart}>
+                  <Icon id="cart" className="card-btn-icon" />
+                  Купити
+                </button>
+                : <Link reloadDocument={true} className="sub-page-buy-btn_link" to="/order">
+                  <Icon id="cart-full" className="card-btn-icon-full" />
+                  Купити
+                </Link>
+              }
+              <button className="sub-page-buy-credit-btn">
+                <Icon id="cart" className="card-btn-icon" />
+                У кредит
+              </button>
+            </div>
+          </div>
+        </>
+      }
+
     </div>
-
-  </div>
   );
 }
 

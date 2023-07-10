@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { NavLink, Outlet, useParams, useNavigate, NavNavLink } from "react-router-dom";
+import { NavLink, Outlet, useNavigate} from "react-router-dom";
 //Components
 import Icon from "../../components/icon/icon";
 //styles
@@ -22,17 +22,19 @@ function UserPage() {
 
   const user = useSelector(state => state.user.user_access_data)
 
-  const checkAccessToken = async (response) =>{
-    if(response.hasOwnProperty('newAccessToken'))
-    {
-      dispatch(setUserAuth({userId:user.userId, accessToken:response.newAccessToken, refreshToken:user.refreshToken}))
-      setAccessToken(response.newAccessToken)
-    }
-  }
 
   useEffect(() => {
     if(user.userId === ''){
       navigate("/")
+    }
+
+
+    const checkAccessToken = async (response) =>{
+      if(response.hasOwnProperty('newAccessToken'))
+      {
+        dispatch(setUserAuth({userId:user.userId, accessToken:response.newAccessToken, refreshToken:user.refreshToken}))
+        setAccessToken(response.newAccessToken)
+      }
     }
 
     const fetchData = async () => {
@@ -57,7 +59,7 @@ function UserPage() {
     }
 
     fetchData()
-  }, [user])
+  }, [user,dispatch,navigate])
 
   const btnLogOutUser = () => {
     dispatch(logOutUser())

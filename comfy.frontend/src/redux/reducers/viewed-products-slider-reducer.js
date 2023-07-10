@@ -7,7 +7,7 @@ const viewedProductsSliderSlice = createSlice({
     },
     reducers:{
         setViewedProductToSlider: (state,action) => {
-            const index = state.itemsInViewedProductsSlider.findIndex(product => product.id == action.payload.id)
+            const index = state.itemsInViewedProductsSlider.findIndex(product => product.id === action.payload.id)
            
             if(index === -1){                                           // adding new product
                                                                         // limit of 10 objects. The new object replaces the old one

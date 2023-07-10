@@ -5,7 +5,8 @@ FROM node:18-alpine
 WORKDIR /app
 
 # Копируем package.json и package-lock.json в контейнер
-COPY package*.json ./
+COPY package.json ./
+COPY package-lock.json ./
 
 # Устанавливаем зависимости приложения
 RUN npm install

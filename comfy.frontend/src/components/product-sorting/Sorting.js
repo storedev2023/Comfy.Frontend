@@ -1,18 +1,11 @@
 import React, { useState } from "react"
-import { useDispatch, useSelector } from "react-redux"
-import { Link } from "react-router-dom";
+import { useDispatch} from "react-redux"
 import PropTypes from "prop-types";
 
 //components
-import { parseLocaleNumber, priceFormat } from "../../scripts";
-import { ProductService } from "../../service/ProductService";
 //style
 import './Sorting.scss'
-import { addFilterCheckBox, addFilterPrice, addFilterSort, deleteFilterCheckBox } from "../../redux/reducers/filter-reducer";
-import Icon from "../icon/icon";
-
-
-
+import { addFilterSort } from "../../redux/reducers/filter-reducer";
 
 
 

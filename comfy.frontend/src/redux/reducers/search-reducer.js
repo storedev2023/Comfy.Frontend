@@ -7,7 +7,7 @@ const searchSlice = createSlice({
     },
     reducers:{
         setHistoryToSearchList: (state,action) => {
-            const index = state.searchHistory.findIndex(product => product == action.payload)
+            const index = state.searchHistory.findIndex(product => product === action.payload)
             if(index === -1){                               // adding new product
                                                             // limit of 10 objects. The new object replaces the old one
                 if (state.searchHistory.length >= 10) {   

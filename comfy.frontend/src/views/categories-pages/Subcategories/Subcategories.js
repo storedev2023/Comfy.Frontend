@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams, useNavigate } from "react-router-dom";
+import { Link, useParams} from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux"
 import "./Subcategories.scss"
 import { addFilterCheckBox } from "../../../redux/reducers/filter-reducer";
@@ -7,7 +7,6 @@ import { addFilterCheckBox } from "../../../redux/reducers/filter-reducer";
 function SubcategoriesPage() {
 
   const { name } = useParams();
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [subCategories, setSubCategories] = useState([]);
   const categories = useSelector(state => state.categories_list.categoriesList);
@@ -15,7 +14,7 @@ function SubcategoriesPage() {
   useEffect(() => {
     setSubCategories(categories?.filter(category => category.url === name)[0]?.categories)
 
-  }, [categories])
+  }, [categories,name])
 
   const addFiltersPage= (filterQuery) =>{
     dispatch(addFilterCheckBox(filterQuery))

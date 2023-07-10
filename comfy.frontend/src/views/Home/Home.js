@@ -14,10 +14,7 @@ import s4 from "../../assets/images/main_carousel/s4.jpg"
 import s5 from "../../assets/images/main_carousel/s5.jpg"
 import { ProductService } from "../../service/ProductService";
 import CarouselProductViewed from "../../components/carousel/product-viewed/Carousel-product-viewed";
-
-
-
-
+import { Link } from "react-router-dom";
 
 function Home() {
 
@@ -31,12 +28,10 @@ function Home() {
     //cards
     const [Showcases,  setShowcases] = useState([])
     useEffect(()=>{
-
         const fetchData = async () => {
             const response = await ProductService.getShowcase()   
             setShowcases(response)
         }
-
         fetchData()
     }, [])
 
@@ -70,13 +65,13 @@ function Home() {
                         <Carousel activeIndex={index} onSelect={handleSelect} className="main-carousel">
                             {images.map(image => (
                                 <CarouselItem key={images.indexOf(image)}>
-                                    <img src={image}/>
+                                    <img src={image} alt=""/>
                                 </CarouselItem>
                             ))}
                         </Carousel>
                     </div>
                     <div className="body-top-info-links">
-                        <div className="info-link">
+                        {/* <div className="info-link">
                             <a>Уцінені товари</a>
                         </div>
                         <div className="info-link">
@@ -84,7 +79,7 @@ function Home() {
                             </div>
                         <div className="info-link">
                             <a>Кращий вибiр</a>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>
@@ -93,10 +88,10 @@ function Home() {
                 <section key={Showcase.subcategoryId} className="home-section">
                     <div className="home-section-header">
                         <h3 className="home-section-title">{Showcase.name}</h3>
-                        <a className="home-section-more-link">
+                        <Link className="home-section-more-link">
                             <span>Дивитися всі</span>
                             <Icon id="body-arrow" className="body-arrow"/>
-                        </a>
+                        </Link>
                     </div>
                     <div className="home-section-body">
                         <div className="home-section-body-list">

@@ -57,36 +57,23 @@ const Card = ({
                         ? <Carousel interval={null} variant="dark">
                             {product.images.map(image => (
                                 <CarouselItem key={product.images.indexOf(image)}>
-                                    <Link to={`/product/${product.url}`} className="img-link" reloadDocument={true}>
-                                        <img src={image.url} />
+                                    <Link to={`/product/${product.url}/`} className="img-link" reloadDocument={true}>
+                                        <img src={image.url} alt=""/>
                                     </Link>
                                 </CarouselItem>
                             ))}
                         </Carousel>
                         : 
-                        <Link to={`/product/${product.url}`} className="img-link" reloadDocument={true}> 
-                            <img src={product?.images[0]?.url}/> 
+                        <Link to={`/product/${product.url}/`} className="img-link" reloadDocument={true}> 
+                            <img src={product?.images[0]?.url} alt=""/> 
                         </Link>
                     }
                 </div>
 
             </div>
             <div className="list-item-info">
-                <Link to={`/product/${product.url}`} className="item-info-name" reloadDocument={true} >{product.name}</Link>
+                <Link to={`/product/${product.url}/`} className="item-info-name" reloadDocument={true} >{product.name}</Link>
                 <div className="list-item-info-content">
-                    <div className="content-feedback-labels">
-                        <div className="content-feedback">
-                            <div className="content-rating">
-
-                            </div>
-                            <div className="content-comments">
-
-                            </div>
-                        </div>
-                        <div className="content-labels">
-
-                        </div>
-                    </div>
                     <div className="content-price-actions">
                         <div className="content-price-actions-content">
                             <div className="actions-content-price">
@@ -132,7 +119,7 @@ const Card = ({
                     </div>
                     }
                     <div className="list-item-more-info-characteristics">
-                        {product.characteristicGroups.length != 0
+                        {product.characteristicGroups.length !== 0
                             ? product.characteristicGroups[0].characteristics.map(characteristic => (
                                 <div className="more-info-characteristics" key={characteristic.name}>
                                     <div className="more-info-characteristics-name">

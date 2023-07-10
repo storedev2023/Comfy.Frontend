@@ -10,8 +10,8 @@
 
 .product-categories-section-header{
     display: flex;
-    align-items: end;
-    justify-content: start;
+    align-items: flex-end;
+    justify-content: flex-start;
     padding: 1.5rem 0 2rem 0;
     .product-categories-section-header-title{
         font-size: 20px;

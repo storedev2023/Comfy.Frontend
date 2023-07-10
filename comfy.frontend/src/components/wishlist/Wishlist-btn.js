@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 //Components
 import Icon from "../icon/icon";
 //styles
@@ -6,7 +6,6 @@ import { useDispatch, useSelector } from "react-redux";
 import './Wishlist-btn.scss'
 import { userService } from "../../service/UserService";
 import { setUserWishlist } from "../../redux/reducers/user-reducer";
-import { useNavigate } from "react-router-dom";
 
 // this is the component
 

@@ -52,7 +52,7 @@ const Icon = (props) => {
       <path d="M21 6.01845C21 6.53688 20.9199 7.03458 20.7796 7.51153C20.7395 7.67743 20.6794 7.8226 20.6192 7.96776C18.8156 12.7373 15.3687 16.6566 11 18.9585C10.98 18.9792 10.9599 19 10.9198 19C6.59116 16.6567 3.16434 12.7581 1.38077 7.98851C1.32065 7.84335 1.26049 7.67743 1.22041 7.51153C1.08013 7.03458 1 6.53688 1 6.01845C1 3.26039 3.1643 1 5.84967 1C7.67333 1 9.25648 2.0576 10.0982 3.59216C10.0982 3.69585 10.1382 3.7788 10.2184 3.86175C10.3787 4.13134 10.6593 4.29728 11 4.29728C11.3407 4.29728 11.6213 4.13134 11.7816 3.86175C11.8618 3.7788 11.9018 3.69585 11.9018 3.59216C12.7435 2.0576 14.3267 1 16.1503 1C18.8357 1 21 3.26039 21 6.01845Z" stroke="#2B3946" strokeWidth="2" strokeMiterlimit="10"/>
       </svg>
     case 'cart':
-      return <svg className={props.className} xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 23 21" fill="none">
+      return <svg className={props.className} xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 23 21" fill="none">
       <path d="M1.35156 1H4.31797L8.97356 10.5172L6.74875 14.802H20.283" stroke="white" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round"/>
       <path d="M5.98633 3.10107H21.4775" stroke="white" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round"/>
       <path d="M8.97363 10.8261H17.1312L21.7868 3.10107" stroke="white" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round"/>
@@ -60,7 +60,7 @@ const Icon = (props) => {
       <path d="M18.2435 20.1169C19.3698 20.1169 20.2829 19.2038 20.2829 18.0775C20.2829 16.9512 19.3698 16.0381 18.2435 16.0381C17.1172 16.0381 16.2041 16.9512 16.2041 18.0775C16.2041 19.2038 17.1172 20.1169 18.2435 20.1169Z" fill="white"/>
       </svg>
     case 'cart-full':
-      return <svg className={props.className} xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 22 21" fill="none">
+      return <svg className={props.className} xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 22 21" fill="none">
       <path d="M1 1H3.9664L8.6014 10.5378L6.3766 14.802H19.9314" stroke="white" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round"/>
       <path d="M5.63477 3.10107H21.1054" stroke="white" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round"/>
       <path d="M8.60156 10.8467H16.7798L21.4148 3.10107" stroke="white" strokeMiterlimit="10" strokeLinecap="round"/>

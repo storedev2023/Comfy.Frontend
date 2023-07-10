@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, {useState } from "react";
 import { Link } from "react-router-dom";
 import './Order.scss'
 
@@ -30,7 +30,7 @@ function Order({
                     </div>
                     <div className="order-products-img">
                         {order.products.map(product => (
-                            <img src={product.imageUrl} key={`${order.id}_${product.imageUrl}_${order.id}`} />
+                            <img src={product.imageUrl} alt="" key={`${order.id}_${product.imageUrl}_${order.id}`} />
                         ))}
                     </div>
                     </>
@@ -45,7 +45,7 @@ function Order({
                         {order.products.map(product => (
                            <div className="order-product" key={`${product.url}_${order.id}`}>
                                 <div className="order-product-img">
-                                    <img src={product.imageUrl}/>
+                                    <img src={product.imageUrl} alt=""/>
                                 </div>
                                 <div className="order-product-name">
                                     <Link to={`/product/${product.url}`} reloadDocument={true}>{product.name}</Link>

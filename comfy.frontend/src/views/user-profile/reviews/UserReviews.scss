@@ -28,8 +28,8 @@
         font-size:20px;
         .reviews-list-review-title-text{
             display: flex;
-            align-items: start;
-            justify-content: start;
+            align-items: flex-start;
+            justify-content: flex-start;
             width: 75%;
             a{
                 font-weight: 600;
@@ -45,12 +45,12 @@
         .reviews-list-review-title-rating{
             width: 15%;
             display: flex;
-            align-items: start;
-            justify-content: start;
+            align-items: flex-start;
+            justify-content: flex-start;
 
             .star-rating-profile-reviews-page{
                 display: flex;
-                align-items: start;
+                align-items: flex-start;
             }
         }
 

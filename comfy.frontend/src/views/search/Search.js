@@ -8,8 +8,7 @@ import Card from "../../components/card/Card";
 import { priceFormat ,getMaxPrice, getMinPrice} from "../../scripts";
 import Preloader from "../../components/preloader/Preloader";
 import Filter from "../../components/filters/Filter";
-import Sorting from "../../components/product-sorting/Sorting";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector} from "react-redux";
 
 const SearchPage = () => {
 

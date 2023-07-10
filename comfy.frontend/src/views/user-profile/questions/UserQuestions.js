@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 //Components
-import Icon from "../../../components/icon/icon";
 import Preloader from "../../../components/preloader/Preloader";
 import { editDateFormat } from "../../../scripts";
 //styles
@@ -11,7 +10,6 @@ import './UserQuestions.scss'
 
 function Questions() {
 
-  const user = useSelector(state => state.user.user_access_data)
   const user_questions = useSelector(state => state.user.user_questions)
 
 

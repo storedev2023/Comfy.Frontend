@@ -1,31 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { useSelector} from "react-redux";
+
 //Components
-import Card from "../../../components/card/Card";
-import Icon from "../../../components/icon/icon";
 //styles
 import './Orders.scss'
-import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import { userService } from "../../../service/UserService";
-import { setUserOrders } from "../../../redux/reducers/user-reducer";
 import Order from "../../../components/order/Order";
 
 
 function Orders() {
 
-  const user = useSelector(state => state.user.user_access_data)
+
   const orders = useSelector(state => state.user.user_orders)
 
-  const dispatch = useDispatch()
-
-  useEffect(() => {
-    // const fetchData = async () => {
-    //   const response = await userService.user_orders(user?.userId, user?.accessToken, user?.refreshToken)
-    //   setOrderList(response)
-    //   dispatch(setUserOrders(response))
-    // }
-    // fetchData()
-  }, [user])
 
 
   return (

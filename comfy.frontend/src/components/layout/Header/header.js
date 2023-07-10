@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate, redirect } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import './header.scss'
@@ -9,7 +9,7 @@ import Cart from "../../cart/Cart";
 import { searchService } from "../../../service/SearchService";
 import { setCategoriesList } from "../../../redux/reducers/categories-reducer";
 import { setHistoryToSearchList, deleteHistoryInSearchList } from "../../../redux/reducers/search-reducer";
-import { priceFormat, calcDiscount, sortByField } from "../../../scripts";
+import { priceFormat, calcDiscount } from "../../../scripts";
 import { addFilterCheckBox, deleteAllFilters } from "../../../redux/reducers/filter-reducer";
 import Authorization from "../../auth/authorization";
 
@@ -17,8 +17,6 @@ function HeaderTOP() {
 
     //Header cities
     const [showCities, setShowCities] = useState(false)
-    const [headerStocksLinks, setStocksLinks] = useState(false)
-    const [headerMoreLinks, setHeaderMoreLinks] = useState(false)
     const [headerFeedbackLinks, setHeaderFeedbackLinks] = useState(false)
 
     return (
@@ -63,39 +61,16 @@ function HeaderTOP() {
                         </div>
                     </div>
                     <nav className="header-top-nav">
-                        <div className="header-nav-stock" onMouseEnter={() => setStocksLinks(true)} onMouseLeave={() => setStocksLinks(false)}>
-                            Акції
-                            {headerStocksLinks &&
-                                <div className="header-nav-stock-list" onMouseEnter={() => setStocksLinks(true)} onMouseLeave={() => setStocksLinks(false)}>
-                                    <a href="" className="header-stock-link"><span>Знижки до -40%</span></a>
-                                    <a href="" className="header-more-stock-link">
-                                        Всі акції
-                                        <Icon id="body-arrow" className="header-arrow" />
-                                    </a>
-                                </div>
-                            }
-                        </div>
-                        <a href="" className="header-link">Подарункові картки</a>
-                        <a href="" className="header-link">Магазини</a>
-                        <a href="" className="header-link">Замовлення</a>
-                        <div className="header-nav-more header-link" onMouseEnter={() => setHeaderMoreLinks(true)} onMouseLeave={() => setHeaderMoreLinks(false)}>
-                            <span>Ще</span>
-                            <Icon id="header-arrow" className="top-header-arrow-icon" />
-                            {headerMoreLinks &&
-                                <div className="header-nav-more-list" onMouseEnter={() => setHeaderMoreLinks(true)} onMouseLeave={() => setHeaderMoreLinks(false)}>
-                                    <a href="" className="header-more-link">Доставка</a>
-                                    <a href="" className="header-more-link">Повернення</a>
-                                    <a href="" className="header-more-link">Блог</a>
-                                </div>
-                            }
-                        </div>
+                        <Link src="" className="header-link">Подарункові картки</Link>
+                        <Link src="" className="header-link">Магазини</Link>
+                        <Link src="" className="header-link">Замовлення</Link>
                         <div className="header-nav-feedback" onMouseEnter={() => setHeaderFeedbackLinks(true)} onMouseLeave={() => setHeaderFeedbackLinks(false)}>
                             <span>Зв’язатися</span>
                             {headerFeedbackLinks &&
                                 <div className="header-nav-feedback-list" onMouseEnter={() => setHeaderFeedbackLinks(true)} onMouseLeave={() => setHeaderFeedbackLinks(false)}>
-                                    <a href="" className="header-feedback-link">Messenger</a>
-                                    <a href="" className="header-feedback-link">Viber</a>
-                                    <a href="" className="header-feedback-link">Telegram</a>
+                                    <Link href="" className="header-feedback-link">Messenger</Link>
+                                    <Link href="" className="header-feedback-link">Viber</Link>
+                                    <Link href="" className="header-feedback-link">Telegram</Link>
                                 </div>
                             }
                         </div>
@@ -161,13 +136,13 @@ function HeaderBOTTOM() {
             setCategoriesMenu(response)
         }
         fetchData()
-    }, [])
+    }, [dispatch])
 
     let mainCategory
     const showSubCatalogs = (event, action) => {
         setShowSubCatalog(action)
 
-        let mainId = event.target.dataset.id != undefined ? event.target.dataset.id : event.target.dataset.main_id
+        let mainId = event.target.dataset.id !== undefined ? event.target.dataset.id : event.target.dataset.main_id
         mainCategory = document.querySelector('div[data-id="' + mainId + '"]')
         let subCategory = document.querySelector('div[data-main_id="' + mainId + '"]')
 

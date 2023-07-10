@@ -1,6 +1,5 @@
 import React from "react";
 import { upPage } from "../../../scripts";
-import  Icon from "../../../components/icon/icon";
 
 
 import './Contacts.scss'

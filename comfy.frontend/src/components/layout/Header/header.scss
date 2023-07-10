@@ -399,7 +399,7 @@ $font-size: 14px;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
-                justify-content: start;
+                justify-content: flex-start;
                 width: 100%;
 
             }
@@ -417,7 +417,7 @@ $font-size: 14px;
                 display: flex;
                 flex-wrap: nowrap;
                 align-items: center;
-                justify-content: start;
+                justify-content: flex-start;
                 font-size: $font-size;
                 width: 100%;
                 padding: 0.8rem 0.8rem;
@@ -480,8 +480,8 @@ $font-size: 14px;
 
     .sub-categories {
         display: flex;
-        align-items: start;
-        justify-content: start;
+        align-items: flex-start;
+        justify-content: flex-start;
         flex-direction: column;
         margin: 0.1rem 1rem;
         color: #9ACD6A;
@@ -682,7 +682,7 @@ $font-size: 14px;
         border-bottom: 1px solid rgba(0, 0, 0, 0.25);
         padding: 0.5rem 0;
         display: flex;
-        align-items: start;
+        align-items: flex-start;
         color: #2B3946;
         cursor: pointer;
 
@@ -709,7 +709,7 @@ $font-size: 14px;
             margin-top: 0.3rem;
             display: flex;
             align-items: center;
-            justify-content: start;
+            justify-content: flex-start;
 
             .price-section-old-price {
                 font-size: 16px;

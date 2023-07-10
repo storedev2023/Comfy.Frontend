@@ -10,6 +10,25 @@
     }
 }
 
+.header-icon-cart-full{
+    width: 1.8rem;
+    height: 1.8rem;
+    path{
+        
+        stroke:white;
+        transition: all .15s linear;
+    }
+}
+
+.header-icon-cart{
+    width: 1.8rem;
+    height: 1.8rem;
+    path{
+        stroke:white;
+        transition: all .15s linear;
+    }
+}
+
 .header-icon-wishlist{
     width: 1.8rem;
     height: 1.8rem;
@@ -64,7 +83,7 @@
     width: 30px;
     height: 30px;    
     path{
-        fill:white;
+        stroke:white;
         transition: all .15s linear;
     }
 }
@@ -74,7 +93,7 @@
     height: 30px;
     
     path{
-        fill:white;
+        stroke:white;
         transition: all .15s linear;
     }
 }

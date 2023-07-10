@@ -1,14 +1,7 @@
 import axios from 'axios'
-import { ApiAddress } from './Address'
+import { ApiAddress, updateJWT } from './_DefaultService'
 
-const updateJWT = async (userId,accessToken,refreshToken) => {
-    const response = await axios.post(`http://${ApiAddress}/api/Auth/refreshAccessToken`, {
-        userId: userId,
-        refreshToken: refreshToken,
-        accessToken: accessToken
-      })
-    return await response.data
-} 
+
 
 export const userService = {
 
@@ -137,7 +130,6 @@ export const userService = {
                 Authorization: `Bearer ${accessToken}` ,
             }
         }
-        console.log({"userId":userId,"product_id":product_id,"accessToken":accessToken,"refreshToken":refreshToken})
         try{
             const response = await axios.delete(`http://${ApiAddress}/api/WishList`, config)
             return await response.data

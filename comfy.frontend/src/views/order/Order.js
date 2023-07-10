@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React  from "react";
 //Components
-import Card from "../../components/card/Card";
 import Icon from "../../components/icon/icon";
 import { deleteItemFromCart } from "../../redux/reducers/cart-reducer";
 import { calcDiscount, priceFormat } from "../../scripts";
@@ -57,8 +56,8 @@ function Orders() {
                                 {products.map(product => (
                                 <li className="product-li" key={product.url}>
                                     {product.hasOwnProperty("imageUrl")  
-                                    ? <img className="product-image" src={product.imageUrl} alt="Product Image"/>
-                                    : <img className="product-image" src={product.images[0].url} alt="Product Image"/>
+                                    ? <img className="product-image" src={product.imageUrl} alt=""/>
+                                    : <img className="product-image" src={product.images[0].url} alt=""/>
                                     }
                                     <div className="product-info">
                                         <div className="product-name">{product.name}</div>

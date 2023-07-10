@@ -1,131 +1,125 @@
 import React from "react";
-import { upPage } from "../../../scripts";
-import  Icon from "../../../components/icon/icon";
+import Icon from "../../../components/icon/icon";
+import { upPage } from "../../../scripts/index";
+import { Link } from "react-router-dom";
+import { setItemInCart } from "../../../redux/reducers/cart-reducer"
+import './Questions.scss'
+import { useSelector, useDispatch } from "react-redux";
+import { onlyDateFormat, priceFormat, calcDiscount } from "../../../scripts/index";
+import Preloader from "../../../components/preloader/Preloader"
+import WishlistBtn from "../../../components/wishlist/Wishlist-btn";
 
 
 import './Questions.scss'
 
 
+
 function Questions() {
   upPage()
+
+  const dispatch = useDispatch()
+
+  const product = useSelector(state => state.product.currentProduct)
+  const product_questions = useSelector(state => state.product.product_questions)
+  const items = useSelector((state) => state?.cart.itemsInCart)
+  const isItemInCart = items?.some(item => item.id === product?.id)
+  
+  const addToCart = (e) => {
+    e.stopPropagation();
+    dispatch(setItemInCart(product))
+  }
+
   return (
       <div className="questions-page">
-
-        <div className="questions-page-block">
-          <div className="product-name-title">
-          Ноутбук Apple MacBook Pro 14'' M2 Pro 1TB MPHF3 Space Gray
-          </div>
-          <div className="product-code-title">
-            Код:100010
-          </div>
-          <div className="question-block">
-            <div className="user-name">
-              Стасік
-            </div>
-            <div className="question-data-title">
-              5.9.2023
-            </div>
-            <div className="question-text-block">
-              Клавіатура є?
-            </div>
-            <div className="assessment-question-text-block">
-              <div className="dislike-button">
-               &#128078;
-              </div>
-              <div className="like-button">
-              &#128077;
-              </div>
-            </div>
-            <div className="question-buttons">
-              <div className="create-answer-button">
-                Відповісти
-              </div>
-              <div className="answer-button">
-                Показати відповіді
-              </div>
-            </div>
-            <div className="answer-block">
-              <div className="answer">
-                <div className="answer-user-name">
-                  Сашко
-                </div>
-                <div className="answer-text">
-                  Стасік, ти дурак?
-                </div>
-              </div>
-              <div className="answer">
-                <div className="answer-user-name">
-                  Відповідь Loffy
-                </div>
-                <div className="answer-text">
-                  Стасік, ви заблоковані
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="question-block">
-            <div className="user-name">
-              Віатлік
-            </div>
-            <div className="question-data-title">
-              5.9.2023
-            </div>
-            <div className="question-text-block">
-              Клавіатура є?
-            </div>
-            <div className="assessment-question-text-block">
-              <div className="dislike-button">
-               &#128078;
-              </div>
-              <div className="like-button">
-              &#128077;
-              </div>
-            </div>
-            <div className="question-buttons">
-              <div className="create-answer-button">
-                Відповісти
-              </div>
-              <div className="answer-button">
-                Показати відповіді
-              </div>
-            </div>
-            <div className="create-answer-block">
-            <textarea className="answer-input" rows="4" cols="50"></textarea>
-            <div className="submit-answer-button">
-                Відповісти
-              </div>
-            </div>
-          </div>
-
-
+        {product?.id === undefined || product_questions === undefined ?
+        <div className="product-reviews-page-preloader">
+          <Preloader />
         </div>
 
+        :<>
+        <div className="product-reviews-page-list">
+            <div className="product-reviews-header">
+              <div className="product-reviews-header-title">
+                {product?.name}
+              </div>
+              <div className="product-reviews-header-code">
+                <span>Код: {product?.code}</span>
+              </div>
+            </div>
+            <div className="product-reviews-body">
+              {product_questions?.questions?.map(question => (
+                <div className="reviews-body-review" key={question.id}>
+                  <div className="reviews-body-review-user">
+                    <div className="review-user-name">
+                      {question.username}
+                    </div>
+                    <div className="review-user-rating-data">
+            
+                      <div className="rating-data">
+                        {onlyDateFormat(question.createdAt)}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="reviews-body-review-text">
+                    <div className="review-text">
+                      {question.text}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
 
-        <div className="product-page-block">
-          <div className="product-question-image">
-          </div>
-          <div className="product-information-block">
-            <div className="product-price-title">
-             12 00000
+
+        <div className="product-sub-page">
+            <div className="sub-page-img">
+              <img src={product?.images[0].url} alt="" />
             </div>
-            <div className="product-old-price-title">
-             100 000
+            <div className="sub-page-price-action">
+              <div className="sub-page-price">
+                <div className="sub-page-price-current">
+                  {product.discountAmount > 0
+                    ? <>{priceFormat(calcDiscount(product?.price, product?.discountAmount))}</>
+                    : <>{priceFormat(product?.price)}</>
+                  }
+                  <span className="sub-page-price-currency">
+                    ₴
+                  </span>
+                </div>
+                {product.discountAmount > 0 &&
+                  <div className="sub-page-price-price-old">
+                    <span>
+                      {priceFormat(product?.price)} ₴
+                    </span>
+                    <span className="sub-page-price-discount">
+                      -{priceFormat(product?.discountAmount)}%
+                    </span>
+                  </div>
+                }
+              </div>
+              <div className="sub-page-action">
+                <WishlistBtn product_id={product?.id} />
+              </div>
             </div>
-            <div className="product-price-discount">
-             100%
+            <div className="sub-page-btn">
+              {!isItemInCart
+                ? <button className="sub-page-buy-btn" onClick={addToCart}>
+                  <Icon id="cart" className="card-btn-icon" />
+                  Купити
+                </button>
+                : <Link reloadDocument={true} className="sub-page-buy-btn_link" to="/order">
+                  <Icon id="cart-full" className="card-btn-icon-full" />
+                  Купити
+                </Link>
+              }
+              <button className="sub-page-buy-credit-btn">
+                <Icon id="cart" className="card-btn-icon" />
+                У кредит
+              </button>
             </div>
-           <div className="product-wishlist-buttobs-block">
-            <Icon id="compare" className="icon-svg-question-page"/>
-            <Icon id="wishlist" className="icon-svg-question-page"/>
-           </div>
-           <div className="product-buy-button">
-           <Icon id="cart" className="icon-cart-svg-question-page"/>
-              Купити
-           </div>
-           
-          </div>
         </div>
+        </>
+        }
 
       </div>
         

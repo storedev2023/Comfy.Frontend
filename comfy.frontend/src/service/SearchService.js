@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { ApiAddress } from './Address'
+import { ApiAddress } from './_DefaultService'
 
 export const searchService = {
 

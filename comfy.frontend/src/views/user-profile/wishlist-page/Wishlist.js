@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect} from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 //Components
 import StarRating from "../../../components/star-rating/StarRating";
-import { userService } from "../../../service/UserService";
-import { setUserWishlist } from "../../../redux/reducers/user-reducer";
 import { priceFormat,calcDiscount } from "../../../scripts";
 import WishlistBtn from "../../../components/wishlist/Wishlist-btn";
 import Icon from "../../../components/icon/icon";
@@ -29,7 +27,7 @@ function Wishlist() {
     if(user.userId === ''){
       navigate("/")
     }
-  }, [user])
+  }, [user,navigate])
 
   const user_wishList = useSelector(state => state.user.user_wishlist)
   const items = useSelector((state) => state?.cart.itemsInCart)
@@ -57,7 +55,7 @@ else{
             {user_wishList.map(item => (
               <div key={item.id} className="wishlist-product">
                 <div className="wishlist-product-img">
-                  <Link to={`/product/${item.url}`} reloadDocument={true}><img src={item.imageUrl} /></Link>
+                  <Link to={`/product/${item.url}`} reloadDocument={true}><img src={item.imageUrl} alt="" /></Link>
                 </div>
                 <div className="wishlist-product-body">
                   <div className="wishlist-product-body-title">

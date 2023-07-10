@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect } from "react"
 import { useInView } from 'react-intersection-observer'
 
 //components
@@ -12,9 +12,7 @@ import { deleteItemFromCart } from "../../redux/reducers/cart-reducer";
 
 //images
 
-
-
-const Cart = (props) => {
+const Cart = ({isShow, setIsShow, setIsCartOverlay}) => {
 
 
     const dispatch = useDispatch();
@@ -24,8 +22,8 @@ const Cart = (props) => {
     const deleteProduct = (event, id) => {
         dispatch(deleteItemFromCart(id))
         if (products.length === 1) {
-            props.setIsShow(false)
-            props.setIsCartOverlay(false)
+            setIsCartOverlay(false)
+            setIsShow(false)  
         }
     }
 
@@ -33,22 +31,20 @@ const Cart = (props) => {
 
     useEffect(() => {
         if (inView) {
-            props.setIsCartOverlay(true)
+            setIsCartOverlay(true)
         }
 
-    }, [inView])
-
-
+    }, [inView,setIsCartOverlay])
 
 
     return (
-        <>  <Icon id="cart" className="header-icon" />
+        <>  <Icon id={products.length !== 0 ? "cart-full": "cart"  } className={products.length !== 0 ? "header-icon-cart-full": "header-icon-cart" }/>
             {products.length !== 0 &&
             <div className="cart-number-of-goods">
                 {products.length}
             </div>
             }
-            {props.isShow &&
+            {isShow &&
                 <>
                     {products.length === 0
                         ? <div className="empty-cart">

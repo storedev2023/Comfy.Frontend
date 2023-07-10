@@ -1,9 +1,8 @@
-import React, { useState, useEffect, useRef } from "react"
-import { useDispatch, useSelector } from "react-redux"
+import React, { useEffect} from "react"
+import { useDispatch} from "react-redux"
 import PropTypes from "prop-types";
 
 //components
-import Icon from "../icon/icon";
 import { addFilterCheckBox, addFilterMark, addFilterPrice, deleteFilterCheckBox, deleteFilterMark } from "../../redux/reducers/filter-reducer";
 import { parseLocaleNumber, priceFormat } from "../../scripts";
 //style
@@ -78,8 +77,8 @@ const Filter = ({
     const isActiveFilter = (id) => {
         const {current_filter_id, current_characteristic_id} = getActiveFiltersId()
         if (!current_filter_id) { return false }
-        if(current_filter_id.indexOf(isBrand ? "brand" : String(filter_id)) != -1){
-            if (current_characteristic_id.indexOf(String(id)) != -1) {
+        if(current_filter_id.indexOf(isBrand ? "brand" : String(filter_id)) !== -1){
+            if (current_characteristic_id.indexOf(String(id)) !== -1) {
                 return true
             }
             else {
@@ -98,18 +97,17 @@ const Filter = ({
             const inputs = document.querySelectorAll('input[class="action-checkbox-brand"]:checked')
             if(inputs.length > 0)
             {
-                Array.from(inputs).map((input) => {
+                Array.from(inputs).map((input) => 
                     dispatch(addFilterMark({ name: title, value: input.name, filter: `brand=${input.value}` }))
-                    return
-                })
+                )
             } 
            
         }
         isActive(filter_query) 
-    }, [isActiveFilter])
+    }, [isActiveFilter, dispatch, filter_query, isActive, isBrand, title])
 
 
-    return (
+    return ( 
         <div className="product-filter">
             <div className="filter-header">
                 <div className="filter-header-name">

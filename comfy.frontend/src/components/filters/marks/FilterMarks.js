@@ -1,11 +1,8 @@
-import React, { useState, useEffect, useRef } from "react"
+import React from "react"
 import { useDispatch, useSelector } from "react-redux"
-import PropTypes from "prop-types";
 
 import Icon from "../../icon/icon";
 import { deleteAllFilters, deleteFilterCheckBox, deleteFilterMark } from "../../../redux/reducers/filter-reducer";
-import { parseLocaleNumber, priceFormat } from "../../../scripts";
-
 
 import './FilterMarks.scss'
 

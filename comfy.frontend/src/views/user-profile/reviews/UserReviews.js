@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 //Components
-import  Card from "../../../components/card/Card";
 import  Icon from "../../../components/icon/icon";
 //styles
 import './UserReviews.scss'
@@ -12,9 +11,7 @@ import StarRating from "../../../components/star-rating/StarRating";
 import { editDateFormat } from "../../../scripts";
 function Reviews() {
 
-  const user = useSelector(state => state.user.user_access_data)
   const user_reviews = useSelector(state => state.user.user_reviews)
-
 
 
   if(user_reviews.userId === "")

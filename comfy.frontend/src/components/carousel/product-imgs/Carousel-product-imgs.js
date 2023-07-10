@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import PropTypes from "prop-types";
-import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext, Dot } from 'pure-react-carousel';
+import { CarouselProvider, Slider, Slide, Dot } from 'pure-react-carousel';
 
 //style
 import "./Carousel-product-imgs.scss"
@@ -25,7 +25,8 @@ const CarouselProductImages = ({
         const slides = document.querySelectorAll('[aria-label="slide"]')
         slides.forEach(slide => {  
             
-            if(slide.getAttribute("tabindex") != 0){
+             // eslint-disable-next-line
+            if(slide.getAttribute("tabindex") != 0){ 
                 slide.classList.add('display-none')
             }
             else{ 
@@ -49,14 +50,14 @@ const CarouselProductImages = ({
             <Slider className={sliderClass} >
                 {items?.map(image => (
                     <Slide className={slideClass}  index={items?.indexOf(image)} key={items?.indexOf(image)}>
-                        <img src={image.url} />
+                        <img src={image.url} alt=""/>
                     </Slide>
                 ))}
                 {isDot && 
                 <div className="product-page-slider-dot-list">                    
                     {items?.map(image => (
                         <Dot onClick={displayNone} className={dotClass} slide={items?.indexOf(image)} key={items?.indexOf(image)}>
-                            <img src={image.url} />
+                            <img src={image.url} alt=""/>
                         </Dot>
                     ))}
                 </div>

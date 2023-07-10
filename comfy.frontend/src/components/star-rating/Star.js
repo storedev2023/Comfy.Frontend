@@ -12,7 +12,6 @@ function Star({ value }) {
         setHover,
         setRating,
         width,
-        listClass,
     } = useContext(StarRatingContext);
     console.log()
     return (

@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
-import { Link, Outlet, useParams, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { NavLink, Outlet, useParams, useNavigate } from "react-router-dom";
+import { useDispatch} from "react-redux";
 
 import { ProductService } from "../../service/ProductService";
-import { setProduct } from "../../redux/reducers/product-reducer";
+import { setProduct, setReviews, setQuestions } from "../../redux/reducers/product-reducer";
 
 
 import './Product.scss'
-import { priceFormat, calcDiscount, upPage } from "../../scripts";
+import { upPage } from "../../scripts";
 import { setViewedProductToSlider } from "../../redux/reducers/viewed-products-slider-reducer";
 
 const Product = () => {
@@ -19,19 +19,24 @@ const Product = () => {
   useEffect(()=>{
     const fetchData = async () => {  
 
-          const response = await ProductService.getProductByUrl(id)
-          console.log(response)
-          if(response === (null || undefined || ""))
+          const product = await ProductService.getProductByUrl(id)
+          if(product === (null || undefined || ""))
           {
             return navigate("/404")
           }
-          setProduct(response)
-          dispatch(setProduct(response))
-          dispatch(setViewedProductToSlider(response))
+          dispatch(setProduct(product))
+
+          const product_reviews = await ProductService.getReviewsByProductId(product?.id)
+          dispatch(setReviews(product_reviews))
+          const product_questions = await ProductService.getQuestionsByProductId(product?.id)
+          dispatch(setQuestions(product_questions))
+          
+
+          dispatch(setViewedProductToSlider(product))
     }
       
     fetchData()
-  }, [id])
+  }, [id,dispatch,navigate])
 
   useEffect(()=>{
     upPage()
@@ -44,34 +49,34 @@ const Product = () => {
       </div>
       <div className="product-page-tabs-sections">
         <div className="product-page-tabs-links">
-          <Link to='' className="tab-link">
+          <NavLink to={`/product/${id}/`} className={({ isActive }) => isActive ? "tab-link active" : "tab-link"}>
             <div className="link-body">
               <div className="link-text">
                 ВСЕ ПРО ТОВАР
               </div>
             </div>
-          </Link>
-          <Link to='characteristics' className="tab-link">
+          </NavLink>
+          <NavLink to='characteristics' className={({ isActive }) => isActive ? "tab-link active" : "tab-link"} >
             <div className="link-body">
               <div className="link-text">
                 ХАРАКТЕРИСТИКИ
               </div>
             </div>
-          </Link>
-          <Link to='reviews' className="tab-link">
+          </NavLink>
+          <NavLink to='reviews' className={({ isActive }) => isActive ? "tab-link active" : "tab-link"}>
             <div className="link-body">
               <div className="link-text">
                 ВІДГУКИ
               </div>
             </div>
-          </Link>
-          <Link to='questions' className="tab-link">
+          </NavLink>
+          <NavLink to='questions' className={({ isActive }) => isActive ? "tab-link active" : "tab-link"}>
             <div className="link-body">
               <div className="link-text">
                 ПИТАННЯ
               </div>
             </div>
-          </Link>
+          </NavLink>
         </div>
       </div>
       <Outlet />

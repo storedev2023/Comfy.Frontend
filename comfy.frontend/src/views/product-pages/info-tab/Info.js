@@ -4,14 +4,12 @@ import { useDispatch, useSelector } from "react-redux"
 
 
 import Icon from "../../../components/icon/icon";
-import { ProductService } from "../../../service/ProductService";
 import { setItemInCart } from "../../../redux/reducers/cart-reducer"
-import { priceFormat, calcDiscount, upPage } from "../../../scripts";
+import { priceFormat, calcDiscount} from "../../../scripts";
 import StarRating from "../../../components/star-rating/StarRating";
 import CarouselProductImages from "../../../components/carousel/product-imgs/Carousel-product-imgs";
 import CarouselProductViewed from "../../../components/carousel/product-viewed/Carousel-product-viewed";
 import './Info.scss'
-import Wishlist from "../../user-profile/wishlist-page/Wishlist";
 import WishlistBtn from "../../../components/wishlist/Wishlist-btn";
 import Preloader from "../../../components/preloader/Preloader";
 
@@ -33,8 +31,7 @@ function Info() {
 
   const viewedProducts = useSelector((state) => state.v_product.itemsInViewedProductsSlider)
   const isItemInCart = items.some(item => item.id === product?.id)
-  // const [productImages, setProductImages] = useState(product?.images.length != 0)
-
+  
 
   const addToCart = (e) => {
     e.stopPropagation();

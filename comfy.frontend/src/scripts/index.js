@@ -32,4 +32,10 @@ export const editDateFormat = (dateAndTime) => {
     const dateAndTimeArray = dateAndTime.split(' ')
     let data = (dateAndTimeArray[0].split('/')).join('.')
     return(data + " о " + dateAndTimeArray[1])
-  }
+}
+
+export const onlyDateFormat = (dateAndTime) => {
+    const dateAndTimeArray = dateAndTime.split(' ')
+    let data = (dateAndTimeArray[0].split('/')).join('.')
+    return(data)
+}

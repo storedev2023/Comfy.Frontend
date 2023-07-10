@@ -1,8 +1,7 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux"
+import { useSelector } from "react-redux"
 
 import { upPage } from "../../../scripts/index";
-import { setItemInCart } from "../../../redux/reducers/cart-reducer"
 
 import "./Characteristics.scss"
 

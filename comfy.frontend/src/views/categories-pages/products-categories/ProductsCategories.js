@@ -1,5 +1,5 @@
-import React, { useEffect, useRef, useState } from "react";
-import { useParams, Navigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux"
 import "./ProductsCategories.scss"
 import { ProductService } from "../../../service/ProductService";
@@ -64,7 +64,7 @@ function ProductsCategoriesPage() {
         setSubCategory(localSub)
         fetchData(localSub?.id, undefined, undefined,filterSort.sort_tag,filterSort.sorting_order, filterQuery !== null? filterQuery : undefined) 
         
-    }, [categories,name,subName])
+    }, [categories,filterQuery,filterPrice,filterSort,name,subName])
 
     useEffect(() => {
         const defaultData = () => {
@@ -83,7 +83,7 @@ function ProductsCategoriesPage() {
         } 
         
 
-    }, [isFilterClick])
+    }, [isFilterClick,filterPrice.length,filterPrice.price_from,filterPrice.price_to,filterQuery,filterSort.length,filterSort.sort_tag,filterSort.sorting_order,subCategory?.id])
 
 
     if(categoryData === null || categoryData.length === 0 ){

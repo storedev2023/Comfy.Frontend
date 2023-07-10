@@ -26,7 +26,7 @@
 
 .personal-data-info,.personal-data-info-edit{
     display: flex;
-    align-items: start;
+    align-items: flex-start;
     justify-content: space-between;
     flex-direction: column;
     height: 87%;
@@ -34,7 +34,7 @@
 
 .personal-data___info, .personal-data-info___edit{
     display: flex;
-    align-items: start;
+    align-items: flex-start;
     justify-content: center;
     flex-direction: column;
     width: 100%;
@@ -50,7 +50,7 @@
 .personal-data-info-row{
     display: flex;
     align-items: center;
-    justify-content: start;
+    justify-content: flex-start;
     flex-direction: row;
     margin-top: 0.3rem;
     padding: 0.2rem 0;
@@ -108,7 +108,7 @@
     width: 100%;
     display: flex;
     gap:1rem;
-    justify-content: end;
+    justify-content: flex-end;
 
     .personal-data-info-edit-btn-cancel{
         display: flex;

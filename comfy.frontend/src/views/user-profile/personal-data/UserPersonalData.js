@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 
 //styles
 import './UserPersonalData.scss'
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 
@@ -10,13 +10,7 @@ function UserPersonalData() {
 
   const [isEdit, setIsEdit] = useState(false)
 
-  const editUserData = () => {
-
-  }
-
-  const dispatch = useDispatch()
   const user = useSelector(state => state.user.user_data)
-
 
   return (
     <div className="personal-data-page">

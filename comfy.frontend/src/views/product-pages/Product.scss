@@ -52,15 +52,26 @@
     transition: all .15s linear;
 }
 
+.active {  
+    color: #1D1D1D;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.active:hover {  
+    color: #1D1D1D;
+    font-weight: 600;
+    background: rgb(209, 209, 209);
+    transition: all .15s linear;
+}
+
+
 .tab-link:hover {  
     color: #1D1D1D;
     background: rgb(209, 209, 209);
     transition: all .15s linear;
 }
 
-.tab-link:active {  
-    
-}
 
 .link-body {
     display: flex;
@@ -77,6 +88,8 @@
     height: 2.2rem;
     background-color: rgb(188, 188, 188);
 }
+
+
 
 .link-body::after{
     display: bloc k;

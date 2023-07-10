@@ -23,7 +23,7 @@
 .wishlist__{
     .wishlist-product{
         display: flex;
-        justify-content: start;
+        justify-content: flex-start;
         padding: 1rem 0.5rem;
         border:2px solid #EFEFEF;
 
@@ -51,7 +51,7 @@
 .wishlist-product-body{
     display: flex;
     flex-direction: column;
-    align-items: start;
+    align-items: flex-start;
     justify-content: space-between;
     height: 100%;
     width: 100%;
