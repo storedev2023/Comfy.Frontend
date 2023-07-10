@@ -12,8 +12,6 @@ import CarouselProductViewed from "../../components/carousel/product-viewed/Caro
 import { Link } from "react-router-dom";
 
 function Home() {
-
-
     // main carousel
     const [index, setIndex] = useState(0);
     const handleSelect = (selectedIndex, e) => { setIndex(selectedIndex); };
@@ -58,8 +56,8 @@ function Home() {
     }
 
   return (
-        <main id="home-page">
-            <div className="body-top" id="body-top">
+      <main id="home-page">
+         <div className="body-top" id="body-top">
                 <div className="body-top-info">
                     <div className="body-top-info-banners">
                         <Carousel activeIndex={index} onSelect={handleSelect} className="main-carousel">
