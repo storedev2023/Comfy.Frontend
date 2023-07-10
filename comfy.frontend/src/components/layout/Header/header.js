@@ -43,7 +43,165 @@ function HeaderTOP() {
                     <div className="block-city-selector-content">
                         <div className="section-selector-content">
                             <div className="selector-items">
-
+                                <div className="cities-list">
+                                    <div className="city-names">
+                                        <div className="city-name-dropdown-menu">
+                                            Бахмут
+                                        </div>
+                                        <div className="city-name-dropdown-menu">
+                                            Біла церква
+                                        </div>
+                                        <div className="city-name-dropdown-menu">
+                                            Бориспіль
+                                        </div>
+                                        <div className="city-name-dropdown-menu">
+                                            Бровари
+                                        </div>
+                                        <div className="city-name-dropdown-menu">
+                                            Буча
+                                        </div>
+                                        <div className="city-name-dropdown-menu">
+                                            Васильків
+                                        </div>
+                                        <div className="city-name-dropdown-menu">
+                                            Вінниця
+                                        </div>
+                                    </div>
+                                    <div className="city-names"><div className="city-name-dropdown-menu">
+                                        Горішні Плавні
+                                        </div>
+                                        <div className="bigger-city-name-dropdown-menu">
+                                        Дніпро
+                                        </div>
+                                        <div className="city-name-dropdown-menu">
+                                        Житомир
+                                        </div>
+                                        <div className="city-name-dropdown-menu">
+                                        Жовті Води
+                                        </div>
+                                        <div className="bigger-city-name-dropdown-menu">
+                                        Запоріжжя
+                                        </div>
+                                        <div className="city-name-dropdown-menu">
+                                        Івано-Франківськ
+                                        </div>
+                                        <div className="city-name-dropdown-menu">
+                                        Ізмаїл
+                                        </div></div>
+                                    <div className="city-names">
+                                        <div className="city-name-dropdown-menu">
+                                        Ірпінь
+                                        </div>
+                                        <div className="city-name-dropdown-menu">
+                                        Калуш
+                                        </div>
+                                        <div className="city-name-dropdown-menu">
+                                        Кам’янське 
+                                        </div>
+                                        <div className="bigger-city-name-dropdown-menu">
+                                        Київ
+                                        </div>
+                                        <div className="city-name-dropdown-menu">
+                                        Коростень
+                                        </div>
+                                        <div className="city-name-dropdown-menu">
+                                        Коростишів
+                                        </div>
+                                        <div className="city-name-dropdown-menu">
+                                        Краматорськ
+                                        </div>
+                                        </div>
+                                    <div className="city-names">
+                                        <div className="city-name-dropdown-menu">
+                                        Кременчук
+                                        </div>
+                                        <div className="bigger-city-name-dropdown-menu">
+                                        Кривий Ріг
+                                        </div>
+                                        <div className="city-name-dropdown-menu">
+                                        Кропивницький
+                                        </div>
+                                        <div className="city-name-dropdown-menu">
+                                        Лисичанськ
+                                        </div>
+                                        <div className="city-name-dropdown-menu">
+                                        Луцьк
+                                        </div>
+                                        <div className="bigger-city-name-dropdown-menu">
+                                        Львів
+                                        </div>
+                                        <div className="city-name-dropdown-menu">
+                                        Маріуполь
+                                        </div>
+                                    </div>
+                                    <div className="city-names">
+                                        <div className="city-name-dropdown-menu">
+                                        Мелітополь
+                                        </div>
+                                        <div className="city-name-dropdown-menu">
+                                        Миколаїв
+                                        </div>
+                                        <div className="city-name-dropdown-menu">
+                                        Новомовськ
+                                        </div>
+                                        <div className="city-name-dropdown-menu">
+                                        Обухів
+                                        </div>
+                                        <div className="selected-city-name-dropdown-menu">
+                                        Одеса
+                                        </div>
+                                        <div className="city-name-dropdown-menu">
+                                        Охтирка
+                                        </div>
+                                        <div className="city-name-dropdown-menu">
+                                        Павлоград
+                                        </div>
+                                    </div>
+                                    <div className="city-names">
+                                        <div className="city-name-dropdown-menu">
+                                        Переяслав
+                                        </div>
+                                        <div className="city-name-dropdown-menu">
+                                        Покровськ
+                                        </div>
+                                        <div className="city-name-dropdown-menu">
+                                        Полтава
+                                        </div>
+                                        <div className="city-name-dropdown-menu">
+                                        Рівне
+                                        </div>
+                                        <div className="city-name-dropdown-menu">
+                                        Сєвєродонецьк
+                                        </div>
+                                        <div className="city-name-dropdown-menu">
+                                        Слов’янськ
+                                        </div>
+                                        <div className="city-name-dropdown-menu">
+                                        Сміла
+                                        </div>
+                                        </div>
+                                    <div className="city-names"><div className="city-name-dropdown-menu">
+                                        Суми
+                                        </div>
+                                        <div className="city-name-dropdown-menu">
+                                        Ужород
+                                        </div>
+                                        <div className="city-name-dropdown-menu">
+                                        Умань
+                                        </div>
+                                        <div className="city-name-dropdown-menu">
+                                        Фастів
+                                        </div>
+                                        <div className="bigger-city-name-dropdown-menu">
+                                        Харків
+                                        </div>
+                                        <div className="city-name-dropdown-menu">
+                                        Херсон
+                                        </div>
+                                        <div className="city-name-dropdown-menu">
+                                        Хмельницький
+                                        </div></div>
+                                </div>
                             </div>
                         </div>
                     </div>

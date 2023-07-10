@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 //Components
-import Card from "../../../components/card/Card";
 import Icon from "../../../components/icon/icon";
 //styles
 import './Orders.scss'
