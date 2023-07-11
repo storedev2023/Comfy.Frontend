@@ -28,6 +28,7 @@ function Home() {
             const response = await ProductService.getShowcase()   
             setShowcases(response)
             const banners = await ProductService.getBanners()
+            console.log(banners)
             setBanners(banners)
         }
         fetchData()
@@ -57,18 +58,20 @@ function Home() {
 
   return (
       <main id="home-page">
-         <div className="body-top" id="body-top">
-                <div className="body-top-info">
-                    <div className="body-top-info-banners">
-                        <Carousel activeIndex={index} onSelect={handleSelect} className="main-carousel">
-                            {Banners.map(banner => (
-                                <CarouselItem key={Banners.indexOf(banner)}>
-                                    <img src={banner.imageUrl} alt=""/>
-                                </CarouselItem>
-                            ))}
-                        </Carousel>
+            <div className="body-top" id="body-top">
+                {Banners.length !== 0 &&
+                    <div className="body-top-info">
+                        <div className="body-top-info-banners">
+                            <Carousel activeIndex={index} onSelect={handleSelect} className="main-carousel">
+                                {Banners.map(banner => (
+                                    <CarouselItem key={Banners.indexOf(banner)}>
+                                        <img src={banner.imageUrl} alt=""/>
+                                    </CarouselItem>
+                                ))}
+                            </Carousel>
+                        </div>
                     </div>
-                </div>
+                }
             </div>
             <div className="body-content">
             { Showcases.map(Showcase =>(
